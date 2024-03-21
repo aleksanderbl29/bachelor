@@ -1,6 +1,7 @@
 ---
 project:
   title: "Bacheloropgave"
+author: "Aleksander Bang-Larsen"
 bibliography: ../../../Andet/Zotero/zotero.bib
 csl: ~/Tinker/OSS/CSL/styles/politica-w-ibid.csl
 format:
