@@ -3,3 +3,7 @@ project:
   title: "Bacheloropgave"
 bibliography: ../../../Andet/Zotero/zotero.bib
 csl: ~/Tinker/OSS/CSL/styles/politica-w-ibid.csl
+format:
+  pdf:
+    link-citations: true
+    colorlinks: false
