@@ -1,7 +1,15 @@
 ---
-title: "Bachloropgave"
+title: "Bachelor"
+bibliography: ../../../Andet/Zotero/zotero.bib
+csl: csl/politica-w-ibid.csl
 ---
 
 ## Quarto
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+# Her tester jeg lige en henvisning
+
+@achen2016
+@aresIssuePoliticizationSocial2022
+@breetzPoliticalLogicsClean2018
