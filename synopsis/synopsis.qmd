@@ -1,6 +1,6 @@
 ---
 title: "Synopsis"
-date: "5. april 2024"
+date: "5 april 2024"
 ---
 
 # Indledning

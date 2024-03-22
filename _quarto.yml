@@ -3,6 +3,8 @@
 #   title: "Bacheloropgave"
 author: "Aleksander Bang-Larsen"
 date: "07-06-2024"
+lang: "da"
+date-format: "D. MMMM YYYY"
 bibliography: ../../../Andet/Zotero/zotero.bib
 csl: csl/politica-w-ibid.csl
 format:
