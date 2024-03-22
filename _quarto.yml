@@ -31,3 +31,9 @@ format:
       - bottom=2cm
       - left=2cm
       - right=2cm
+      # - a4paper
+      # - heightrounded
+    linestretch: 1.5
+    papersize: a4
+include-after-body: format/after-body.tex
+include-before-body: format/before-body.tex
