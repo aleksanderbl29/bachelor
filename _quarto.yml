@@ -1,11 +1,13 @@
 ---
 project:
-  # title: "Bacheloropgave"
+  title: "Bachelorprojekt"
   output-dir: "output"
 author: "Aleksander Bang-Larsen"
+subtitle: "166F24 Vælgeradfærd og politisk repræsentation"
 date: "07-06-2024"
 lang: "da"
 date-format: "D. MMMM YYYY"
+mainfont: "Arial"
 bibliography: ../../../Andet/Zotero/zotero.bib
 csl: csl/politica-w-ibid.csl
 format:
