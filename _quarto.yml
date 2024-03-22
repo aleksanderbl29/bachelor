@@ -1,21 +1,32 @@
 ---
 project:
-  title: "Bachelorprojekt"
-  output-dir: "output"
-author: "Aleksander Bang-Larsen"
-subtitle: "166F24 Vælgeradfærd og politisk repræsentation"
-date: "07-06-2024"
-lang: "da"
-date-format: "D. MMMM YYYY"
-mainfont: "Arial"
+  title: Bachelorprojekt
+  output-dir: output
+author: Aleksander Bang-Larsen
+subtitle: 166F24 Vælgeradfærd og politisk repræsentation
+date: 07-06-2024
+lang: da
+date-format: D. MMMM YYYY
+mainfont: Arial
 bibliography: ../../../Andet/Zotero/zotero.bib
 csl: csl/politica-w-ibid.csl
+
+numbersections: true
+language: custom-lang-da.yml
+
+# Forside
+title-block-banner: true
+
+# Output style
 format:
   pdf:
     link-citations: true
     colorlinks: false
-toc: false
-lot: false
-lof: false
-numbersections: true
-language: custom-lang-da.yml
+    toc: false
+    lot: false
+    lof: false
+    geometry:
+      - top=2cm
+      - bottom=2cm
+      - left=2cm
+      - right=2cm
