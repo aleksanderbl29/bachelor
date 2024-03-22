@@ -8,3 +8,6 @@ format:
   pdf:
     link-citations: true
     colorlinks: false
+toc: true
+numbersections: true
+language: custom-lang-da.yml
