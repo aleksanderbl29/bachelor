@@ -22,6 +22,7 @@ format:
   pdf:
     link-citations: true
     colorlinks: false
+    # documentclass: article
     toc: false
     lot: false
     lof: false
