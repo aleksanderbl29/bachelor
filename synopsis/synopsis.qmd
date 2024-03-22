@@ -2,4 +2,12 @@
 title: "Synopsis"
 ---
 
-# Synopsis
+# Indledning
+
+# Teori
+
+# Metode
+
+## Design
+
+# Forventninger
