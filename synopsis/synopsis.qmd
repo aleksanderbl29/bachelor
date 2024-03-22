@@ -1,5 +1,6 @@
 ---
 title: "Synopsis"
+date: "5. april 2024"
 ---
 
 # Indledning
@@ -7,6 +8,8 @@ title: "Synopsis"
 # Teori
 
 # Metode
+
+@bischofNewGraphicSchemes2017
 
 ## Design
 
@@ -16,3 +19,8 @@ title: "Synopsis"
 | er | ikke | noget sejt|
 
 # Forventninger
+
+# Bibliografi
+
+::: {#refs}
+:::
