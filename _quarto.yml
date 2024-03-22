@@ -1,6 +1,7 @@
 ---
-# project:
+project:
 #   title: "Bacheloropgave"
+  output-dir: "output"
 author: "Aleksander Bang-Larsen"
 date: "07-06-2024"
 lang: "da"
