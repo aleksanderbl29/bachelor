@@ -31,7 +31,6 @@ format:
       - bottom=2cm
       - left=2cm
       - right=2cm
-      # - a4paper
       # - heightrounded
     linestretch: 1.5
     papersize: a4
