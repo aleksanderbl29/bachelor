@@ -13,9 +13,7 @@ date: 04-02-2024
 
 ## Spørgsmål
 
-::: {.callout icon="false"}
 Hvordan reagerer vælgerne på policybeslutninger med "diffuse benefits and concentrated local costs"
-:::
 
 -   Den danske case
 -   Klimaspørgsmål
