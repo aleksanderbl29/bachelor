@@ -26,12 +26,12 @@ format:
     toc: false
     lot: false
     lof: false
-    geometry:
-      - top=2cm
-      - bottom=2cm
-      - left=2cm
-      - right=2cm
-      # - heightrounded
+    # geometry:
+    #   - top=2cm
+    #   - bottom=4cm
+    #   - left=2cm
+    #   - right=2cm
+    #   - heightrounded
     linestretch: 1.5
     papersize: a4
 include-after-body: format/after-body.tex
