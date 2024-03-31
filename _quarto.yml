@@ -15,7 +15,8 @@ numbersections: true
 language: custom-lang-da.yml
 
 # Forside
-title-block-banner: true
+abstract: >-
+  Dette er et bachelorprojekt om vælgeradfærd og politisk repræsentation. Projektet undersøger, hvordan vælgere opfatter politisk repræsentation og hvilken betydning det har for deres valg. Projektet er baseret på en spørgeskemaundersøgelse, som er gennemført i forbindelse med valget til Folketinget i 2023. Resultaterne viser, at vælgere har en bred forståelse af politisk repræsent
 
 # Output style
 format:
@@ -26,12 +27,12 @@ format:
     toc: false
     lot: false
     lof: false
-    # geometry:
-    #   - top=2cm
-    #   - bottom=4cm
-    #   - left=2cm
-    #   - right=2cm
-    #   - heightrounded
+    geometry:
+      - top=2cm
+      - bottom=4cm
+      - left=2cm
+      - right=2cm
+      - heightrounded
     linestretch: 1.5
     papersize: a4
 include-after-body: format/after-body.tex
