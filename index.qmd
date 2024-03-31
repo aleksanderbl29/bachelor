@@ -8,8 +8,31 @@ title: "Bachelor"
 @aresIssuePoliticizationSocial2022
 @breetzPoliticalLogicsClean2018
 
+# Indledning
 
+{{< include parts/1-indledning.qmd >}}
 
+# Teori
+
+{{< include parts/2-teori.qmd >}}
+
+# Metode
+
+{{< include parts/3-metode.qmd >}}
+
+# Analyse
+
+{{< include parts/4-analyse.qmd >}}
+
+# Resultater
+
+{{< include parts/5-resultater.qmd >}}
+
+# Konklusion
+
+{{< include parts/99-konklusion.qmd >}}
+
+{{< pagebreak >}}
 
 # Bibliografi
 
