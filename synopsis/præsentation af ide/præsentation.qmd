@@ -1,6 +1,6 @@
 ---
 title: "Bachelor ide"
-format: 
+format:
   revealjs:
     # theme: simple
     slide-number: true
@@ -9,8 +9,12 @@ date: 04-02-2024
 
 ## Spørgsmål
 
+::: {.callout icon="false"}
+Hvordan reagerer vælgerne på policybeslutninger med "diffuse benefits and concentrated local costs"
+:::
 
-
+-   Den danske case
+-   Klimaspørgsmål
 
 ## Quarto
 
@@ -30,5 +34,3 @@ When you click the **Render** button a presentation will be generated that inclu
 ```{r}
 1 + 1
 ```
-
-
