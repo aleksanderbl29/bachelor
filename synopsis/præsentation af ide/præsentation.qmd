@@ -22,5 +22,15 @@ Hvordan reagerer vælgerne på policybeslutninger med "diffuse benefits and conc
 
 ## Inspiration
 
-Jeg er i mit projekt blevet inspireret af @stokes2016 til at skrive om emnet
+Jeg er i mit projekt blevet **inspireret** af @stokes2016 til at skrive om emnet
 
+# Forventninger
+
+## Mekanisme
+
+- To spor
+
+```{mermaid}
+flowchart LR
+  A(Indepent var) --> B(rund kant)
+```
