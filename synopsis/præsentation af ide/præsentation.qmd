@@ -4,8 +4,10 @@ format:
   revealjs:
     # theme: simple
     slide-number: true
-  # pptx:
-  #   incremental: false
+    citations-hover: false
+  pptx:
+    incremental: false
+suppress-bibliography: true
 date: 04-02-2024
 ---
 
@@ -20,25 +22,13 @@ Hvordan reagerer vælgerne på policybeslutninger med "diffuse benefits and conc
 
 ## Design
 
+## Inspiration
+
+Jeg er i mit projekt blevet inspireret af @stokes2016 til at skrive om emnet
+
+- Her tilføjer jeg lige en bullet
 
 
+## Litteratur
 
 
-
-
-
-
-
-
-
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-x <- 1 + 1
-x
-y <- 2 + 2
-y
-x + y
-```
