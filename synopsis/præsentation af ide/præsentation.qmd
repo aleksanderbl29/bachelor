@@ -4,6 +4,8 @@ format:
   revealjs:
     # theme: simple
     slide-number: true
+  # pptx:
+  #   incremental: false
 date: 04-02-2024
 ---
 
