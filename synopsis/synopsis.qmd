@@ -9,6 +9,8 @@ abstract: ""
 
 # Teori
 
+@stokes2016
+
 # Metode
 
 
