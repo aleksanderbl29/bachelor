@@ -15,8 +15,10 @@ date: 04-02-2024
 
 Hvordan reagerer vælgerne på policybeslutninger med "diffuse benefits and concentrated local costs"
 
--   Den danske case
--   Klimaspørgsmål
+- Det bedste eksempel er vindmøller og solcelleanlæg (og dæmninger til vandkraft, men de er ikke udbredt i DK)
+
+- Særlig relevant for klimaspørgsmål
+- Ændres effekten hvis lokalsamfundet får medarbejerskab?
 
 ## Design
 
