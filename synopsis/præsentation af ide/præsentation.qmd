@@ -24,7 +24,8 @@ Hvordan reagerer vælgerne på policybeslutninger med "diffuse benefits and conc
 
 ## Inspiration
 
-Jeg er i mit projekt blevet **inspireret** af @stokes2016 til at skrive om emnet
+I forberedelsen har jeg fundet @stokes2016 der har undersøgt vindmøller i Ontario og @larsen2021 der har undersøgt vindmøller i Danmark.
+@larsen2021 er dog ikke udgivet
 
 # Forventninger
 
