@@ -12,5 +12,7 @@ Her vil jeg arbejde på min bachelor
 - Vindmøller afstand
   - Som numerisk
   - Som dikotom
-- Vindmøller opsat i samarbejde med lokalsamfundet
+- Lokalmiljøets indflydelse
+  - Vindmøller opsat i samarbejde med lokalsamfundet
+  - Vindmøller som testcenter
 - Vindmølle opsat ved udkanten af kommunen (indenfor x km af grænsen)
