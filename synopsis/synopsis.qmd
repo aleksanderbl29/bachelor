@@ -11,7 +11,6 @@ abstract: ""
 
 # Metode
 
-Jeg kan godt lide de grafiske muligheder vi finder hos @bischofNewGraphicSchemes2017 - og dem vil jeg benytte så vidt muligt.
 
 ## Design
 
