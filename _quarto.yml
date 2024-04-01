@@ -42,8 +42,8 @@ format:
       - heightrounded
     linestretch: 1.5
     papersize: a4
-  docx:
-    linestretch: 1.5
-    papersize: a4
+  # docx:
+  #   linestretch: 1.5
+  #   papersize: a4
 include-after-body: format/after-body.tex
 include-before-body: format/before-body.tex
