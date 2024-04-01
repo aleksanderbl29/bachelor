@@ -9,7 +9,7 @@ date: "5 april 2024"
 
 # Metode
 
-@bischofNewGraphicSchemes2017
+Jeg kan godt lide de grafiske muligheder vi finder hos @bischofNewGraphicSchemes2017 - og dem vil jeg benytte så vidt muligt.
 
 ## Design
 
@@ -17,8 +17,11 @@ date: "5 april 2024"
 | --- | --- | --- |
 | Hej| Mit | navn |
 | er | ikke | noget sejt|
+| her | er en | tabel mere |
 
 # Forventninger
+
+{{< pagebreak >}}
 
 # Bibliografi
 
