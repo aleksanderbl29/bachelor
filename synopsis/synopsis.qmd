@@ -1,11 +1,8 @@
 ---
 title: "Synopsis"
 date: "5 april 2024"
-subtitle: "Der er {{wordcount}} i dette dokument"
+subtitle: ""
 abstract: ""
-filters:
-  - wordcount
-citeproc: false
 ---
 
 # Indledning
