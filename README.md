@@ -5,6 +5,7 @@ Her vil jeg arbejde på min bachelor
 ## Mulige modeller
 
 - Fixed effects over tid og sted
+- Forudsagt sandsynlighed i "normal" OLS
 
 ### Potentielle kontroller
 
