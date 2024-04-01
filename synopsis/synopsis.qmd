@@ -20,6 +20,14 @@ abstract: ""
 
 # Forventninger
 
+## Andre studier i samme stil/område
+
+@stokes2016
+
+@larsen2021
+
+@isaksson2024
+
 {{< pagebreak >}}
 
 # Bibliografi
