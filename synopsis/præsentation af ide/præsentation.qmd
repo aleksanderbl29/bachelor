@@ -5,6 +5,8 @@ format:
     # theme: simple
     slide-number: true
     citations-hover: false
+    mermaid:
+      theme: forest
   # pptx:
   #   incremental: false
 suppress-bibliography: true
@@ -20,20 +22,45 @@ Hvordan reagerer vælgerne på policybeslutninger med "diffuse benefits and conc
 - Særlig relevant for klimaspørgsmål
 - Ændres effekten hvis lokalsamfundet får medarbejerskab?
 
-## Design
+##
 
-## Inspiration
-
-I forberedelsen har jeg fundet @stokes2016 der har undersøgt vindmøller i Ontario og @larsen2021 der har undersøgt vindmøller i Danmark.
-@larsen2021 er dog ikke udgivet
-
-# Forventninger
-
-## Mekanisme
-
-- To spor
+### Den simple model
 
 ```{mermaid}
 flowchart LR
-  A(Indepent var) --> B(rund kant)
+  A(Opførelse af vedvarende energianlæg) --> B(Ændring i elektoral tilslutning)
 ```
+
+### Den lokalt betingede model
+
+```{mermaid}
+flowchart LR
+  %% A(Opførelse af vedvarende energianlæg) --> B(Ændring i elektoral tilslutning)
+
+  C(Lokalt ejerskab over anlæg)
+  D(Negativ elektoral effekt for siddende politikere)
+  E(Ingen eller lille positiv elektoral effekt for siddende politikere)
+
+  C -->|Ja| D
+  C -->|Nej| E
+```
+
+## Design
+
+
+
+## Inspiration
+
+## Andre studier
+
+- @stokes2016
+  - Undersøger vindmøller i Ontario
+- @larsen2021
+  - Ikke endnu udgivet
+  - Undersøger vindmøller i Danmark (ligesom L. Stokes)
+
+## Forventninger
+
+Jeg regner med at finde samme resultater som @larsen2021 og @stokes2016 for de anlæg der ikke har lokal ejerskab
+
+Andel med lokal indflydelse og ejerskab forventes at have mindre, hvis nogen overhovedet, effekt.
