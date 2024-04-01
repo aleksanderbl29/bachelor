@@ -5,6 +5,7 @@ subtitle: "Der er {{wordcount}} i dette dokument"
 abstract: ""
 filters:
   - wordcount
+citeproc: false
 ---
 
 # Indledning
