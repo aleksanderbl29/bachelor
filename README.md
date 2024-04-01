@@ -16,3 +16,7 @@ Her vil jeg arbejde på min bachelor
   - Vindmøller opsat i samarbejde med lokalsamfundet
   - Vindmøller som testcenter
 - Vindmølle opsat ved udkanten af kommunen (indenfor x km af grænsen)
+
+## Solceller
+
+Solceller kan tænkes at have samme effekt som vindmøller da de optager en stor del land - Dog larmer de ikke så meget som vindmøller
