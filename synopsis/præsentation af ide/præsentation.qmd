@@ -64,3 +64,8 @@ flowchart LR
 Jeg regner med at finde samme resultater som @larsen2021 og @stokes2016 for de anlæg der ikke har lokal ejerskab
 
 Andel med lokal indflydelse og ejerskab forventes at have mindre, hvis nogen overhovedet, effekt.
+
+## Litteratur
+
+:::{#refs}
+:::
