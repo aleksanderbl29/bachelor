@@ -1,6 +1,6 @@
 # Bachelor
 
-I denne repository vil jeg opbevare filerne til min bacheloropgave
+Her vil jeg arbejde på min bachelor
 
 ## Mulige modeller
 
