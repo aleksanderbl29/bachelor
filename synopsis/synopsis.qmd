@@ -15,11 +15,7 @@ Jeg kan godt lide de grafiske muligheder vi finder hos @bischofNewGraphicSchemes
 
 ## Design
 
-| Overskrift | Navn | Type |
-| --- | --- | --- |
-| Hej| Mit | navn |
-| er | ikke | noget sejt|
-| her | er en | tabel mere |
+- [ ] Her skal stå noget om hvilke modeller der kan laves og hvordan jeg vil gå til det
 
 # Forventninger
 
