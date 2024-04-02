@@ -5,6 +5,10 @@ subtitle: ""
 abstract: ""
 ---
 
+# To Do
+
+- [ ] Introducer det overordnede spørgsmål
+
 # Indledning
 
 # Teori
