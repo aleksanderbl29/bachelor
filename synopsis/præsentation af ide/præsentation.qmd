@@ -22,8 +22,6 @@ Hvordan reagerer vælgerne på policybeslutninger med "diffuse benefits and conc
 - Særlig relevant for klimaspørgsmål
 - Ændres effekten hvis lokalsamfundet får medarbejerskab?
 
-##
-
 ### Den simple model
 
 ```{mermaid}
