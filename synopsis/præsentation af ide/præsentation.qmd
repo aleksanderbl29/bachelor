@@ -7,8 +7,7 @@ format:
     citations-hover: false
     mermaid:
       theme: forest
-  # pptx:
-  #   incremental: false
+    keep-tex: true
 suppress-bibliography: true
 date: 04-02-2024
 ---
