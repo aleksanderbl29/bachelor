@@ -1,5 +1,6 @@
 ---
 title: "Bachelor ide"
+csl: ../../csl/politica.csl
 format:
   revealjs:
     # theme: simple
@@ -49,7 +50,7 @@ flowchart LR
 ## Andre studier
 
 - @stokes2016
-  - Undersøger vindmøller i Ontario
+  - Undersøger vindmøller i Ontario [@stokes2016: 4-8]
 - @larsen2021
   - Ikke endnu udgivet
   - Undersøger vindmøller i Danmark (ligesom L. Stokes)
