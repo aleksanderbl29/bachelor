@@ -49,6 +49,7 @@ format:
       - "format/tex/_titlepage.tex"
     link-citations: true
     colorlinks: false
+    keep-tex: false
     # documentclass: article
     toc: true
     lot: true
