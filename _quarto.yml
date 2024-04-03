@@ -23,13 +23,13 @@ numbersections: true
 language: custom-lang-da.yml
 
 # Forside
-abstract: |
-  Det her er et bachelorprojekt om vælgeradfærd og politisk repræsentation.
-  Projektet undersøger, hvordan vælgere opfatter politisk repræsentation
-  og hvilken betydning det har for deres valg. Projektet er baseret på en
-  spørgeskemaundersøgelse, som er gennemført i forbindelse med valget til
-  Folketinget i 2023. Resultaterne viser, at vælgere har en bred forståelse
-  af politisk repræsentation
+# abstract: |
+#   Det her er et bachelorprojekt om vælgeradfærd og politisk repræsentation.
+#   Projektet undersøger, hvordan vælgere opfatter politisk repræsentation
+#   og hvilken betydning det har for deres valg. Projektet er baseret på en
+#   spørgeskemaundersøgelse, som er gennemført i forbindelse med valget til
+#   Folketinget i 2023. Resultaterne viser, at vælgere har en bred forståelse
+#   af politisk repræsentation
 
 # Output style
 format:
