@@ -1,5 +1,11 @@
 ---
-title: "Bachelor ide"
+title: "Vælgernes reaktion på klimatiltag"
+subtitle: |
+  | Bachelorprojekt om elektorale reaktioner på policy med koncentrererede omkostninger og diffuse fordele
+  |
+  |
+author:
+  - name: Aleksander Bang-Larsen
 csl: ../../csl/politica.csl
 format:
   revealjs:
@@ -8,8 +14,7 @@ format:
     citations-hover: false
     mermaid:
       theme: forest
-    keep-tex: true
-suppress-bibliography: true
+# suppress-bibliography: true
 date: 04-02-2024
 ---
 
@@ -64,11 +69,11 @@ Andel med lokal indflydelse og ejerskab forventes at have mindre, hvis nogen ove
 
 ## Forslag fra holdtimen
 
-Støtte til parti i stedet for borgmesteren
+- Støtte til parti i stedet for borgmesteren
 - Ændring i støtte til miljøpartier
 - Ændring i støtte til miljøskeptiske partier
 
-<!-- ## Litteratur
+## Litteratur
 
 :::{#refs}
-::: -->
+:::
