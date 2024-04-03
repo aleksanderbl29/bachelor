@@ -1,28 +1,24 @@
-\begin{titlepage}
-  \begin{center}
-      \vspace*{1cm}
+$if(has-frontmatter)$
+  \begin{frontmatter}
+  \begin{titlepage}
+  $_titlepage.tex()$
 
-      \textbf{Thesis Title}
+  \end{titlepage}
 
-      \vspace{0.5cm}
-       Thesis Subtitle
+	\center % Centre everything on the abstract page
 
-      \vspace{1.5cm}
+  	{\huge\bfseries $title$}\\[2cm] % Title of your document
 
-      \textbf{Author Name}
+  	{\large\bfseries Abstract}\\[0.4cm] % Title of your document
 
-      \vfill
+$abstract$
 
-      A thesis presented for the degree of\\
-      Doctor of Philosophy
+  \end{frontmatter}
+$else$
+  \begin{titlepage}
+  $_titlepage.tex()$
 
-      \vspace{0.8cm}
+  \end{titlepage}
+$endif$
 
-      % \includegraphics[width=0.4\textwidth]{ifsk-logo-blue}
 
-      Institut for Statskundskab\\
-      Aarhus Universitet\\
-      07-06-2024
-
-  \end{center}
-\end{titlepage}
