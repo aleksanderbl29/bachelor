@@ -1,7 +1,7 @@
-# {.unnumbered .unlisted}
-# {.unnumbered .unlisted}
-# {.unnumbered .unlisted}
 <!-- # {.unnumbered .unlisted}
+# {.unnumbered .unlisted}
+# {.unnumbered .unlisted}
+# {.unnumbered .unlisted}
 # {.unnumbered .unlisted}
 # {.unnumbered .unlisted}
 # {.unnumbered .unlisted}
@@ -10,6 +10,12 @@
 # {.unnumbered .unlisted}
 # {.unnumbered .unlisted} -->
 
+\center
+\vfill
+
 # Abstract {.unnumbered .unlisted}
 
 Her skal mit abstract være
+
+
+\vfill\vfill
