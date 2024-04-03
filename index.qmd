@@ -1,7 +1,7 @@
 ---
-title: "Klimaprojekter og elektorale effekter"
+title: Klimaprojekter og elektorale effekter
 # title: ""
-subtitle: ""
+subtitle: Vælgernes elektorale reaktion på opførslen af vindmøller og solcelleanlæg i lokalområdet - Og hvordan man sikrer accept
 author: ""
 ---
 
@@ -27,8 +27,8 @@ author: ""
 
 {{< pagebreak >}}
 
-# Teori
-
+# Teori**
+**
 {{< include parts/2-teori.qmd >}}
 
 {{< pagebreak >}}
