@@ -10,10 +10,15 @@
 # {.unnumbered .unlisted}
 # {.unnumbered .unlisted} -->
 
-\center
 \vfill
+\center
 
 # Abstract {.unnumbered .unlisted}
+
+
+\flushleft
+\vspace{0.5cm}
+
 
 Her skal mit abstract være
 
