@@ -5,6 +5,12 @@ project:
 author:
   - name: Aleksander Bang-Larsen
     affiliation: Aarhus Universitet
+  - name: En anden forfatter
+    affiliation:
+      - Carnegie Mellon University
+      - University of Chicago
+  - name: Josiah Carberry
+    affiliation: Brown University
 subtitle: |
   | Vælgernes reaktion på opførelsen af vindmøller og solcelleanlæg i lokalområdet - Og hvordan man kan forbedre accepten
   |
@@ -20,7 +26,7 @@ bibliography: ../../../Andet/Zotero/zotero.bib
 csl: csl/politica-w-ibid.csl
 
 numbersections: true
-language: custom-lang-da.yml
+language: format/custom-lang-da.yml
 
 # Forside
 # abstract: |
@@ -35,16 +41,15 @@ language: custom-lang-da.yml
 format:
   pdf:
     latex-auto-install: true
-    include-after-body: format/after-body.tex
-    include-before-body: format/before-body.tex
-    include-in-header: format/header.tex
-    include-before: format/preamble.tex
+    include-after-body: format/tex/after-body.tex
+    include-before-body: format/tex/before-body.tex
+    include-in-header: format/tex/header.tex
     link-citations: true
     colorlinks: false
     # documentclass: article
-    toc: false
-    lot: false
-    lof: false
+    toc: true
+    lot: true
+    lof: true
     geometry:
       - top=2cm
       - bottom=4cm

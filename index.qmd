@@ -1,6 +1,17 @@
 ---
-title: "Klimaprojekter og elektorale effekter"
+# title: "Klimaprojekter og elektorale effekter"
+title: ""
+subtitle: ""
+author: ""
 ---
+
+{{< pagebreak >}}
+
+# Abstract
+
+{{< include parts/0-abstract.qmd >}}
+
+{{< pagebreak >}}
 
 # Her tester jeg lige en henvisning
 
@@ -8,25 +19,37 @@ title: "Klimaprojekter og elektorale effekter"
 @aresIssuePoliticizationSocial2022
 @breetzPoliticalLogicsClean2018
 
+{{< pagebreak >}}
+
 # Indledning
 
 {{< include parts/1-indledning.qmd >}}
+
+{{< pagebreak >}}
 
 # Teori
 
 {{< include parts/2-teori.qmd >}}
 
+{{< pagebreak >}}
+
 # Metode
 
 {{< include parts/3-metode.qmd >}}
+
+{{< pagebreak >}}
 
 # Analyse
 
 {{< include parts/4-analyse.qmd >}}
 
+{{< pagebreak >}}
+
 # Resultater
 
 {{< include parts/5-resultater.qmd >}}
+
+{{< pagebreak >}}
 
 # Konklusion
 
