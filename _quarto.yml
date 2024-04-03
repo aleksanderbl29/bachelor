@@ -5,7 +5,13 @@ project:
 author:
   - name: Aleksander Bang-Larsen
     affiliation: Aarhus Universitet
-subtitle: 166F24 Vælgeradfærd og politisk repræsentation
+subtitle: |
+  | Vælgernes reaktion på opførelsen af vindmøller og solcelleanlæg i lokalområdet - Og hvordan man kan forbedre accepten
+  |
+  |
+  |
+  | 166F24 Vælgeradfærd og politisk repræsentation
+  | Vejleder: Martin Bisgaard
 date: 07-06-2024
 lang: da
 date-format: D. MMMM YYYY
@@ -28,6 +34,11 @@ abstract: |
 # Output style
 format:
   pdf:
+    latex-auto-install: true
+    include-after-body: format/after-body.tex
+    include-before-body: format/before-body.tex
+    include-in-header: format/header.tex
+    include-before: format/preamble.tex
     link-citations: true
     colorlinks: false
     # documentclass: article
@@ -42,5 +53,4 @@ format:
       - heightrounded
     linestretch: 1.5
     papersize: a4
-include-after-body: format/after-body.tex
-include-before-body: format/before-body.tex
+

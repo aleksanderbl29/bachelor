@@ -1,5 +1,5 @@
 ---
-title: "Bachelor"
+title: "Klimaprojekter og elektorale effekter"
 ---
 
 # Her tester jeg lige en henvisning
