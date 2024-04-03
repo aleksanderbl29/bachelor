@@ -1,13 +1,13 @@
 ---
-# title: "Klimaprojekter og elektorale effekter"
-title: ""
+title: "Klimaprojekter og elektorale effekter"
+# title: ""
 subtitle: ""
 author: ""
 ---
 
 {{< pagebreak >}}
 
-# Abstract
+# {.unnumbered .unlisted}
 
 {{< include parts/0-abstract.qmd >}}
 
