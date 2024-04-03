@@ -16,7 +16,9 @@ author: ""
 # Her tester jeg lige en henvisning
 
 @achen2016
+
 @aresIssuePoliticizationSocial2022
+
 @breetzPoliticalLogicsClean2018
 
 {{< pagebreak >}}
@@ -27,8 +29,8 @@ author: ""
 
 {{< pagebreak >}}
 
-# Teori**
-**
+# Teori
+
 {{< include parts/2-teori.qmd >}}
 
 {{< pagebreak >}}
