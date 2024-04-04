@@ -58,3 +58,5 @@ format:
       - heightrounded
     linestretch: 1.5
     papersize: a4
+    mermaid:
+      theme: forest
