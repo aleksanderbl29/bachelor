@@ -3,6 +3,11 @@ title: "Synopsis"
 date: "5 april 2024"
 subtitle: ""
 abstract: ""
+format:
+  pdf:
+    toc: false
+    lof: false
+    lot: false
 ---
 
 # To Do
