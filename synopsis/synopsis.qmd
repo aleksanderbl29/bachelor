@@ -52,6 +52,23 @@ Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variab
 
 # Forventninger
 
+Jeg forventer i stil med @stokes2016 at der ved opførslen af en vindmølle indenfor valgstedets geografiske område mellem valg vil give en nedgang i tilslutningen til borgmesterens parti i kommunen.
+
+Den forventede sammenhæng er illustreret i @fig-kausalmodel
+
+```{mermaid}
+%%| label: fig-kausalmodel
+%%| fig-cap: "Forventet sammenhæng"
+
+flowchart LR
+  A(Vindmølle sættes op)
+  B(Borgmesterparti mindsker tilslutning)
+  C(Borgmesterparti ser ingen ændring i tilslutning)
+
+  A -->|Ja| B
+  A -->|Nej| C
+```
+
 ## Andre studier i samme stil/område
 
 @stokes2016
