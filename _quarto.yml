@@ -3,7 +3,7 @@ project:
   title: Bachelorprojekt
   output-dir: output
   preview:
-    port: 7456
+    port: 4200
 author:
   - name: Aleksander Bang-Larsen
     affiliation: Aarhus Universitet
