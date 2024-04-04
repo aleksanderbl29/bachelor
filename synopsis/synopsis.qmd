@@ -3,8 +3,8 @@ title: "Synopsis"
 date: "5 april 2024"
 subtitle: ""
 abstract: ""
-mainfont: Times New Roman
-sansfont: Times New Roman
+mainfont: Calibri
+sansfont: Calibri
 format:
   pdf:
     toc: false
@@ -27,6 +27,12 @@ Hvordan reagerer vælgere på klimatiltag med koncentrerede omkostninger og diff
 > Hvordan reagerer vælgere på klimatiltag med koncentrerede omkostninger og diffuse samfundsmæssige fordele?
 
 Her ser jeg det specifikt interessant at undersøge, hvordan opførslen af vindmøller (og/eller solcelleparker) i området tæt på vælgeren påvirker dennes støtte til de siddende beslutningstagere.
+
+## Hvorfor vindmøller?
+
+Jeg vurderer at vindmøller kan udgøre et godt eksempel på en klimapolicy som vælgerne, generelt, går ind for at udbygge, men er udsat for den såkaldte NIMBY effekt [@lex.dk2016]. NIMBY står for "Not in my backyard" og beskriver meget godt, hvad jeg ser som det største argument, fra borgerne, for, hvorfor der ikke skal opføres vindmøller i den enkeltes lokalområde.
+
+Jeg ser NIMBY effekten som en reaktion på de koncentrerede omkostninger jeg ser ved klimatiltag som vindmøller, hvor der er nogle borgere der får opsat store metalmonstre tæt på hjemmet, som både bryder med landskabet og kan udgøre en støjgene, hvis man er tæt nok på.
 
 # Studier på området
 
