@@ -22,6 +22,11 @@ csl: csl/politica-w-ibid.csl
 numbersections: true
 language: format/custom-lang-da.yml
 
+# Preview settings
+preview:
+  port: 7456
+
+
 # Forside
 # abstract: |
 #   Det her er et bachelorprojekt om vælgeradfærd og politisk repræsentation.
