@@ -12,13 +12,23 @@ format:
     lot: false
 ---
 
-# To Do
+# Motivation
 
-- [ ] Introducer det overordnede spørgsmål
+For at forsøge at løse klimakrisen er det essentielt de folkevalgte kan implementere klimatiltag med påvirkning på borgerne uden at blive synderligt elektoralt straffet for det - I hvert fald, hvis borgerne grundlæggende ønsker at klimakrisen skal løses.
 
-# Indledning
+# Overordnet spørgsmål
 
-# Teori
+I min bachelor vil jeg gerne undersøge spørgsmålet:
+
+<!-- ::: {.callout}
+Hvordan reagerer vælgere på klimatiltag med koncentrerede omkostninger og diffuse samfundsmæssige fordele?
+::: -->
+
+> Hvordan reagerer vælgere på klimatiltag med koncentrerede omkostninger og diffuse samfundsmæssige fordele?
+
+Her ser jeg det specifikt interessant at undersøge, hvordan opførslen af vindmøller (og/eller solcelleparker) i området tæt på vælgeren påvirker dennes støtte til de siddende beslutningstagere.
+
+# Studier på området
 
 @stokes2016
 
