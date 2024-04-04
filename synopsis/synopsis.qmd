@@ -36,6 +36,13 @@ Jeg ser NIMBY effekten som en reaktion på de koncentrerede omkostninger jeg ser
 
 # Metode
 
+## Data
+
+Der findes opgørelser over alle vindmøller [@energistyrelsen2024], hvor det er muligt at se både møllens tilslutningsdato (og evt. afmeldingsdato), møllens kapacitet og størrelse, samt data om placering. Placeringsdata findes med koordinater der virker ret præcise.
+
+Sammenholdt med data over opsættelse af vindmøllerne vil jeg bruge valgdata til kommunalvalg på valgstedsniveau over tid. Her vælger jeg kommunalvalgsdata fordi det er på det kommunale niveau der besluttes lokalplaner der kan begrænse/tillade vindmøllerne.
+
+Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variable jeg er interesseret i til min analyse.
 
 ## Design
 
