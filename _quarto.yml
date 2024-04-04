@@ -2,6 +2,8 @@
 project:
   title: Bachelorprojekt
   output-dir: output
+  preview:
+    port: 7456
 author:
   - name: Aleksander Bang-Larsen
     affiliation: Aarhus Universitet
@@ -21,11 +23,6 @@ csl: csl/politica-w-ibid.csl
 
 numbersections: true
 language: format/custom-lang-da.yml
-
-# Preview settings
-preview:
-  port: 7456
-
 
 # Forside
 # abstract: |
