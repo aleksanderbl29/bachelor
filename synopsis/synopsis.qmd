@@ -32,7 +32,9 @@ Denne effekt kan tænkes at være til stede hos vælgerne for både vindmøller,
 
 # Teori
 
-Grundlaget for at undersøge mit spørgsmål bygger på flere teoretiske perspektiver. Her vil jeg tage udgangspunkt i @stokes2016, @ogrady2020 og @brouwer2024.
+Undersøgelsen af mit spørgsmål bygger på flere teoretiske perspektiver. Her vil jeg tage udgangspunkt i @stokes2016, @ogrady2020 og @hankinson2018.
+
+@stokes2016 gennemfører i Ontario et studie med et spørgsmål og design der ligner hvad jeg vil gennemføre. I dette studie finder hun, hvordan opsættelsen af vindmøller tæt på valgsteder i Ontario påvirker valgtilslutningen til den siddende lokalregering mens der ingen signifikant effekt findes til nationale valg.
 
 @ogrady2020 [3] finder at "price anxiety" er med til at drive negative holdninger til opførslen af billige boliger i lokalområder. Den samme price anxiety vurderer jeg kan have en lignende, om end ikke lige så stærk, påvirkning på holdningen til opførslen af vindmøller i lokalområdet. For begge scenarier er der tale om udbyggelse af boligens omegn, hvor billige boliger øger udbuddet vil vindmøller mindske efterspørgslen på grund af de gener der er forbundet med det.
 
@@ -63,10 +65,6 @@ flowchart LR
 ```
 
 
-## Lignende studier
-
-@stokes2016
-
 # Metode
 
 ## Data
@@ -75,11 +73,12 @@ Der findes opgørelser over alle vindmøller [@energistyrelsen2024], hvor det er
 
 Sammenholdt med data over opsættelse af vindmøllerne vil jeg bruge valgdata til kommunalvalg på valgstedsniveau over tid. Her vælger jeg kommunalvalgsdata fordi det er på det kommunale niveau der besluttes lokalplaner der kan begrænse/tillade vindmøllerne.
 
-Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variable jeg er interesseret i til min analyse.
+Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variable jeg er interesseret i til min analyse. Den simple model kan udgøres af udelukkende disse to kilder.
 
-## Design
+## Variable
 
-- [ ] Her skal stå noget om hvilke modeller der kan laves og hvordan jeg vil gå til det
+For at undgå at effekten drives af andre ting end min udvalgte uafhængige variabel vil jeg gerne kontrollere for indkomst i området, uddannelsesniveau
+Derudover kunne det også være interessant at kontrollere for, eller interagere med, borgmesterpartiets farve i kommunen for at se om effekten findes mere eller mindre for røde eller blå borgmestre.
 
 # Forventninger
 
@@ -117,7 +116,7 @@ flowchart TD
 
 {{< pagebreak >}} -->
 
-# Bibliografi
+# Litteratur
 
 ::: {#refs}
 :::
