@@ -5,6 +5,7 @@ subtitle: ""
 abstract: ""
 format:
   pdf:
+    output-file: aleksander_bang_larsen_synopsis.pdf
     toc: false
     lof: false
     lot: false
@@ -83,6 +84,8 @@ Derudover kunne det også være interessant at kontrollere for, eller interagere
 # Forventninger
 
 Jeg forventer i stil med @stokes2016 at der ved opførslen af en vindmølle indenfor valgstedets geografiske område mellem valg vil give en nedgang i tilslutningen til borgmesterens parti i kommunen. Leah Stokes finder en nedgang på -10 procentpoint [@stokes2016: 966], hvor jeg vil forvente, at nedgangen er er til stede, men mindre i Danmark.
+
+For eventuelle interaktionsled er jeg meget spændt på, hvordan sammenhængen ændres - og om den gør.
 
 {{< pagebreak >}}
 
