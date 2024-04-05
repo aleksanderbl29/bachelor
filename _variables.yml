@@ -1,0 +1,6 @@
+---
+font: Times New Roman
+
+## 12pt er det samme som 12px
+fontsize: 12pt
+mermaid_fontsize: 16px

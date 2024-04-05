@@ -17,7 +17,9 @@ subtitle: |
 date: 07-06-2024
 lang: da
 date-format: D. MMMM YYYY
-mainfont: Arial
+mainfont: "{{< var font >}}"
+sansfont: "{{< var font >}}"
+fontsize: "{{< var fontsize >}}"
 bibliography: ../../../Andet/Zotero/zotero.bib
 csl: csl/politica-w-ibid.csl
 
@@ -63,3 +65,5 @@ format:
     papersize: a4
     mermaid:
       theme: forest
+      fontFamily: "{{< var font >}}"
+      fontSize: "{{< var mermaid_fontsize >}}"
