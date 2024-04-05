@@ -77,7 +77,7 @@ Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variab
 
 ## Variable
 
-For at undgå at effekten drives af andre ting end min udvalgte uafhængige variabel vil jeg gerne kontrollere for indkomst i området, uddannelsesniveau
+For at undgå at effekten drives af andre ting end min udvalgte uafhængige variabel vil jeg gerne kontrollere for indkomst i området, uddannelsesniveau og befolkningstæthed.
 Derudover kunne det også være interessant at kontrollere for, eller interagere med, borgmesterpartiets farve i kommunen for at se om effekten findes mere eller mindre for røde eller blå borgmestre.
 
 # Forventninger
