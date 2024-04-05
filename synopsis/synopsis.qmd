@@ -3,8 +3,6 @@ title: "Synopsis"
 date: "5 april 2024"
 subtitle: ""
 abstract: ""
-mainfont: Calibri
-sansfont: Calibri
 format:
   pdf:
     toc: false
@@ -34,7 +32,9 @@ Denne effekt kan tænkes at være til stede hos vælgerne for både vindmøller,
 
 # Teori
 
-Grundlaget for at undersøge mit spørgsmål bygger på flere teoretiske perspektiver. Her vil jeg tage udgangspunkt i @stokes2016 og @brouwer2024.
+Grundlaget for at undersøge mit spørgsmål bygger på flere teoretiske perspektiver. Her vil jeg tage udgangspunkt i @stokes2016, @ogrady2020 og @brouwer2024.
+
+@ogrady2020 [3] finder at "price anxiety" er med til at drive negative holdninger til opførslen af billige boliger i lokalområder. Den samme price anxiety vurderer jeg kan have en lignende, om end ikke lige så stærk, påvirkning på holdningen til opførslen af vindmøller i lokalområdet. For begge scenarier er der tale om udbyggelse af boligens omegn, hvor billige boliger øger udbuddet vil vindmøller mindske efterspørgslen på grund af de gener der er forbundet med det.
 
 
 
@@ -47,6 +47,42 @@ incinerators, and power plants (Dear, 1992; Fischer, 1993; Schively, 2007), the 
 expanded in scope to almost any land use opposed by local residents, including new housing
 development. Regardless of its application, NIMBYism describes macro-scale support that
 does not carry over to the micro-scale, meaning the preferences are ‘scale-dependent’.5
+
+Den forventede sammenhæng er illustreret i @fig-kausalmodel-simpel og @fig-kausalmodel-fuld
+
+```{mermaid}
+%%| label: fig-kausalmodel-simpel
+%%| fig-cap: "Forventet simpel sammenhæng"
+
+flowchart LR
+  X(Vindmølle sættes op)
+  Y(Borgmesterparti mindsker tilslutning)
+  Y2(Borgmesterparti ser ingen ændring i tilslutning)
+
+  X -->|Ja| Y
+  X -->|Nej| Y2
+```
+
+```{mermaid}
+%%| label: fig-kausalmodel-fuld
+%%| fig-cap: "Forventet fuld sammenhæng"
+
+flowchart TD
+  X(Vindmølle sættes op)
+  Y(Borgmesterparti mindsker tilslutning)
+  Y2(Borgmesterparti ser ingen ændring i tilslutning)
+
+  Z1(Husejer)
+  Z2(Indflydelse på projekt)
+
+  X --> Z1 & Z2
+  Z1 -->|Ja| Y
+  Z1 -->|Nej| Y2
+
+  Z2 -->|Ja| Y2
+  Z2 -->|Nej| Y
+
+```
 
 ## Lignende studier
 
@@ -68,38 +104,8 @@ Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variab
 
 # Forventninger
 
-Jeg forventer i stil med @stokes2016 at der ved opførslen af en vindmølle indenfor valgstedets geografiske område mellem valg vil give en nedgang i tilslutningen til borgmesterens parti i kommunen.
+Jeg forventer i stil med @stokes2016 at der ved opførslen af en vindmølle indenfor valgstedets geografiske område mellem valg vil give en nedgang i tilslutningen til borgmesterens parti i kommunen. @stokes2016 finder en nedgang på -10 procentpoint, hvor jeg vil forvente, bl.a. på baggrund af @larsen2021, at nedgangen er er til stede, men mindre i Danmark.
 
-Den forventede sammenhæng er illustreret i @fig-kausalmodel-simpel og @fig-kausalmodel-fuld
-
-```{mermaid}
-%%| label: fig-kausalmodel-simpel
-%%| fig-cap: "Forventet simpel sammenhæng"
-
-flowchart LR
-  X(Vindmølle sættes op)
-  Y(Borgmesterparti mindsker tilslutning)
-  YY(Borgmesterparti ser ingen ændring i tilslutning)
-
-  X -->|Ja| Y
-  X -->|Nej| YY
-```
-
-```{mermaid}
-%%| label: fig-kausalmodel-fuld
-%%| fig-cap: "Forventet fuld sammenhæng"
-
-flowchart LR
-  X(Vindmølle sættes op)
-  Y(Borgmesterparti mindsker tilslutning)
-  M( )
-  Z1(Husejer)
-  Z2(Indflydelse på projekt)
-
-  X --> M
-  X & M --> Y
-  Z1 & Z2 --> M
-```
 
 
 ## Andre studier i samme stil/område
