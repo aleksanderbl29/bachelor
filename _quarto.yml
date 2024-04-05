@@ -21,6 +21,9 @@ mainfont: Arial
 bibliography: ../../../Andet/Zotero/zotero.bib
 csl: csl/politica-w-ibid.csl
 
+execute:
+  echo: false
+
 numbersections: true
 language: format/custom-lang-da.yml
 
