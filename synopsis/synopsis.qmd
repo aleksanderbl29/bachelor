@@ -62,8 +62,34 @@ flowchart LR
   style Nej fill-opacity:0, stroke-opacity:0
 ```
 
-I @fig-kausalmodel-simpel illustreres det, hvordan jeg forventer at opførslen af en (eller flere) vindmøller tæt på en vælgers bopæl vil lede til en mindre tilslutning til borgmesterens parti.
 
+## Lignende studier
+
+@stokes2016
+
+# Metode
+
+## Data
+
+Der findes opgørelser over alle vindmøller [@energistyrelsen2024], hvor det er muligt at se både møllens tilslutningsdato (og evt. afmeldingsdato), møllens kapacitet og størrelse, samt data om placering. Placeringsdata findes med koordinater der virker ret præcise.
+
+Sammenholdt med data over opsættelse af vindmøllerne vil jeg bruge valgdata til kommunalvalg på valgstedsniveau over tid. Her vælger jeg kommunalvalgsdata fordi det er på det kommunale niveau der besluttes lokalplaner der kan begrænse/tillade vindmøllerne.
+
+Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variable jeg er interesseret i til min analyse.
+
+## Design
+
+- [ ] Her skal stå noget om hvilke modeller der kan laves og hvordan jeg vil gå til det
+
+# Forventninger
+
+Jeg forventer i stil med @stokes2016 at der ved opførslen af en vindmølle indenfor valgstedets geografiske område mellem valg vil give en nedgang i tilslutningen til borgmesterens parti i kommunen. Leah Stokes finder en nedgang på -10 procentpoint [@stokes2016: 966], hvor jeg vil forvente, bl.a. på baggrund af @larsen2021, at nedgangen er er til stede, men mindre i Danmark.
+
+{{< pagebreak >}}
+
+<!-- # Appendiks {.appendix}
+
+I @fig-kausalmodel-fuld ses den kausalmodel jeg forventer at se når borgerne får indflydelse på projekterne.
 ```{mermaid}
 %%| label: fig-kausalmodel-fuld
 %%| fig-cap: "Forventet fuld sammenhæng"
@@ -88,39 +114,8 @@ flowchart TD
 
 ```
 
-## Lignende studier
 
-@stokes2016
-
-# Metode
-
-## Data
-
-Der findes opgørelser over alle vindmøller [@energistyrelsen2024], hvor det er muligt at se både møllens tilslutningsdato (og evt. afmeldingsdato), møllens kapacitet og størrelse, samt data om placering. Placeringsdata findes med koordinater der virker ret præcise.
-
-Sammenholdt med data over opsættelse af vindmøllerne vil jeg bruge valgdata til kommunalvalg på valgstedsniveau over tid. Her vælger jeg kommunalvalgsdata fordi det er på det kommunale niveau der besluttes lokalplaner der kan begrænse/tillade vindmøllerne.
-
-Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variable jeg er interesseret i til min analyse.
-
-## Design
-
-- [ ] Her skal stå noget om hvilke modeller der kan laves og hvordan jeg vil gå til det
-
-# Forventninger
-
-Jeg forventer i stil med @stokes2016 at der ved opførslen af en vindmølle indenfor valgstedets geografiske område mellem valg vil give en nedgang i tilslutningen til borgmesterens parti i kommunen. @stokes2016 finder en nedgang på -10 procentpoint, hvor jeg vil forvente, bl.a. på baggrund af @larsen2021, at nedgangen er er til stede, men mindre i Danmark.
-
-
-
-## Andre studier i samme stil/område
-
-@stokes2016
-
-@larsen2021
-
-@isaksson2024
-
-{{< pagebreak >}}
+{{< pagebreak >}} -->
 
 # Bibliografi
 
