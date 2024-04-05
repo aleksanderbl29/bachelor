@@ -32,7 +32,23 @@ Jeg ser NIMBY effekten som en reaktion på de koncentrerede omkostninger jeg ser
 
 Denne effekt kan tænkes at være til stede hos vælgerne for både vindmøller, solcelleparker og anlæg til produktion af vandkraft. Jeg vurderer dog at vindmøller er den de tre, der skaber den største gene. Samtidig er der ikke nok nævneværdige vandkraftsanlæg opført i Danmark til at disse bør med i betragtnignen.
 
-# Lignende studier
+# Teori
+
+Grundlaget for at undersøge mit spørgsmål bygger på flere teoretiske perspektiver. Her vil jeg tage udgangspunkt i @stokes2016 og @brouwer2024.
+
+
+
+Because costs and benefits vary across scales, so do voter preferences. When the costs
+of a land use are more spatially concentrated than the benefits, those living closer to the
+use are more likely to oppose it than those living farther away. This shift from support or
+indifference toward the use at the macro-scale to opposition at the micro-scale is known as
+‘NIMBYism’ for ‘Not In My Back Yard’. Originally coined for the protest of landfills, trash
+incinerators, and power plants (Dear, 1992; Fischer, 1993; Schively, 2007), the term has
+expanded in scope to almost any land use opposed by local residents, including new housing
+development. Regardless of its application, NIMBYism describes macro-scale support that
+does not carry over to the micro-scale, meaning the preferences are ‘scale-dependent’.5
+
+## Lignende studier
 
 @stokes2016
 
@@ -54,20 +70,37 @@ Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variab
 
 Jeg forventer i stil med @stokes2016 at der ved opførslen af en vindmølle indenfor valgstedets geografiske område mellem valg vil give en nedgang i tilslutningen til borgmesterens parti i kommunen.
 
-Den forventede sammenhæng er illustreret i @fig-kausalmodel
+Den forventede sammenhæng er illustreret i @fig-kausalmodel-simpel og @fig-kausalmodel-fuld
 
 ```{mermaid}
-%%| label: fig-kausalmodel
-%%| fig-cap: "Forventet sammenhæng"
+%%| label: fig-kausalmodel-simpel
+%%| fig-cap: "Forventet simpel sammenhæng"
 
 flowchart LR
-  A(Vindmølle sættes op)
-  B(Borgmesterparti mindsker tilslutning)
-  C(Borgmesterparti ser ingen ændring i tilslutning)
+  X(Vindmølle sættes op)
+  Y(Borgmesterparti mindsker tilslutning)
+  YY(Borgmesterparti ser ingen ændring i tilslutning)
 
-  A -->|Ja| B
-  A -->|Nej| C
+  X -->|Ja| Y
+  X -->|Nej| YY
 ```
+
+```{mermaid}
+%%| label: fig-kausalmodel-fuld
+%%| fig-cap: "Forventet fuld sammenhæng"
+
+flowchart LR
+  X(Vindmølle sættes op)
+  Y(Borgmesterparti mindsker tilslutning)
+  M( )
+  Z1(Husejer)
+  Z2(Indflydelse på projekt)
+
+  X --> M
+  X & M --> Y
+  Z1 & Z2 --> M
+```
+
 
 ## Andre studier i samme stil/område
 
