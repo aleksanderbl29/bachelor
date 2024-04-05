@@ -1,7 +1,4 @@
 ---
-title: Klimaprojekter og elektorale effekter
-# title: ""
-subtitle: Vælgernes elektorale reaktion på opførslen af vindmøller og solcelleanlæg i lokalområdet - Og hvordan man sikrer accept
 author: ""
 format:
   pdf:
