@@ -71,6 +71,8 @@ flowchart LR
   style Nej fill-opacity:0, stroke-opacity:0
 ```
 
+I @fig-kausalmodel-simpel illustreres det, hvordan jeg forventer at opførslen af en (eller flere) vindmøller tæt på en vælgers bopæl vil lede til en mindre tilslutning til borgmesterens parti.
+
 ```{mermaid}
 %%| label: fig-kausalmodel-fuld
 %%| fig-cap: "Forventet fuld sammenhæng"
@@ -80,28 +82,18 @@ flowchart TD
   Y(Borgmesterparti mindsker tilslutning)
   Y2(Borgmesterparti ser ingen ændring i tilslutning)
 
-  Z1(Husejer)
-  Z2(Indflydelse på projekt)
+  Z(Indflydelse på projekt)
 
-  %% X --> Z1 & Z2
-  %% Z1 -->|Ja| Y
-  %% Z1 -->|Nej| Y2
-
-  %% Z2 -->|Ja| Y2
-  %% Z2 -->|Nej| Y
-
-  X --> Z1 & Z2
-  Z1 --> Y
-  Z1 --> Y2
-
-  Z2 --> Y2
-  Z2 --> Y
+  X --> Z
+  Z --> Ja --> Y
+  Z --> Nej --> Y2
 
   style X fill-opacity:0, stroke-opacity:0
   style Y fill-opacity:0, stroke-opacity:0
   style Y2 fill-opacity:0, stroke-opacity:0
-  style Z1 fill-opacity:0, stroke-opacity:0
-  style Z2 fill-opacity:0, stroke-opacity:0
+  style Z fill-opacity:0, stroke-opacity:0
+  style Ja fill-opacity:0, stroke-opacity:0
+  style Nej fill-opacity:0, stroke-opacity:0
 
 ```
 
