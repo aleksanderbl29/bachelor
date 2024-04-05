@@ -36,17 +36,8 @@ Grundlaget for at undersøge mit spørgsmål bygger på flere teoretiske perspek
 
 @ogrady2020 [3] finder at "price anxiety" er med til at drive negative holdninger til opførslen af billige boliger i lokalområder. Den samme price anxiety vurderer jeg kan have en lignende, om end ikke lige så stærk, påvirkning på holdningen til opførslen af vindmøller i lokalområdet. For begge scenarier er der tale om udbyggelse af boligens omegn, hvor billige boliger øger udbuddet vil vindmøller mindske efterspørgslen på grund af de gener der er forbundet med det.
 
-
-
-Because costs and benefits vary across scales, so do voter preferences. When the costs
-of a land use are more spatially concentrated than the benefits, those living closer to the
-use are more likely to oppose it than those living farther away. This shift from support or
-indifference toward the use at the macro-scale to opposition at the micro-scale is known as
-‘NIMBYism’ for ‘Not In My Back Yard’. Originally coined for the protest of landfills, trash
-incinerators, and power plants (Dear, 1992; Fischer, 1993; Schively, 2007), the term has
-expanded in scope to almost any land use opposed by local residents, including new housing
-development. Regardless of its application, NIMBYism describes macro-scale support that
-does not carry over to the micro-scale, meaning the preferences are ‘scale-dependent’.5
+@hankinson2018 [6] har en rigtig god definition og forklaring på NIMBY som jeg abonnerer på. Han definerer NIMBY-adfærd som individer der på makro skala er enig med et tiltag, mens denne støtte ikke følger med til mikro-niveauet [@hankinson2018]. Det kan i kontekst af opførslen af vindmøller ses som støtte til generel opførsel af vindmøller, men ikke støtte til at de skal bygges i lige ens eget lokalområde.
+Et billede der passer på denne beskrivelse kan findes i Danmark, hvor der er generel tilslutning til opførslen af vindmøller, men ofte opstår lokale debatter om, hvor de skal placeres [@videnomvind2022;@nielsen2021].
 
 Den forventede sammenhæng er illustreret i @fig-kausalmodel-simpel og @fig-kausalmodel-fuld
 
