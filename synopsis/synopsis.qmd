@@ -83,7 +83,7 @@ Med disse to kilder sammenholdt vil jeg kunne skabe et nyt dataset med de variab
 
 # Forventninger
 
-Jeg forventer i stil med @stokes2016 at der ved opførslen af en vindmølle indenfor valgstedets geografiske område mellem valg vil give en nedgang i tilslutningen til borgmesterens parti i kommunen. Leah Stokes finder en nedgang på -10 procentpoint [@stokes2016: 966], hvor jeg vil forvente, bl.a. på baggrund af @larsen2021, at nedgangen er er til stede, men mindre i Danmark.
+Jeg forventer i stil med @stokes2016 at der ved opførslen af en vindmølle indenfor valgstedets geografiske område mellem valg vil give en nedgang i tilslutningen til borgmesterens parti i kommunen. Leah Stokes finder en nedgang på -10 procentpoint [@stokes2016: 966], hvor jeg vil forvente, at nedgangen er er til stede, men mindre i Danmark.
 
 {{< pagebreak >}}
 
