@@ -39,7 +39,7 @@ Grundlaget for at undersøge mit spørgsmål bygger på flere teoretiske perspek
 @hankinson2018 [6] har en rigtig god definition og forklaring på NIMBY som jeg abonnerer på. Han definerer NIMBY-adfærd som individer der på makro skala er enig med et tiltag, mens denne støtte ikke følger med til mikro-niveauet [@hankinson2018]. Det kan i kontekst af opførslen af vindmøller ses som støtte til generel opførsel af vindmøller, men ikke støtte til at de skal bygges i lige ens eget lokalområde.
 Et billede der passer på denne beskrivelse kan findes i Danmark, hvor der er generel tilslutning til opførslen af vindmøller, men ofte opstår lokale debatter om, hvor de skal placeres [@videnomvind2022;@nielsen2021].
 
-Den forventede sammenhæng er illustreret i @fig-kausalmodel-simpel og @fig-kausalmodel-fuld
+Den forventede sammenhæng er illustreret i @fig-kausalmodel-simpel.
 
 ```{mermaid}
 %%| label: fig-kausalmodel-simpel
