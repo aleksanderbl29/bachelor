@@ -68,6 +68,8 @@ flowchart LR
 
 # Metode
 
+Jeg vil behandle opsættelsen af vindmøller som treatment i et naturligt eksperiment. Her vil jeg have vindmøller som min primære uafhængige variabel og stemmeandel til borgmesterens parti ved næste valg.
+
 ## Data
 
 Der findes opgørelser over alle vindmøller [@energistyrelsen2024], hvor det er muligt at se både møllens tilslutningsdato (og evt. afmeldingsdato), møllens kapacitet og størrelse, samt data om placering. Placeringsdata findes med koordinater der virker ret præcise.
