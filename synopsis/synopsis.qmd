@@ -58,9 +58,17 @@ flowchart LR
   X(Vindmølle sættes op)
   Y(Borgmesterparti mindsker tilslutning)
   Y2(Borgmesterparti ser ingen ændring i tilslutning)
+  Ja
+  Nej
 
-  X -->|Ja| Y
-  X -->|Nej| Y2
+  X --> Ja --> Y
+  X --> Nej --> Y2
+
+  style X fill-opacity:0, stroke-opacity:0
+  style Y fill-opacity:0, stroke-opacity:0
+  style Y2 fill-opacity:0, stroke-opacity:0
+  style Ja fill-opacity:0, stroke-opacity:0
+  style Nej fill-opacity:0, stroke-opacity:0
 ```
 
 ```{mermaid}
@@ -75,12 +83,25 @@ flowchart TD
   Z1(Husejer)
   Z2(Indflydelse på projekt)
 
-  X --> Z1 & Z2
-  Z1 -->|Ja| Y
-  Z1 -->|Nej| Y2
+  %% X --> Z1 & Z2
+  %% Z1 -->|Ja| Y
+  %% Z1 -->|Nej| Y2
 
-  Z2 -->|Ja| Y2
-  Z2 -->|Nej| Y
+  %% Z2 -->|Ja| Y2
+  %% Z2 -->|Nej| Y
+
+  X --> Z1 & Z2
+  Z1 --> Y
+  Z1 --> Y2
+
+  Z2 --> Y2
+  Z2 --> Y
+
+  style X fill-opacity:0, stroke-opacity:0
+  style Y fill-opacity:0, stroke-opacity:0
+  style Y2 fill-opacity:0, stroke-opacity:0
+  style Z1 fill-opacity:0, stroke-opacity:0
+  style Z2 fill-opacity:0, stroke-opacity:0
 
 ```
 
