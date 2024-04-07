@@ -24,3 +24,4 @@ Solceller kan tænkes at have samme effekt som vindmøller da de optager en stor
 ## Datamuligheder
 Gemte søgninger fra valgdatabasen:
 [KV 2021 m. alle befolkningsstatistikker](https://valgdatabase.dst.dk/data?query=49e36503-88a5-4229-8267-ec59cd6e91e8-4)
+[KV 2021 Indkomst og ejerforhold](https://valgdatabase.dst.dk/data?query=4d80cb84-f23e-4a4f-acea-e8e4906e5cdd-4)
