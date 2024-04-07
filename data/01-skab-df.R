@@ -6,16 +6,16 @@ library(jsonlite)
 url_DAWA <- "https://api.dataforsyningen.dk/afstemningsomraader"
 
 ## Sammensæt passende reverse lookup
-x_koord <- "888039.1715"
-y_koord <- "6126756.211"
-url_DAWA_1 <- paste0(url_DAWA, "/reverse", "?", "x=", x_koord, "&y=", y_koord, "&srid=25832")
+test_x_koord <- "888039.1715"
+test_y_koord <- "6126756.211"
+test_url_DAWA <- paste0(url_DAWA, "/reverse", "?", "x=", x_koord, "&y=", y_koord, "&srid=25832")
 
 # https://api.dataforsyningen.dk/afstemningsomraader/reverse?x=&y=
 
 
 ## Udfør GET request på URL
-response <- content(GET(url_DAWA_1))
+test_response <- content(GET(test_url_DAWA))
 
-response$afstemningssted$navn
-response$nummer
-response$kommune$kode
+test_response$afstemningssted$navn
+test_response$nummer
+test_response$kommune$kode
