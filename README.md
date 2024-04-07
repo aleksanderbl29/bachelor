@@ -20,3 +20,7 @@ Her vil jeg arbejde på min bachelor
 ## Solceller
 
 Solceller kan tænkes at have samme effekt som vindmøller da de optager en stor del land - Dog larmer de ikke så meget som vindmøller
+
+## Datamuligheder
+Gemte søgninger fra valgdatabasen:
+[KV 2021 m. alle befolkningsstatistikker](https://valgdatabase.dst.dk/data?query=49e36503-88a5-4229-8267-ec59cd6e91e8-4)
