@@ -26,6 +26,52 @@ format:
 
 {{< pagebreak >}}
 
+# Her tester jeg R-kode
+
+## file i kodeblok
+
+
+```{r}
+#| echo: false
+#| eval: true
+#| file: data/test.r
+```
+
+### Ny kodeblok
+
+```{r}
+print("og jeg kan bruge den samme variabel i en ny blok")
+
+tekst
+
+```
+
+## Source i kode
+
+
+```{r}
+#| echo: false
+
+source("data/kausalmodel.r")
+print("her er kode")
+
+tekst
+```
+
+## Hvordan det skal se ud
+
+```{r}
+#| file: data/plots.r
+```
+
+```{r}
+#| label: fig-plot1
+#| fig-cap: "Plot 1"
+plot1
+```
+
+{{< pagebreak >}}
+
 # Indledning
 
 {{< include parts/1-indledning.qmd >}}

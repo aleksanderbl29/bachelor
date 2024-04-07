@@ -20,6 +20,8 @@ csl: csl/politica-w-ibid.csl
 
 execute:
   echo: false
+  warning: false
+  error: false
 
 numbersections: true
 language: format/custom-lang-da.yml
