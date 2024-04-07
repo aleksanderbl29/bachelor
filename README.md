@@ -35,3 +35,5 @@ https://api.dataforsyningen.dk/afstemningsomraader/reverse?x=888039.1715&y=61267
 ```
 Dokumentation kan findes på [https://dawadocs.dataforsyningen.dk/dok/api/afstemningsomr%C3%A5de#reverse](https://dawadocs.dataforsyningen.dk/dok/api/afstemningsomr%C3%A5de#reverse)
 
+### Kobling til dataset fra valgdatabasen
+I respons fra DAWA er der både adresse og navn på afstemningsstedet. Regner med, at der kan matches på navnet. Ellers findes også koordinater i samme format som de er bedt om. Ellers findes også afstemningsstedets nummer og kommunens kode i api-respons. Disse to kan sættes sammen og udgør det afstemingssted-id der er i datasettet fra valgdatabasen.
