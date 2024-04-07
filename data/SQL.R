@@ -31,3 +31,14 @@ tryCatch({drv <- dbDriver("PostgreSQL")
 ## Hent tabeller i database
 
 tabeller <- dbListTables(connec)
+
+dbDisconnect(connec)
+
+
+### Fancy version med tryCatch og lækre beskeder
+tryCatch({dbDisconnect(connec)
+          print("Database forbindelse lukket")
+          },
+         error=function(cond) {
+          print("FEJL: Kan ikke slutte forbindelse til database")
+         })
