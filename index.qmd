@@ -8,67 +8,15 @@ format:
       - "format/tex/_titlepage.tex"
 ---
 
+```{r}
+#| file: data/main.r
+```
+
 {{< pagebreak >}}
 
 # {.unnumbered .unlisted}
 
 {{< include parts/0-abstract.qmd >}}
-
-{{< pagebreak >}}
-
-# Her tester jeg lige en henvisning
-
-@achen2016
-
-@aresIssuePoliticizationSocial2022
-
-@breetzPoliticalLogicsClean2018
-
-{{< pagebreak >}}
-
-# Her tester jeg R-kode
-
-## file i kodeblok
-
-
-```{r}
-#| echo: false
-#| eval: true
-#| file: data/test.r
-```
-
-### Ny kodeblok
-
-```{r}
-print("og jeg kan bruge den samme variabel i en ny blok")
-
-tekst
-
-```
-
-## Source i kode
-
-
-```{r}
-#| echo: false
-
-source("data/kausalmodel.r")
-print("her er kode")
-
-tekst
-```
-
-## Hvordan det skal se ud
-
-```{r}
-#| file: data/plots.r
-```
-
-```{r}
-#| label: fig-plot1
-#| fig-cap: "Plot 1"
-plot1
-```
 
 {{< pagebreak >}}
 
