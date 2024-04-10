@@ -28,13 +28,15 @@ colnames(csv_vind)
 head(csv_vind$"X (øst) koordinat \r\nUTM 32 Euref89")
 
 #### Indlæs excel fil med vindmølledata og omdøber kolonnenavne med det samme
-vind <- read_xlsx("data/downloads/vind.xlsx") %>% 
-  select(everything()) %>% 
+vind <- read_xlsx("data/downloads/vind.xlsx") %>%
+  select(everything()) %>%
   rename(x_koord = "X (øst) koordinat \r\nUTM 32 Euref89",
          y_koord = "Y (nord) koordinat \r\nUTM 32 Euref89")
 
+colnames(vind)
+
 ## Fjerner rækker med missing values i x og y koordinater
-vind <- vind %>% 
+vind <- vind %>%
   drop_na(x_koord, y_koord)
 
 vind[1, ]$x_koord
