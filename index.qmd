@@ -7,11 +7,11 @@ format:
       - "format/tex/before-body.tex"
       - "format/tex/_titlepage.tex"
 ---
-
+<!--
 ```{r}
 #| file: data/main.r
 ```
-
+-->
 {{< pagebreak >}}
 
 # {.unnumbered .unlisted}
