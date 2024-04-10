@@ -9,15 +9,15 @@ create_df <- FALSE
 ##########################################
 
 if (create_df == TRUE) {
-  
+
   ## Skabelse af dataset
-  source("data/01-skab-df.R")  
-  
+  source("data/01-skab-df.R")
+
 } else {
-  
+
   ## Indlæsning af dataset
   source("data/02-load-data.R")
-  
+
 }
 
 ##########################################
