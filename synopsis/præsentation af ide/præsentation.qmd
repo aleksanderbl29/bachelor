@@ -7,6 +7,9 @@ subtitle: |
 author:
   - name: Aleksander Bang-Larsen
 csl: ../../csl/politica.csl
+mainfont: default
+sansfont: default
+fontsize: default
 format:
   revealjs:
     # theme: simple
