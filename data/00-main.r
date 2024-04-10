@@ -4,7 +4,6 @@ library(here)
 ## Config for hele projektet
 create_df <- FALSE
 
-
 ##########################################
 ############ Initialiser data ############
 ##########################################
