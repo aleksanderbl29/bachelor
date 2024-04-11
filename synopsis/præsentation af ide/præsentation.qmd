@@ -12,6 +12,7 @@ format:
     # theme: simple
     slide-number: true
     citations-hover: false
+    theme: [beige, "../../format/theme.scss"]
     mermaid:
       theme: forest
 # suppress-bibliography: true
