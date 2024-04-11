@@ -41,6 +41,12 @@ vind <- vind %>%
 
 vind[1, ]$x_koord
 
+if (exists("vind")) {
+  print("Vind findes")
+} else {
+  print("Vind findes IKKE")
+}
+
 nrow(vind)
 colnames(vind)
 
