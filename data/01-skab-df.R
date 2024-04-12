@@ -51,25 +51,28 @@ vind_steder <- tibble(x_koord = 0,
                       y_koord = 0,
                       afssted = "navn",
                       afssted_nr = 0,
-                      kommunekode = 0, rows = NULL)
+                      kommunekode = 0)
 vind_steder
 colnames(vind_steder)
 
 antal_obs <- nrow(vind)
 
 starttid <- Sys.time()
-i = 1
-for (i in 1:nrow(vind)) {       #30) {  
+
+for (i in 1:30) {               # nrow(vind)) {  
   koord_x <- vind[i, ]$x_koord
   koord_y <- vind[i, ]$y_koord
   url <- paste0(url_DAWA, "/reverse", "?", "x=", koord_x, "&y=", koord_y, "&srid=25832")
   response <- content(GET(url = url))
-  add_row(vind_steder,
+  afssted = response$afstemningssted$navn
+  afssted_nr = as.numeric(response$nummer)
+  kommunekode = response$kode
+  vind_steder <- add_row(vind_steder,
           x_koord = koord_x,
           y_koord = koord_y,
-          afssted = response$afstemningssted$navn,
-          afssted_nr = as.numeric(response$nummer),
-          kommunekode = as.numeric(response$kode))
+          afssted = afssted,
+          afssted_nr = afssted_nr,
+          kommunekode = kommunekode)
   print(paste(i, "af", antal_obs, "er:",response$afstemningssted$navn))
   rm(koord_x, koord_y, url, response)
 }
