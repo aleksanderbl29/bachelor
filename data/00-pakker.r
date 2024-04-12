@@ -3,7 +3,8 @@ pakkeliste <- c(
   "tidyverse",
   "httr",
   "jsonlite",
-  "readxl"
+  "readxl",
+  "testthat"
 )
 
 ## Tjekker om alle pakker fra liste er i de installerede pakker
