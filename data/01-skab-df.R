@@ -81,5 +81,7 @@ sluttid <- Sys.time()
 
 loop_tid <- sluttid - starttid
 print(paste("Det tog", round(loop_tid, 2), "sekunder at hente data"))
+print(paste("Det er en gennemsnitstid på", round(loop_tid / antal_obs, 6), "sekunder pr request"))
 
 head(vind_steder)
+
