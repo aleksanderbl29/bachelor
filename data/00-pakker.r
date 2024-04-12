@@ -18,7 +18,7 @@ if (length(mangler_pakker) > 0) {
 for (pakke.i in pakkeliste) {
   suppressPackageStartupMessages(
     library(
-      package.i,
+      pakke.i,
       character.only = TRUE
       )
   )
@@ -26,4 +26,4 @@ for (pakke.i in pakkeliste) {
 
 
 ## Dropper midlertidig variabel
-rm(pakkeliste, mangler_pakker)
+rm(pakkeliste, mangler_pakker, pakke.i)
