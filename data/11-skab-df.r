@@ -2,24 +2,26 @@ library(httr)
 library(tidyverse)
 library(jsonlite)
 library(readxl)
+library(testthat)
 
 ## Definer URL der skal bruges
 url_DAWA <- "https://api.dataforsyningen.dk/afstemningsomraader"
 
+
+## UNIT TEST
+#### Hvis testen ikke giver nogle fejl returnerer API'en de forventede data
 ## Sammensæt passende reverse lookup
 test_x_koord <- "888039.1715"
 test_y_koord <- "6126756.211"
 test_url_DAWA <- paste0(url_DAWA, "/reverse", "?", "x=", test_x_koord, "&y=", test_y_koord, "&srid=25832")
-
 # https://api.dataforsyningen.dk/afstemningsomraader/reverse?x=&y=
-
-
-## Udfør GET request på URL
+## Udfør GET request på URL og print til vector til test
 test_response <- content(GET(test_url_DAWA))
+test_value <- c(test_response$afstemningssted$navn, test_response$nummer, test_response$kommune$kode)
+test_expect <- c("Østermarie Hallen", "2", "0400")
+expect_identical(test_value, test_expect)
 
-test_response$afstemningssted$navn
-test_response$nummer
-test_response$kommune$kode
+
 
 ## Fjern ting fra test
 rm(test_response, test_url_DAWA, test_x_koord, test_y_koord)
