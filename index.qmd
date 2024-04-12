@@ -8,7 +8,7 @@ format:
 ---
 
 ```{r}
-#| file: data/00-main.r
+#| file: data/main.r
 ```
 
 {{< pagebreak >}}
