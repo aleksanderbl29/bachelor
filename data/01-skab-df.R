@@ -66,7 +66,7 @@ for (i in 1:nrow(vind)) {
   response <- content(GET(url = url))
   afssted = response$afstemningssted$navn
   afssted_nr = as.numeric(response$nummer)
-  kommunekode = response$kode
+  kommunekode = as.numeric(response$kommune$kode)
   vind_steder <- add_row(vind_steder,
           x_koord = koord_x,
           y_koord = koord_y,
