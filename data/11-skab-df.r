@@ -94,3 +94,8 @@ print(paste("Det tog", round(loop_tid, 2), "minutter at hente data"))
 
 head(vind_steder)
 write_excel_csv(vind_steder, "data/downloads/mine_data/vind_steder.csv")
+
+## Fjern objekter der ikke skal bruges videre
+rm(loop_tid, sluttid, starttid, vind, vind_steder,
+   afssted, afssted_nr, møllenummer, test_expect,
+   test_value, url_DAWA, i, antal_obs, kommunekode)
