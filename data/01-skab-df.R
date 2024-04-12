@@ -59,7 +59,7 @@ antal_obs <- nrow(vind)
 
 starttid <- Sys.time()
 
-for (i in 1:30) {               # nrow(vind)) {  
+for (i in 1:nrow(vind)) {  
   koord_x <- vind[i, ]$x_koord
   koord_y <- vind[i, ]$y_koord
   url <- paste0(url_DAWA, "/reverse", "?", "x=", koord_x, "&y=", koord_y, "&srid=25832")
