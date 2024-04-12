@@ -22,7 +22,6 @@ test_expect <- c("Østermarie Hallen", "2", "0400")
 expect_identical(test_value, test_expect)
 
 
-
 ## Fjern ting fra test
 rm(test_response, test_url_DAWA, test_x_koord, test_y_koord)
 
@@ -49,9 +48,10 @@ nrow(vind)
 colnames(vind)
 
 ## Variable der skal hentes fra loopet
-vind_steder <- tibble(x_koord = 0,
+vind_steder <- tibble(mll_num = 0,
+                      x_koord = 0,
                       y_koord = 0,
-                      afssted = "navn",
+                      afssted = "sample data",
                       afssted_nr = 0,
                       kommunekode = 0)
 vind_steder
@@ -64,6 +64,8 @@ starttid <- Sys.time()
 for (i in 1:nrow(vind)) {
   koord_x <- vind[i, ]$x_koord
   koord_y <- vind[i, ]$y_koord
+  møllenummer <- as.numeric(vind[i, ]$`Møllenummer (GSRN)`)
+  
   url <- paste0(url_DAWA, "/reverse", "?", "x=", koord_x, "&y=", koord_y, "&srid=25832")
   response <- content(GET(url = url))
   afssted = response$afstemningssted$navn
@@ -74,16 +76,25 @@ for (i in 1:nrow(vind)) {
           y_koord = koord_y,
           afssted = afssted,
           afssted_nr = afssted_nr,
-          kommunekode = kommunekode)
+          kommunekode = kommunekode,
+          mll_num = møllenummer)
   print(paste(i, "af", antal_obs, "er:",response$afstemningssted$navn))
   rm(koord_x, koord_y, url, response)
 }
 
 sluttid <- Sys.time()
 
+## Fjerner første tomme kolonne
+vind_steder <- vind_steder %>% 
+  select(everything()) %>% 
+  filter(!afssted == "sample data")
+
 loop_tid <- sluttid - starttid
 print(loop_tid)
 print(paste("Det tog", round(loop_tid, 2), "minutter at hente data"))
 
 head(vind_steder)
+write_excel_csv(vind_steder, "data/downloads/mine_data/vind_steder.csv")
+
+csv_data <- read_csv("data/downloads/mine_data/vind_steder.csv")
 
