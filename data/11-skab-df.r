@@ -7,7 +7,6 @@ library(testthat)
 ## Definer URL der skal bruges
 url_DAWA <- "https://api.dataforsyningen.dk/afstemningsomraader"
 
-
 ## UNIT TEST
 #### Hvis testen ikke giver nogle fejl returnerer API'en de forventede data
 ## Sammensæt passende reverse lookup
@@ -95,6 +94,3 @@ print(paste("Det tog", round(loop_tid, 2), "minutter at hente data"))
 
 head(vind_steder)
 write_excel_csv(vind_steder, "data/downloads/mine_data/vind_steder.csv")
-
-csv_data <- read_csv("data/downloads/mine_data/vind_steder.csv")
-
