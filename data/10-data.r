@@ -1,31 +1,24 @@
 ## Forsøger at indlæse data, hvis den findes i mappen
 ## ellers skaber den data fra ny
 
-# Tjekker om "vind" findes i miljøet
+# Skal der skabes ny DF med api-data?
+# sikrer at dummy_var findes
+expect_true(exists("api_call_enable"))
 
-vind_findes <- exists("vind")
-
-if (vind_findes && ) {
-  print("Vind findes")
-} else {
-  print("Vind findes IKKE")
-}
-
-
-
-
-if (create_df == TRUE) {
-
+if (api_call_enable == TRUE) {
+  
   ## Skabelse af dataset
   source("data/01-skab-df.R")
-
+  
 } else {
-
+  
   ## Indlæsning af dataset
   source("data/02-load-data.R")
-
+  
 }
 
+## Formater data fra DST
+source("data/13-dst.r")
 
 ## Dropper midlertidige variable
-# rm(vind_findes)
+rm(api_call_enable)
