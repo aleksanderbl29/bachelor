@@ -6,15 +6,15 @@
 expect_true(exists("api_call_enable"))
 
 if (api_call_enable == TRUE) {
-  
+
   ## Skabelse af dataset
-  source("data/01-skab-df.R")
-  
+  source("data/11-skab-df.r")
+
 } else {
-  
+
   ## Indlæsning af dataset
-  source("data/02-load-data.R")
-  
+  source("data/12-load-data.r")
+
 }
 
 ## Formater data fra DST
