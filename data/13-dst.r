@@ -49,13 +49,62 @@ alle_stemmer <- stemmer %>%
                                parti == "I" ~ "Liberal Alliance",
                                parti == "J" ~ "Junibevægelsen",
                                parti == "K" ~ "Kristendemokraterne",
-                               parti == "L" ~ "Lokalliste"))
-         # partinavn = case_when(parti == "M" & (valg == "KV20")))
-
+                               parti == "L" ~ "Lokalliste",
+                               parti == "O" ~ "Dansk Folkeparti",
+                               parti == "V" ~ "Venstre, Danmarks Liberale Parti",
+                               parti == "Æ" ~ "Danmarksdemokraterne - Inger Støjberg",
+                               parti == "Ø" ~ "Enhedslisten - De Rød-Grønne",
+                               parti == "Å" ~ "Alternativet"))
 head(alle_stemmer)
 unique(alle_stemmer$parti)
 unique(alle_stemmer$partinavn)
 unique(alle_stemmer$valg)
+
+alle_nrow <- nrow(alle_stemmer)
+
+noget_mere_stemmer <- alle_stemmer %>% 
+  drop_na(partinavn)
+unique(noget_mere_stemmer$parti)
+nrow(noget_mere_stemmer)
+
+kmd_stemmer <- stemmer %>% 
+  select(any_of(gem_kolonner), starts_with("KV")) %>% 
+  pivot_longer(cols = starts_with("KV"),
+               names_to = "valg",
+               values_to = "stemmer") %>% 
+  separate(col = valg, into = c("valg", "parti"), sep = " - ") %>% 
+  mutate(partinavn = case_when(parti == "A" ~ "Socialdemokratiet",
+                               parti == "V" ~ "Venstre, Danmarks Liberale Parti",
+                               parti == "C" ~ "Det Konservative Folkeparti",
+                               parti == "F" ~ "SF - Socialistisk Folkeparti",
+                               parti == "Ø" ~ "Enhedslisten - De Rød-Grønne",
+                               parti == "B" ~ "Radikale venstre",
+                               parti == "O" ~ "Dansk Folkeparti",
+                               parti == "D" ~ "Nye Borgerlige",
+                               parti == "I" ~ "Liberal Alliance",
+                               parti == "K" ~ "Kristendemokraterne",
+                               parti == "Å" ~ "Alternativet",
+                               parti == "S" ~ "Slesvigsk Parti",
+                               parti == "T" ~ "Tønder Listen",
+                               parti == "G" ~ "Veganerpartiet",
+                               parti == "L" ~ "Lokalliste",
+                               parti == "Q" ~ "Østbroen",
+                               parti == "E" ~ "nytgribskov",
+                               parti == "H" ~ "Klimapartiet Momentum",
+                               parti == "Æ" ~ "Frihedslisten",
+                               parti == "N" ~ "Nyt Odsherred",
+                               parti == "W" ~ "Bornholmerlisten")) %>% 
+  drop_na(partinavn)
+
+kmd_nrow <- nrow(kmd_stemmer)
+head(kmd_stemmer)
+unique(kmd_stemmer$parti)
+unique(kmd_stemmer$partinavn)
+unique(kmd_stemmer$valg)
+
+kmd_nrow - alle_nrow
+
+
 
 datasummary_crosstab(data = alle_stemmer, formula = valg~partinavn)
 
