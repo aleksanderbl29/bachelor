@@ -23,3 +23,6 @@ source("data/10-data.r")
 
 ## Test
 source("data/plots.r")
+
+
+antal_obs_samlet <- as.numeric(4269)
