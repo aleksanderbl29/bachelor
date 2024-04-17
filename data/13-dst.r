@@ -20,7 +20,6 @@ gem_kolonner <- c("gruppe", "valgsted_id", "kreds_nr", "storkreds_nr", "landsdel
 
 ## Sammenlægger valg til tidy data
 stemmer <- import_stemmer %>% 
-  # select(!ends_with(c("Afgivne stemmer", "Andre ugyldige stemmer", "Gyldige stemmer", "Blanke stemmer", "Stemmeberettigede"))) %>% 
   select(!ends_with(c("Afgivne stemmer", "Andre ugyldige stemmer", "Blanke stemmer"))) %>% 
   rename(gruppe = Gruppe,
          valgsted_id = ValgstedId,
@@ -54,13 +53,19 @@ alle_stemmer <- stemmer %>%
                                parti == "V" ~ "Venstre, Danmarks Liberale Parti",
                                parti == "Æ" ~ "Danmarksdemokraterne - Inger Støjberg",
                                parti == "Ø" ~ "Enhedslisten - De Rød-Grønne",
-                               parti == "Å" ~ "Alternativet"))
+                               parti == "Å" ~ "Alternativet",
+                               parti == "Stemmeberettigede" ~ "Stemmeberettigede",
+                               parti == "Gyldige stemmer" ~ "Gyldige stemmer"))
 head(alle_stemmer)
 unique(alle_stemmer$parti)
 unique(alle_stemmer$partinavn)
 unique(alle_stemmer$valg)
 
 alle_nrow <- nrow(alle_stemmer)
+
+lang_alle_stemmer <- alle_stemmer %>% 
+  select(!partinavn) %>% 
+  pivot_wider(names_from = parti, values_from = stemmer)
 
 noget_mere_stemmer <- alle_stemmer %>% 
   drop_na(partinavn)
@@ -93,7 +98,9 @@ kmd_stemmer <- stemmer %>%
                                parti == "H" ~ "Klimapartiet Momentum",
                                parti == "Æ" ~ "Frihedslisten",
                                parti == "N" ~ "Nyt Odsherred",
-                               parti == "W" ~ "Bornholmerlisten")) %>% 
+                               parti == "W" ~ "Bornholmerlisten",
+                               parti == "Stemmeberettigede" ~ "Stemmeberettigede",
+                               parti == "Gyldige stemmer" ~ "Gyldige stemmer")) %>% 
   drop_na(partinavn)
 
 kmd_nrow <- nrow(kmd_stemmer)
@@ -104,7 +111,12 @@ unique(kmd_stemmer$valg)
 
 kmd_nrow - alle_nrow
 
+na_stemmer <- alle_stemmer %>% 
+  filter(is.na(partinavn))
+  
+na_nrow <- nrow(na_stemmer)
 
+na_nrow - alle_nrow
 
 datasummary_crosstab(data = alle_stemmer, formula = valg~partinavn)
 
