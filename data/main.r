@@ -9,7 +9,7 @@ source("data/00-pakker.r")
 
 ## Konfiguration af kørsel
 # Skabelse af dataset fra DAWA api-kald
-api_call_enable = FALSE
+api_call_enable <- FALSE
 
 ##########################################
 ############ Initialiser data ############
