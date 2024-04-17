@@ -47,4 +47,14 @@ I respons fra DAWA er der både adresse og navn på afstemningsstedet. Regner me
 Spørgsmål og undringer:
 - sdf
 Andre noter:
-- djfls
+- Holde ting simpelt er vigtigt.
+- Borgmesteren som dep var
+- Arbejde i grunddataene.
+- Omfordeling af goderne (og omkostningerne)
+	- Margalit
+Fokus på basismodellen
+- Interessant med kompenserende elementer
+
+apsr coal
+
+
