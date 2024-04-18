@@ -1,4 +1,4 @@
-source("data/12-load-data.r")
+# source("data/12-load-data.r")
 
 library(tidyverse)
 library(modelsummary)
@@ -139,4 +139,4 @@ colnames(stemmer)
 head(stemmer, 2)
 
 antal_obs_samlet
-exists(antal_obs_samlet)
+exists("antal_obs_samlet")
