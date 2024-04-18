@@ -4,3 +4,9 @@ Her er min metode
 ## Data
 
 I dette projekt vil jeg benytte mig af et originalt datasæt sammesat af valgstatistik fra Danmarks statistiks valgdatabase [@danmarksstatistik2024] og optegnelser over vindmølleindstallationer i Danmark [@energistyrelsen2024]. Heraf udvælges vindmølleinstallationer i valgperioderne fra kommunalvalg fra 2001 til 2021. Disse placeres i radius af et valgsted ved hjælp af afstemingssted-API fra @dataforsyningen2024. Det giver samlet et datasæt med `r antal_obs_samlet` observationer over valgsteder gennem tiden.
+
+## Model
+
+Jeg har valgt at gå med en tovejs fixed effects model (HENVISNING)
+
+$Y_{it} = \alpha_0 + \gamma_i + \delta_t + \alpha{D}_{it} + \epsilon_{it}$
