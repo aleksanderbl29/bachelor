@@ -110,4 +110,4 @@ write_excel_csv(vind_steder, "data/downloads/mine_data/vind_steder.csv")
 ## Fjern objekter der ikke skal bruges videre
 rm(loop_tid, sluttid, starttid, vind, vind_steder,
    afssted, afssted_nr, møllenummer, test_expect,
-   test_value, url_DAWA, i, antal_obs, kommunekode)
+   test_value, url_DAWA, i, antal_obs, kommunekode, tilslutningsdato)
