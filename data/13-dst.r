@@ -137,5 +137,3 @@ partistemmer <- function(partibogstav, output_df, gemme_kolonner)
 colnames(stemmer)
 head(stemmer, 2)
 
-antal_obs_samlet
-exists("antal_obs_samlet")
