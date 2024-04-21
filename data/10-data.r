@@ -20,5 +20,8 @@ if (api_call_enable == TRUE) {
 ## Formater data fra DST
 source("data/13-dst.r")
 
+## Omform vindmølleplacering til treatment-dataframe
+source("data/14-vind.r")
+
 ## Dropper midlertidige variable
 rm(api_call_enable)
