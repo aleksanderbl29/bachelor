@@ -67,7 +67,7 @@ for (i in 1:nrow(vind)) {
   koord_y <- vind[i, ]$y_koord
   møllenummer <- as.numeric(vind[i, ]$`Møllenummer (GSRN)`)
   tilslutningsdato <- vind[i, ]$tilslutningsdato
-  
+
   url <- paste0(url_DAWA, "/reverse", "?", "x=", koord_x, "&y=", koord_y, "&srid=25832")
   response <- content(GET(url = url))
   afssted = response$afstemningssted$navn
@@ -88,8 +88,8 @@ for (i in 1:nrow(vind)) {
 sluttid <- Sys.time()
 
 ## Fjerner første tomme kolonne
-vind_steder <- vind_steder %>% 
-  select(everything()) %>% 
+vind_steder <- vind_steder %>%
+  select(everything()) %>%
   filter(!afssted == "sample data")
 
 loop_tid <- sluttid - starttid
@@ -97,11 +97,11 @@ print(loop_tid)
 print(paste("Det tog", round(loop_tid, 2), "minutter at hente data"))
 
 
-vind_steder <- vind_steder %>% 
+vind_steder <- vind_steder %>%
   mutate(valgsted_id = if_else(nchar(afssted_nr) == 1, sprintf("%003d", afssted_nr),
                                if_else(nchar(afssted_nr) == 2, sprintf("%03d", afssted_nr),
-                                       if_else(nchar(afssted_nr) == 3, sprintf("%3d", afssted_nr), NA)))) %>% 
-  mutate(valgsted_id = paste0(kommunekode, valgsted_id)) %>% 
+                                       if_else(nchar(afssted_nr) == 3, sprintf("%3d", afssted_nr), NA)))) %>%
+  mutate(valgsted_id = paste0(kommunekode, valgsted_id)) %>%
   select(!c("kommunekode", "afssted_nr"))
 
 head(vind_steder)
@@ -111,4 +111,3 @@ write_excel_csv(vind_steder, "data/downloads/mine_data/vind_steder.csv")
 rm(loop_tid, sluttid, starttid, vind, vind_steder,
    afssted, afssted_nr, møllenummer, test_expect,
    test_value, url_DAWA, i, antal_obs, kommunekode)
-
