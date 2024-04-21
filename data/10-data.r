@@ -21,7 +21,7 @@ if (api_call_enable == TRUE) {
 source("data/13-dst.r")
 
 ## Omform vindmølleplacering til treatment-dataframe
-source("data/14-vind.r")
+source("data/14-vind-treatment.r")
 
 ## Dropper midlertidige variable
 rm(api_call_enable)
