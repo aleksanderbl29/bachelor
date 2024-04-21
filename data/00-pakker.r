@@ -4,7 +4,8 @@ pakkeliste <- c(
   "httr",
   "jsonlite",
   "readxl",
-  "testthat"
+  "testthat",
+  "here"
 )
 
 ## Tjekker om alle pakker fra liste er i de installerede pakker
