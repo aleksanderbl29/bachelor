@@ -28,7 +28,8 @@ rm(test_response, test_url_DAWA, test_x_koord, test_y_koord)
 vind <- read_xlsx("data/downloads/vind.xlsx") %>%
   select(everything()) %>%
   rename(x_koord = "X (øst) koordinat \r\nUTM 32 Euref89",
-         y_koord = "Y (nord) koordinat \r\nUTM 32 Euref89")
+         y_koord = "Y (nord) koordinat \r\nUTM 32 Euref89",
+         tilslutningsdato = "Dato for oprindelig nettilslutning")
 
 colnames(vind)
 
@@ -52,7 +53,8 @@ vind_steder <- tibble(mll_num = 0,
                       y_koord = 0,
                       afssted = "sample data",
                       afssted_nr = 0,
-                      kommunekode = 0)
+                      kommunekode = 0,
+                      tilslutningsdato = as_date(0))
 vind_steder
 colnames(vind_steder)
 
@@ -64,6 +66,7 @@ for (i in 1:nrow(vind)) {
   koord_x <- vind[i, ]$x_koord
   koord_y <- vind[i, ]$y_koord
   møllenummer <- as.numeric(vind[i, ]$`Møllenummer (GSRN)`)
+  tilslutningsdato <- vind[i, ]$tilslutningsdato
   
   url <- paste0(url_DAWA, "/reverse", "?", "x=", koord_x, "&y=", koord_y, "&srid=25832")
   response <- content(GET(url = url))
@@ -76,7 +79,8 @@ for (i in 1:nrow(vind)) {
           afssted = afssted,
           afssted_nr = afssted_nr,
           kommunekode = kommunekode,
-          mll_num = møllenummer)
+          mll_num = møllenummer,
+          tilslutningsdato = tilslutningsdato)
   print(paste(i, "af", antal_obs, "er:",response$afstemningssted$navn))
   rm(koord_x, koord_y, url, response)
 }
@@ -92,6 +96,14 @@ loop_tid <- sluttid - starttid
 print(loop_tid)
 print(paste("Det tog", round(loop_tid, 2), "minutter at hente data"))
 
+
+vind_steder <- vind_steder %>% 
+  mutate(valgsted_id = if_else(nchar(afssted_nr) == 1, sprintf("%003d", afssted_nr),
+                               if_else(nchar(afssted_nr) == 2, sprintf("%03d", afssted_nr),
+                                       if_else(nchar(afssted_nr) == 3, sprintf("%3d", afssted_nr), NA)))) %>% 
+  mutate(valgsted_id = paste0(kommunekode, valgsted_id)) %>% 
+  select(!c("kommunekode", "afssted_nr"))
+
 head(vind_steder)
 write_excel_csv(vind_steder, "data/downloads/mine_data/vind_steder.csv")
 
@@ -99,3 +111,4 @@ write_excel_csv(vind_steder, "data/downloads/mine_data/vind_steder.csv")
 rm(loop_tid, sluttid, starttid, vind, vind_steder,
    afssted, afssted_nr, møllenummer, test_expect,
    test_value, url_DAWA, i, antal_obs, kommunekode)
+
