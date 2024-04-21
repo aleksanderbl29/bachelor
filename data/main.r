@@ -1,5 +1,4 @@
 library(tidyverse)
-library(here)
 
 antal_obs_samlet <- as.numeric(4269)
 
