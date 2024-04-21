@@ -5,7 +5,8 @@ pakkeliste <- c(
   "jsonlite",
   "readxl",
   "testthat",
-  "here"
+  "here",
+  "modelsummary"
 )
 
 ## Tjekker om alle pakker fra liste er i de installerede pakker

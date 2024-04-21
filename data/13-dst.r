@@ -1,7 +1,6 @@
 # source("data/12-load-data.r")
 
 library(tidyverse)
-library(modelsummary)
 
 ## Finder informationer fra valgoversigt
 exists("import_valg")
@@ -118,7 +117,7 @@ na_nrow <- nrow(na_stemmer)
 
 na_nrow - alle_nrow
 
-datasummary_crosstab(data = alle_stemmer, formula = valg~partinavn)
+# datasummary_crosstab(data = alle_stemmer, formula = valg~partinavn)
 
 ## Stemmer for Socialdemokratiet
 a_stemmer <- stemmer %>%
