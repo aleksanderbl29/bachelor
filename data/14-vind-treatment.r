@@ -2,13 +2,13 @@ library(tidyverse)
 
 options(scipen = 999)
 
-source("data/00-pakker.r")
-
-## Indlæser alle data
-source("data/12-load-data.r")
-
-## Formater data fra DST
-source("data/13-dst.r")
+# source("data/00-pakker.r")
+# 
+# ## Indlæser alle data
+# source("data/12-load-data.r")
+# 
+# ## Formater data fra DST
+# source("data/13-dst.r")
 
 ## Sætter en nedre grænse for, hvornår vindmøller må være sat op
 laveste_dato <- as_date(ymd("1996-01-01"))
@@ -19,9 +19,9 @@ expect_true(exists("valg"))
 expect_true(exists("laveste_dato"))
 
 ## Fjerner ting der ikke skal bruges til udarbejdelse af funktioner
-rm(a_stemmer, alle_stemmer, geografi, import_stemmer, import_valg,
-   kmd_stemmer, noget_mere_stemmer, lang_alle_stemmer, na_stemmer,
-   stemmer, alle_nrow, gem_kolonner, kmd_nrow, na_nrow, partistemmer)
+# rm(a_stemmer, alle_stemmer, geografi, import_stemmer, import_valg,
+#    kmd_stemmer, noget_mere_stemmer, lang_alle_stemmer, na_stemmer,
+#    stemmer, alle_nrow, gem_kolonner, kmd_nrow, na_nrow, partistemmer)
 
 vind_stemmesteder
 valg
