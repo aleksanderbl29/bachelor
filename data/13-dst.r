@@ -40,6 +40,7 @@ alle_stemmer <- stemmer %>%
                names_to = "valg",
                values_to = "stemmer") %>%
   separate(col = valg, into = c("valg", "parti"), sep = " - ") %>%
+  mutate(valg = as.factor(valg)) %>% 
   mutate(partinavn = case_when(parti == "A" ~ "Socialdemokratiet",
                                parti == "B" ~ "Radikale venstre",
                                parti == "C" ~ "Det Konservative Folkeparti",
