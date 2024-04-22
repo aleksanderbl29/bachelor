@@ -6,7 +6,9 @@ pakkeliste <- c(
   "readxl",
   "testthat",
   "here",
-  "modelsummary"
+  "modelsummary",
+  "fixest",
+  "naniar"
 )
 
 ## Tjekker om alle pakker fra liste er i de installerede pakker
