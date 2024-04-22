@@ -69,71 +69,21 @@ lang_alle_stemmer <- alle_stemmer %>%
   select(!partinavn) %>%
   pivot_wider(names_from = parti, values_from = stemmer)
 
-noget_mere_stemmer <- alle_stemmer %>%
-  drop_na(partinavn)
-unique(noget_mere_stemmer$parti)
-nrow(noget_mere_stemmer)
-
-kmd_stemmer <- stemmer %>%
-  select(any_of(gem_kolonner), starts_with("KV")) %>%
-  pivot_longer(cols = starts_with("KV"),
-               names_to = "valg",
-               values_to = "stemmer") %>%
-  separate(col = valg, into = c("valg", "parti"), sep = " - ") %>%
-  mutate(partinavn = case_when(parti == "A" ~ "Socialdemokratiet",
-                               parti == "V" ~ "Venstre, Danmarks Liberale Parti",
-                               parti == "C" ~ "Det Konservative Folkeparti",
-                               parti == "F" ~ "SF - Socialistisk Folkeparti",
-                               parti == "Ø" ~ "Enhedslisten - De Rød-Grønne",
-                               parti == "B" ~ "Radikale venstre",
-                               parti == "O" ~ "Dansk Folkeparti",
-                               parti == "D" ~ "Nye Borgerlige",
-                               parti == "I" ~ "Liberal Alliance",
-                               parti == "K" ~ "Kristendemokraterne",
-                               parti == "Å" ~ "Alternativet",
-                               parti == "S" ~ "Slesvigsk Parti",
-                               parti == "T" ~ "Tønder Listen",
-                               parti == "G" ~ "Veganerpartiet",
-                               parti == "L" ~ "Lokalliste",
-                               parti == "Q" ~ "Østbroen",
-                               parti == "E" ~ "nytgribskov",
-                               parti == "H" ~ "Klimapartiet Momentum",
-                               parti == "Æ" ~ "Frihedslisten",
-                               parti == "N" ~ "Nyt Odsherred",
-                               parti == "W" ~ "Bornholmerlisten",
-                               parti == "Stemmeberettigede" ~ "Stemmeberettigede",
-                               parti == "Gyldige stemmer" ~ "Gyldige stemmer")) %>%
-  drop_na(partinavn)
-
-kmd_nrow <- nrow(kmd_stemmer)
-head(kmd_stemmer)
-unique(kmd_stemmer$parti)
-unique(kmd_stemmer$partinavn)
-unique(kmd_stemmer$valg)
-
-kmd_nrow - alle_nrow
-
-na_stemmer <- alle_stemmer %>%
-  filter(is.na(partinavn))
-
-na_nrow <- nrow(na_stemmer)
-
-na_nrow - alle_nrow
+lang_gruppe_steder <- lang_alle_stemmer %>% 
+  select(everything()) %>% 
+  mutate(valgsted_id = as.double(gruppe)) %>% 
+  select(!c("gruppe", "kreds_nr", "storkreds_nr", "landsdel_nr")) %>% 
+  rename(stemmeberettigede = "Stemmeberettigede",
+         stemmer = "Gyldige stemmer") %>% 
+  # type_convert(across(!c("valgsted_id", "valg")))
+  mutate(across(!c("valgsted_id", "valg"), as.double)) %>%
+  mutate(valg = as_factor(valg)) %>% 
+  mutate(red = A + B + F + Ø + Å + G + 0,
+         blue = C + I + O + D + I + V + 0) %>% 
+  mutate(red_pct = red / stemmer,
+         blue_pct = blue / stemmer)
 
 # datasummary_crosstab(data = alle_stemmer, formula = valg~partinavn)
-
-## Stemmer for Socialdemokratiet
-a_stemmer <- stemmer %>%
-  select(any_of(gem_kolonner), ends_with("A")) %>%
-  pivot_longer(cols = starts_with("KV"),
-               names_to = "valg",
-               values_to = "stemmer") %>%
-  mutate(valg = str_remove(valg, " - A"))
-colnames(a_stemmer)
-head(a_stemmer, 3)
-
-
-partistemmer <- function(partibogstav, output_df, gemme_kolonner)
 
 
 
