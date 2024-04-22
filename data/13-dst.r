@@ -13,9 +13,9 @@ valg <- import_valg %>%
          valg_id = ValgId) %>%
   mutate(valg_dato = ymd(valg_dato))
 
-valg <- valg %>% arrange(ymd(valg$valg_dato))
-
-head(valg)
+kommunalvalg <- valg %>% arrange(ymd(valg$valg_dato))
+rm(valg)
+head(kommunalvalg)
 
 gem_kolonner <- c("gruppe", "valgsted_id", "kreds_nr", "storkreds_nr", "landsdel_nr")
 
