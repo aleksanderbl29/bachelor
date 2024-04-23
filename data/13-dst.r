@@ -79,8 +79,8 @@ lang_gruppe_steder <- lang_alle_stemmer %>%
   # type_convert(across(!c("valgsted_id", "valg")))
   mutate(across(!c("valgsted_id", "valg"), as.double)) %>%
   mutate(valg = as_factor(valg)) %>% 
-  mutate(red = A + B + F + Ø + Å + G + 0,
-         blue = C + I + O + D + I + V + 0) %>% 
+  mutate(red = rowSums(pick(A, B, F, Ø, Å, G), na.rm = TRUE),
+         blue = rowSums(pick(C, I, O, D, I, V), na.rm = TRUE)) %>% 
   mutate(red_pct = red / stemmer,
          blue_pct = blue / stemmer)
 
