@@ -8,7 +8,8 @@ pakkeliste <- c(
   "here",
   "modelsummary",
   "fixest",
-  "naniar"
+  "naniar",
+  "gt"
 )
 
 ## Tjekker om alle pakker fra liste er i de installerede pakker
