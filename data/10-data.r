@@ -14,7 +14,7 @@ if (exists("api_call_enable")) {
 } else {
 
   ## Indlæsning af dataset
-  source("data/12-load-data.r", verbose = TRUE)
+  source("data/12-load-data.r")
 
 }}
 
