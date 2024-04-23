@@ -85,9 +85,3 @@ lang_gruppe_steder <- lang_alle_stemmer %>%
          blue_pct = blue / stemmer)
 
 # datasummary_crosstab(data = alle_stemmer, formula = valg~partinavn)
-
-
-
-colnames(stemmer)
-head(stemmer, 2)
-
