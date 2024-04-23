@@ -43,6 +43,46 @@ vind_treatment <- vind_stemmesteder %>%
          kv21 = if_else(tilslutningsdato > kv2017 & tilslutningsdato <= kv2021, 1, 0))
 colnames(vind_treatment)
 
+kv01_treatment <- vind_treatment %>%
+  select(everything()) %>%
+  filter(kv01 == 1) %>%
+  distinct(valgsted_id, .keep_all = TRUE)
 
+kv05_treatment <- vind_treatment %>%
+  select(everything()) %>%
+  filter(kv05 == 1) %>%
+  distinct(valgsted_id, .keep_all = TRUE)
 
+kv09_treatment <- vind_treatment %>%
+  select(everything()) %>%
+  filter(kv09 == 1) %>%
+  distinct(valgsted_id, .keep_all = TRUE)
+
+kv13_treatment <- vind_treatment %>%
+  select(everything()) %>%
+  filter(kv13 == 1) %>%
+  distinct(valgsted_id, .keep_all = TRUE)
+
+kv17_treatment <- vind_treatment %>%
+  select(everything()) %>%
+  filter(kv17 == 1) %>%
+  distinct(valgsted_id, .keep_all = TRUE)
+
+kv21_treatment <- vind_treatment %>%
+  select(everything()) %>%
+  filter(kv21 == 1) %>%
+  distinct(valgsted_id, .keep_all = TRUE)
+
+treatment_list <- list(kv01_treatment, kv05_treatment, kv09_treatment, kv13_treatment,
+                       kv17_treatment, kv21_treatment)
+treatment <- treatment_list %>% reduce(full_join)
+
+nye_01 <- nrow(kv01_treatment)
+nye_05 <- nrow(kv05_treatment)
+nye_09 <- nrow(kv09_treatment)
+nye_13 <- nrow(kv13_treatment)
+nye_17 <- nrow(kv17_treatment)
+nye_21 <- nrow(kv21_treatment)
+
+nye_mller <- c(nye_01, nye_05, nye_09, nye_13, nye_17, nye_21)
 
