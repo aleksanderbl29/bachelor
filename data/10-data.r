@@ -24,5 +24,8 @@ source("data/13-dst.r")
 ## Omform vindmølleplacering til treatment-dataframe
 source("data/14-vind-treatment.r")
 
+## Rydder op i data og gør df brugbare
+# source("data/15-data-cleanup.r")
+
 ## Dropper midlertidige variable
 rm(api_call_enable)
