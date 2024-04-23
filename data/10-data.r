@@ -3,9 +3,10 @@
 
 # Skal der skabes ny DF med api-data?
 # sikrer at dummy_var findes
-expect_true(exists("api_call_enable"))
+# expect_true(exists("api_call_enable"))
 
-if (api_call_enable == TRUE) {
+if (exists("api_call_enable")) {
+  if (api_call_enable == TRUE) {
 
   ## Skabelse af dataset
   source("data/11-skab-df.r")
@@ -13,9 +14,9 @@ if (api_call_enable == TRUE) {
 } else {
 
   ## Indlæsning af dataset
-  source("data/12-load-data.r")
+  source("data/12-load-data.r", verbose = TRUE)
 
-}
+}}
 
 ## Formater data fra DST
 source("data/13-dst.r")
