@@ -32,6 +32,9 @@ expect_true(exists("laveste_dato"))
 # vp_17_21
 
 
+vind_treatment <- vind_stemmesteder %>%
+  select(everything()) %>%
+  filter(tilslutningsdato > laveste_dato) %>%
   mutate(kv01 = if_else(tilslutningsdato <= kv2001, 1, 0),
          kv05 = if_else(tilslutningsdato > kv2001 & tilslutningsdato <= kv2005, 1, 0),
          kv09 = if_else(tilslutningsdato > kv2005 & tilslutningsdato <= kv2009, 1, 0),
