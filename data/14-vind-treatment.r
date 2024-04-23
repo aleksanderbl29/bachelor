@@ -86,3 +86,34 @@ nye_21 <- nrow(kv21_treatment)
 
 nye_mller <- c(nye_01, nye_05, nye_09, nye_13, nye_17, nye_21)
 
+
+auto_distinct_analyse_data <- vind_treatment %>%
+  full_join(lang_gruppe_steder, by = "valgsted_id") %>%
+  mutate(ny_tilsluttet = case_when(valg == "KV2001" & kv01 == 1 ~ 1,
+                                  valg == "KV2005" & kv05 == 1 ~ 1,
+                                  valg == "KV2009" & kv09 == 1 ~ 1,
+                                  valg == "KV2013" & kv13 == 1 ~ 1,
+                                  valg == "KV2017" & kv17 == 1 ~ 1,
+                                  valg == "KV2021" & kv21 == 1 ~ 1,
+                                  .default = 0),
+         valg = as.factor(valg))
+
+analyse_data <- lang_gruppe_steder %>%
+  left_join(treatment, by = "valgsted_id", unmatched = "drop", relationship = "many-to-many") %>%
+  mutate(ny_tilsluttet = case_when(valg == "KV2001" & kv01 == 1 ~ 1,
+                                   valg == "KV2005" & kv05 == 1 ~ 1,
+                                   valg == "KV2009" & kv09 == 1 ~ 1,
+                                   valg == "KV2013" & kv13 == 1 ~ 1,
+                                   valg == "KV2017" & kv17 == 1 ~ 1,
+                                   valg == "KV2021" & kv21 == 1 ~ 1,
+                                   .default = 0)) %>% 
+  mutate(valg = as.factor(valg)) %>% 
+  select(!c("1", "2", "3", "4", "5", "6", "0", "01", "02", "03", "04", "05", "06", "7",
+            "K1", "K2", "T", "W", "Æ", "Å1")) %>% 
+  select(!c("stemmeberettigede", "S", "mll_num", "x_koord", "y_koord", "afssted",
+            "tilslutningsdato", "kv01", "kv05", "kv09", "kv13", "kv17", "kv21"))
+
+### https://www.statology.org/r-unique-multiple-columns/
+auto_distinct_analyse_data <- auto_distinct_analyse_data[!duplicated(
+  auto_distinct_analyse_data[c("valg", "valgsted_id")]),]
+
