@@ -1,3 +1,25 @@
 Her er min analyse
 
 Der skal også stå noget om hvad jeg kunne have gjort anderledes
+
+## Regressionstabel
+her skal min tabel være. Den hedder @tbl-reg-tbl-1
+
+
+```{r}
+#| tbl-cap: "Regressionstabel"
+#| label: tbl-reg-tbl-1
+reg_tbl1
+```
+
+
+og her nedenfor er der noget tekst om den
+
+```{r}
+modelplot(m3)
+```
+
+
+I denne opgave har jeg brugt følgende pakker
+
+@arel-bundock2022
