@@ -37,4 +37,4 @@ msummary(list(m1, m2, m3, m4), stars = sign_stjerner)
 msummary(list(m1, m2, m3, m4, m5, m6), stars = sign_stjerner)
 
 ## Skab reg tbl 1
-reg_tbl1 <- msummary(list(m1, m2, m3, m4, m5, m6), stars = sign_stjerner)
+reg_tbl1 <- msummary(list(m1, m2, m3, m4, m5, m6), stars = sign_stjerner, output = "gt")
