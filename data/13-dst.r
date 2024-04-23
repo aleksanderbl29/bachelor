@@ -26,11 +26,12 @@ stemmer <- import_stemmer %>%
          valgsted_id = ValgstedId,
          kreds_nr = KredsNr,
          storkreds_nr = StorKredsNr,
-         landsdel_nr = LandsdelsNr)
+         landsdel_nr = LandsdelsNr) %>% 
+  replace_with_na_all(condition = ~.x == "-") %>% 
+  mutate(across(!c("valgsted_id"), ~ str_replace_all(., ",", "."))) %>% 
+  mutate(across(!c("valgsted_id"), as.double))
 
-stemmer[] <- lapply(stemmer, as.character)
-
-# rm(import_stemmer, import_valg)
+rm(import_stemmer, import_valg)
 
 head(stemmer, 2)
 
