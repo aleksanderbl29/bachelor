@@ -12,7 +12,14 @@ pakkeliste <- c(
   "kableExtra",
 )
 
+## Derudover er der brugt enkelte funktioner fra disse pakker
+enkelt_pakker <- c(
+  "haven",
+  "naniar"
 )
+
+## Installerer disse pakker men indlæser ikke
+install.packages(enkelt_pakker, dependencies = TRUE)
 
 ## Tjekker om alle pakker fra liste er i de installerede pakker
 mangler_pakker <- pakkeliste[!(pakkeliste %in% installed.packages()[,"Package"])]
@@ -34,4 +41,4 @@ for (pakke.i in pakkeliste) {
 
 
 ## Dropper midlertidig variabel
-rm(pakkeliste, mangler_pakker, pakke.i)
+rm(pakkeliste, mangler_pakker, pakke.i, enkelt_pakker)
