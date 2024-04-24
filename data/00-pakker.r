@@ -9,7 +9,7 @@ pakkeliste <- c(
   "modelsummary",
   "fixest",
   "gt",
-  "kableExtra",
+  "kableExtra"
 )
 
 ## Derudover er der brugt enkelte funktioner fra disse pakker
