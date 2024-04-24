@@ -4,16 +4,16 @@ library(modelsummary)
 
 
 m1 <- feols(red_pct ~ ny_tilsluttet | valgsted_id + valg,
-            data = analyse_data, verbose = 999)
+            data = analyse_data)
 
 m2 <- feols(blue_pct ~ ny_tilsluttet | valgsted_id + valg,
-            data = analyse_data, verbose = 999)
+            data = analyse_data)
 
 m3 <- feols(red ~ ny_tilsluttet | valgsted_id + valg,
-            data = analyse_data, verbose = 999)
+            data = analyse_data)
 
 m4 <- feols(blue ~ ny_tilsluttet | valgsted_id + valg,
-            data = analyse_data, verbose = 999)
+            data = analyse_data)
 
 # m3 <- lm(red_pct ~ ny_tilsluttet, data = analyse_data)
 
