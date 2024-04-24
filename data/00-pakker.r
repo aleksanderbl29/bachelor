@@ -1,3 +1,6 @@
+## Set defualt pakke repo
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+
 ## Her er liste over alle de pakker der skal bruges for at reproducere dette arbejde
 pakkeliste <- c(
   "tidyverse",
