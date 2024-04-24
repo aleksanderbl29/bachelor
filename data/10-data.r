@@ -25,7 +25,10 @@ source("data/13-dst.r")
 source("data/14-vind-treatment.r")
 
 ## Rydder op i data og gør df brugbare
-# source("data/15-data-cleanup.r")
+source("data/15-data-cleanup.r")
+
+## Give labels til variablene i analyse_data
+source("data/16-var-labels.r")
 
 ## Dropper midlertidige variable
 rm(api_call_enable)

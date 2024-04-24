@@ -3,23 +3,26 @@ Her er min analyse
 Der skal også stå noget om hvad jeg kunne have gjort anderledes
 
 ## Regressionstabel
-her skal min tabel være. Den hedder @tbl-reg-tbl-1
+her skal min tabel være. Den hedder @tbl-reg-1.
 
-
-```{r}
-#| tbl-cap: "Regressionstabel"
-#| label: tbl-reg-tbl-1
-reg_tbl1
-```
-
-
-og her nedenfor er der noget tekst om den
+@tbl-reg-1 er lavet med gt pakken.
 
 ```{r}
-modelplot(m3)
+#| tbl-cap: "Regressionstabel med gt pakken"
+#| label: tbl-reg-1
+gt_reg_tbl
 ```
-
 
 I denne opgave har jeg brugt følgende pakker
 
 @arel-bundock2022
+
+{{< pagebreak >}}
+
+Her kommer en tabel lavet med `kableExtra`. Den hedder @tbl-reg-2
+
+```{r}
+#| tbl-cap: "Regressionstabel med kableExtra pakken"
+#| label: tbl-reg-2
+kable_reg_tbl
+```

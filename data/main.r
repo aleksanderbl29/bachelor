@@ -1,7 +1,7 @@
 library(tidyverse)
 
 options(scipen = 999)
-options(OutDec=",")
+# options(OutDec=",")
 antal_obs_samlet <- as.numeric(4269)
 sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
 
