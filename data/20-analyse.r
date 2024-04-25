@@ -1,4 +1,4 @@
-source("data/00-pakker.r")
+# source("data/00-pakker.r")
 
 ## Sikrer at alt nødvendigt forarbejde er gjort
 expect_true(exists("analyse_data"))
