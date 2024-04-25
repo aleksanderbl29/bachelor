@@ -22,7 +22,7 @@ enkelt_pakker <- c(
 )
 
 ## Installerer disse pakker men indlæser ikke
-install.packages(enkelt_pakker, dependencies = TRUE)
+install.packages(enkelt_pakker, dependencies = TRUE, quiet = TRUE)
 
 ## Tjekker om alle pakker fra liste er i de installerede pakker
 mangler_pakker <- pakkeliste[!(pakkeliste %in% installed.packages()[,"Package"])]
