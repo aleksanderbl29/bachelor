@@ -10,3 +10,11 @@ I dette projekt vil jeg benytte mig af et originalt datasæt sammesat af valgsta
 Jeg har valgt at gå med en tovejs fixed effects model (HENVISNING)
 
 $Y_{it} = \alpha_0 + \gamma_i + \delta_t + \alpha{D}_{it} + \epsilon_{it}$
+
+## Valgt signifikansniveau
+
+Jeg har valgt at tildele stjener som følger:
+
+```{r}
+sign_stjerner
+```
