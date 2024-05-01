@@ -42,7 +42,6 @@ I respons fra DAWA er der både adresse og navn på afstemningsstedet. Regner me
 ## Lokalplaner - Beslutninger om vindmøller
 [Plandata.dk Søgeliste](https://kort.plandata.dk/searchlist/#/search/0400,0530,0153,0810,0411,0155,0240,0210,0607,0147,0813,0320,0250,0190,0430,0157,0710,0159,0161,0253,0270,0376,0563,0510,0260,0766,0217,0163,0657,0219,0860,0316,0661,0561,0615,0183,0849,0326,0756,0440,0621,0101,0259,0223,0482,0350,0665,0360,0173,0825,0846,0410,0773,0707,0169,0480,0450,0370,0760,0840,0329,0265,0230,0175,0730,0741,0740,0746,0779,0306,0330,0269,0340,0336,0671,0461,0479,0706,0540,0787,0550,0185,0187,0573,0575,0630,0727,0820,0167,0151,0580,0390,0492,0851,0751,0420,0201,0791,0165/20/V/2002-01-01/2024-04-15/81)
 
-
 ## Balancetest
 - Ikke-observerede kovariater mellem stemmesteder
 - Balance på gennemsnit
@@ -69,9 +68,33 @@ Fokus på basismodellen
 
 apsr coal
 
+## Anden vejledning
+Dagsorden:
+- Status på process
+	- Data er sat op
+	- Ikke for mange NA
+	- Forsøger at inddrage statistik om befolkning til kontrol
+	- Succesfuld TWFE
+- Udfordringer jeg har lige nu:
+	- Afvejning af forklaringer
+		- Egeninteresse
+		- Fordelingspolitik (relaterer sig nok til egeninteresse)
+		- NIMBY (også lidt egeninteresse)
+		- Achen og Bartels (vælgerne kan ikke placere ansvar)
+			- Kan nok igen forklares af egeninteresse
+	- Afhængig variabel
+		- Stemmer på røde partier (eller blå)
+		- Stemmer på regeringspartier
+			- Kan vælgerne skifte kontekst fra kommune til national
+			- Og kan det tænkes de straffer "forkert" (iht lokalplansforklaring)
+		- STEMMER PÅ BORGMESTERPARTI
+			- Borgmesterens parti som afhængig variabel
+			- Borgmesterens farve som interagerende variabel
 
-## Ideer til variable
-- Treatment ved tidligere valg
-	- hvor mange valg er det siden der er treatment?
-	- Forsøg på at opfange den tidligere treatment effekt
-		- Hvad gør L Stokes?
+S Anna
+Goodman Bacon
+
+## Generelle spørgsmål
+Format og formalia:
+- Abstract
+	- Hvor langt, placering og indhold, resultater?
