@@ -111,7 +111,7 @@ analyse_data <- lang_gruppe_steder %>%
   select(!c("1", "2", "3", "4", "5", "6", "0", "01", "02", "03", "04", "05", "06", "7",
             "K1", "K2", "T", "W", "Æ", "Å1")) %>% 
   select(!c("stemmeberettigede", "S", "mll_num", "x_koord", "y_koord", "afssted",
-            "tilslutningsdato", "kv01", "kv05", "kv09", "kv13", "kv17", "kv21"))
+            "tilslutningsdato"))
 
 ### https://www.statology.org/r-unique-multiple-columns/
 auto_distinct_analyse_data <- auto_distinct_analyse_data[!duplicated(
