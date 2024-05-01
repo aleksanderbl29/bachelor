@@ -48,6 +48,12 @@ I respons fra DAWA er der både adresse og navn på afstemningsstedet. Regner me
 - Balance på gennemsnit
 	- måske fordeling
 
+## Ideer til variable
+- Treatment ved tidligere valg
+	- hvor mange valg er det siden der er treatment?
+	- Forsøg på at opfange den tidligere treatment effekt
+		- Hvad gør L Stokes?
+
 # Vejledning
 ## Første vejledning
 Spørgsmål og undringer:
