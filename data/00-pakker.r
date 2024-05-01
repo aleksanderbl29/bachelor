@@ -12,7 +12,9 @@ pakkeliste <- c(
   "modelsummary",
   "fixest",
   "gt",
-  "kableExtra"
+  "kableExtra",
+  "knitr",
+  "rmarkdown"
 )
 
 ## Derudover er der brugt enkelte funktioner fra disse pakker
