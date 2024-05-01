@@ -8,3 +8,6 @@ source("data/21-ols.r")
 
 ## Indlæser FE fil
 source("data/22-fixedeffects.r")
+
+## Indlæser test fil
+source("data/88-leg-med-regres.r")
