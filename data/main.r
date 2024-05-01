@@ -1,5 +1,3 @@
-library(tidyverse)
-
 options(scipen = 999)
 # options(OutDec=",")
 antal_obs_samlet <- as.numeric(4269)
