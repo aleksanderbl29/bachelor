@@ -14,9 +14,13 @@ if (exists("analyse_data")) {
   analyse_data <- read_csv("data/downloads/mine_data/replikation.csv")
 }
 
+sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
+
+antal_obs_samlet <- nrow(analyse_data)
 
 ## Sikrer at alt nødvendigt forarbejde er gjort
 expect_true(exists("analyse_data"))
+expect_true(exists("sign_stjerner"))
 
 ## Indlæser ols fil
 source("data/21-ols.r")
