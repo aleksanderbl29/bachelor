@@ -17,10 +17,6 @@ sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
 print("analyse er loaded")
 ```
 
-```{r}
-markdown_reg_tbl
-```
-
 {{< pagebreak >}}
 
 # {.unnumbered .unlisted}
