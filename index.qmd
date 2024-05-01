@@ -8,7 +8,17 @@ format:
 ---
 
 ```{r}
-#| file: data/main.r
+source_pakker <- TRUE
+sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
+```
+
+```{r}
+#| file: data/20-analyse.r
+print("analyse er loaded")
+```
+
+```{r}
+markdown_reg_tbl
 ```
 
 {{< pagebreak >}}
