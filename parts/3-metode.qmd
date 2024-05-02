@@ -5,6 +5,8 @@ Her er min metode
 
 I dette projekt vil jeg benytte mig af et originalt datasæt sammesat af valgstatistik fra Danmarks statistiks valgdatabase [@danmarksstatistik2024] og optegnelser over vindmølleindstallationer i Danmark [@energistyrelsen2024]. Heraf udvælges vindmølleinstallationer i valgperioderne fra kommunalvalg fra 2001 til 2021. Disse placeres i radius af et valgsted ved hjælp af afstemingssted-API fra @dataforsyningen2024. Det giver samlet et datasæt med `r antal_obs_samlet` observationer over valgsteder gennem tiden.
 
+For en oversigt over de danske borgmestre gennem tiden har jeg sammensat @kjaer2018 og @kommunerneslandsforening2023, der udgør grundlaget for at definere hvilket parti der er borgmesterparti.
+
 ## Model
 
 Jeg har valgt at gå med en tovejs fixed effects model (HENVISNING)
