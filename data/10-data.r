@@ -26,13 +26,13 @@ source("data/13-dst.r")
 source("data/14-vind-treatment.r")
 
 ## Forbereder data til dynamisk DID
-source("data/15-did-prep.r")
+source("data/16-did-prep.r")
 
 ## Give labels til variablene i analyse_data
-source("data/16-var-labels.r")
+source("data/17-var-labels.r")
 
 ## Rydder op i data og gør df brugbare
-source("data/17-data-cleanup.r")
+source("data/18-data-cleanup.r")
 
 ## Dropper midlertidige variable
 rm(api_call_enable)
