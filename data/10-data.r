@@ -30,5 +30,8 @@ source("data/15-data-cleanup.r")
 ## Give labels til variablene i analyse_data
 source("data/16-var-labels.r")
 
+## Rydder op i data og gør df brugbare
+source("data/17-data-cleanup.r")
+
 ## Dropper midlertidige variable
 rm(api_call_enable)
