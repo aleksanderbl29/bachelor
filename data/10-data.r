@@ -17,7 +17,7 @@ if (api_call_enable == TRUE) {
   ## Indlæsning af dataset
   source("data/12-load-data.r")
 
-}}
+}
 
 ## Formater data fra DST
 source("data/13-dst.r")
@@ -25,8 +25,8 @@ source("data/13-dst.r")
 ## Omform vindmølleplacering til treatment-dataframe
 source("data/14-vind-treatment.r")
 
-## Rydder op i data og gør df brugbare
-source("data/15-data-cleanup.r")
+## Forbereder data til dynamisk DID
+source("data/15-did-prep.r")
 
 ## Give labels til variablene i analyse_data
 source("data/16-var-labels.r")

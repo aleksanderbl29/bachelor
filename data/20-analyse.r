@@ -1,3 +1,5 @@
+source_pakker <- TRUE
+
 
 if (exists("source_pakker")) {
   if (source_pakker == TRUE) {

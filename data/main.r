@@ -28,10 +28,10 @@ source("data/10-data.r")
 ############# Analyser data ##############
 ##########################################
 
-source("data/20-analyse.r")
+# source("data/20-analyse.r")
 
 ##########################################
 #### Tjek at alt er klar til dokument ####
 ##########################################
 
-source("data/99-objekt-tjek.r")
+# source("data/99-objekt-tjek.r")
