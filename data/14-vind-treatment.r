@@ -116,7 +116,3 @@ analyse_data <- lang_gruppe_steder %>%
 ### https://www.statology.org/r-unique-multiple-columns/
 auto_distinct_analyse_data <- auto_distinct_analyse_data[!duplicated(
   auto_distinct_analyse_data[c("valg", "valgsted_id")]),]
-
-write_excel_csv(analyse_data, "data/downloads/mine_data/replikation.csv")
-
-
