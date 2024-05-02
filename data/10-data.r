@@ -5,8 +5,9 @@
 # sikrer at dummy_var findes
 # expect_true(exists("api_call_enable"))
 
-if (exists("api_call_enable")) {
-  if (api_call_enable == TRUE) {
+api_call_enable <- FALSE
+
+if (api_call_enable == TRUE) {
 
   ## Skabelse af dataset
   source("data/11-skab-df.r")
