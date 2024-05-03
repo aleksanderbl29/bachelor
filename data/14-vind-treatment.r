@@ -99,7 +99,7 @@ auto_distinct_analyse_data <- vind_treatment %>%
          valg = as.factor(valg))
 
 analyse_data <- lang_gruppe_steder %>%
-  left_join(treatment, by = "valgsted_id", unmatched = "drop", relationship = "many-to-many") %>%
+  left_join(treatment, by = "valgsted_id", unmatched = "drop") %>%
   mutate(ny_tilsluttet = case_when(valg == "KV2001" & kv01 == 1 ~ 1,
                                    valg == "KV2005" & kv05 == 1 ~ 1,
                                    valg == "KV2009" & kv09 == 1 ~ 1,
