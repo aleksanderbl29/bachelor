@@ -25,6 +25,9 @@ source("data/13-dst.r")
 ## Omform vindmølleplacering til treatment-dataframe
 source("data/14-vind-treatment.r")
 
+## Inkluder borgmestre og borgmesterparti
+source("data/15-borgmestre.r")
+
 ## Forbereder data til dynamisk DID
 source("data/16-did-prep.r")
 
