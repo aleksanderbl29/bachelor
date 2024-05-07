@@ -66,3 +66,11 @@ print("analyse er loaded")
 
 ::: {#refs}
 :::
+
+{{< pagebreak >}}
+
+\appendix
+
+# Appendiks: Kodebog {.appendix}
+
+{{< include codebook.qmd >}}
