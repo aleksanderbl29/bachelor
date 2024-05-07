@@ -94,6 +94,15 @@ Dagsorden:
 S Anna
 Goodman Bacon
 
+## Tredje vejledning
+Dagsorden:
+- Status
+- Udfordringer lige nu
+	- Borgmester variabel er svær
+	- Unbalanced data ite
+- RÅD:
+	- Skriv ud hvad variablen skal gøre og opfyld det trin for trin
+
 ## Generelle spørgsmål
 Format og formalia:
 - Abstract
