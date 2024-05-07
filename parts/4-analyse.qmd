@@ -12,7 +12,8 @@ her skal min tabel være. Den hedder @tbl-reg-1.
 #| label: tbl-reg-1
 library(tidyverse)
 library(gt)
-gt_reg_tbl |> opt_stylize(style = 1, color = "pink", add_row_striping = TRUE) %>% tab_source_note("Data er egen tilvirkning, DST og ENS") %>% tab_footnote("Her er en fodnote") # %>% gt::as_latex()
+print("HER MANGLER VIDST NOGET")
+# gt_reg_tbl |> opt_stylize(style = 1, color = "pink", add_row_striping = TRUE) %>% tab_source_note("Data er egen tilvirkning, DST og ENS") %>% tab_footnote("Her er en fodnote") # %>% gt::as_latex()
 ```
 
 I denne opgave har jeg brugt følgende pakker
@@ -30,6 +31,7 @@ her skal min tabel være. Den hedder @tbl-reg-html.
 #| tbl-cap: "Regressionstabel med gt pakken"
 #| label: tbl-reg-html
 library(tidyverse)
-gt_reg_tbl %>% opt_stylize(style = 1, color = "pink", add_row_striping = TRUE) %>% tab_source_note(source_note = md("Data er egen tilvirkning, *DST* og *ENS*")) %>% gt::as_raw_html()
+print("HER MANGLER VIDST OGSÅ NOGET")
+# gt_reg_tbl %>% opt_stylize(style = 1, color = "pink", add_row_striping = TRUE) %>% tab_source_note(source_note = md("Data er egen tilvirkning, *DST* og *ENS*")) %>% gt::as_raw_html()
 ```
 
