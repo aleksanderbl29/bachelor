@@ -1,0 +1,53 @@
+---
+title: Kodebog
+subtitle: Bachelorprojekt om vindmøller og retrospektiv vælgeradfærd
+date: ""
+format:
+  pdf:
+    toc: false
+    lof: false
+    lot: false
+---
+
+Her er en oversigt over de variable der er at finde i datasættet til replikation. Derudover er der beskrevet, hvilke data der er brugt til at skabe variablene. For hver variabel er der en tilhørende beskrivelse af dens indhold.
+
+## TO DO
+- Variable der mangler hele beskrivelsen i @tbl-variable-desc
+  - Alle baggrundsvariable
+- Tilføj beskrivelse for `vind.xlsx` i @tbl-reproduktion-filer
+
+| `Variabel` | Type | Beskrivelse |
+| :------- | :------- | :----------|
+| `valgsted_id` | Double | Identifikator for valgstedet. Struktur: `101001`. Indeholder kommunens id i de første tre tal og valgstedets id i de sidste 3. |
+| `valg` | Factor | Identifikator for hvilket valg observation gælder for. |
+| `kommuneid` | Double | Identifikator for kommunen. Trukket af `valgsted_id`. |
+| `kommunenavn` | String/Factor | Kommunens navn. Fundet med `geografi.csv` ud fra `kommuneid`. |
+| `kommune_valg_id` | String | Brugt som id til sammenlægning af data. Sammensat af `kommuneid` og `valg`. |
+| `valgsted_valg_id` | String | Brugt som id til sammenlægning af data. Sammensat af `valgsted_id` og `valg`. |
+| `stemmer` | Double | Samlet antal stemmer for valgsted i givent valgår. |
+| `red` | Double | Absolutte stemmer til rød blok for valgsted i givent valgår. |
+| `blue` | Double | Absolutte stemmer til blå blok for valgsted i givent valgår. |
+| `red_pct` | Double | Procentandel af stemmer til rød blok for valgsted i givent valgår. |
+| `blue_pct` | Double | Procentandel af stemmer til blå blok for valgsted i givent valgår. |
+| `borgmester_stemmer` | Double | Absolutte stemmer til borgmesterens parti (for kommunen på vagltidspunktet), for valgsted i givent valgår. |
+| `ny_tilsluttet` | Factor | Binær indikator for om der er opsat vindmølle i valgstedets område i perioden siden sidste valg. |
+| `opsat` | Factor | Kategorisk indikator for om der er opsat vindmølle op til nuværende valgperiode eller hvor mange perioder det er siden. Værdien 1 ligger på opsætningstidspunktet mens værdien 0 ligger i (valg-)perioden lige inden iht. @huntington-klein2022 [453-456].
+| `kv01, kv05, kv09, kv13, kv17, kv21` | Factor | Binær indikator for, hvornår der er opsat vindmølle for valgstedet. |
+| `A,B,CD,F,I,J,G,K,N, H,M,U,Y,O,Z,L,Q,R, V,P,E,Ø,Å` | Double | Absolutte stemmer til parti med bogstav for valgsted i givent valgår. |
+
+: Beskrivelse af variable i datasæt til reproduktion {#tbl-variable-desc tbl-colwidths="[25,15,60]"}
+
+{{< pagebreak >}}
+
+Her er en oversigt over de filer der er inkluderet i `reproduktion.zip`.
+
+| `Filanvn` / `Service` | Ophav | Beskrivelse |
+| :------- | :------- | :----------|
+| `ValgData.csv` | @danmarksstatistik2024 | Hentet fra Danmarks Statistiks valgdatabase, hvor alle kommunalvalg efter strukturreformen i 2007 [@kommunalreformen2007] er udvalgt med baggrundsinformationer for valgstederne. |
+| `vind.xlsx` | @energistyrelsen2024 | Beskrivelse |
+| `Geografi.csv` | @danmarksstatistik2024 | Hentet fra Danmarks Statistiks valgdatabase, hvor alle kommunalvalg efter strukturreformen i 2007 [@kommunalreformen2007] er udvalgt med baggrundsinformationer for valgstederne. |
+| `DAWA` | @apidawa2024 | Danmarks Adressers Web API. Afstemningsområde reverse geocoding er benyttet til at indplacere vindmøller fra `vind.xlsx` på afstemningssteder. |
+
+: Dataoprindelse {#tbl-reproduktion-filer tbl-colwidths="[20,30,50]"}
+
+{{< pagebreak >}}
