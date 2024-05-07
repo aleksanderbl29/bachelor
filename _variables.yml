@@ -2,5 +2,6 @@
 font: Tahoma
 
 ## 12pt er det samme som 16px
-fontsize: 12pt
-mermaid_fontsize: 16px
+fontsize: 11pt
+# mermaid_fontsize: 16px
+mermaid_fontsize: 14.66pt
