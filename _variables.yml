@@ -1,6 +1,6 @@
 ---
 font: Tahoma
 
-## 12pt er det samme som 12px
+## 12pt er det samme som 16px
 fontsize: 12pt
 mermaid_fontsize: 16px
