@@ -103,6 +103,14 @@ Dagsorden:
 - RÅD:
 	- Skriv ud hvad variablen skal gøre og opfyld det trin for trin
 
+## Fjerde vejledning
+Dagsorden:
+- Status
+	- For at løse borgmesterproblemet tog jeg mig sammen og skrev en kodebog for de variable jeg havde og dem jeg ville have skabt ekstra.
+- Spørgsmål siden sidst:
+	- Jeg har brugt [DAWA](https://dawadocs.dataforsyningen.dk/dok/api/afstemningsomr%C3%A5de#) - Hvordan henviser jeg til den?
+	- Inkludere kodebog?
+
 ## Generelle spørgsmål
 Format og formalia:
 - Abstract
