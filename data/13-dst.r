@@ -17,6 +17,16 @@ kommunalvalg <- valg %>% arrange(ymd(valg$valg_dato))
 rm(valg)
 head(kommunalvalg)
 
+
+exists("geografi")
+## Skaber df med kommuneid og navn
+kommuner <- geografi %>% 
+  select(kommunenavn, kommunenr, valgsted_id) %>% 
+  distinct(kommunenavn, kommunenr) %>% 
+  arrange(kommunenavn)
+
+rm(geografi)
+
 gem_kolonner <- c("gruppe", "valgsted_id", "kreds_nr", "storkreds_nr", "landsdel_nr")
 
 ## Sammenlægger valg til tidy data
