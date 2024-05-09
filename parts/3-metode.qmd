@@ -20,3 +20,12 @@ Jeg har valgt at tildele stjener som følger:
 ```{r}
 sign_stjerner
 ```
+
+## Fordeling af vindmøller
+
+```{r}
+#| file: data/30-plots.r
+
+treatment_rollout_map_baggrund
+
+```
