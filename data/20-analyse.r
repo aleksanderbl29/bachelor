@@ -1,4 +1,7 @@
-source_pakker <- TRUE
+library(tidyverse)
+library(testthat)
+
+source_pakker <- FALSE
 
 
 if (exists("source_pakker")) {
