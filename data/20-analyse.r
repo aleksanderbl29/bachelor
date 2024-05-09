@@ -1,17 +1,11 @@
 library(tidyverse)
 library(testthat)
 
-source_pakker <- FALSE
+installer_pakker <- FALSE
 
-
-if (exists("source_pakker")) {
-  if (source_pakker == TRUE) {
-    source("data/00-pakker.r")
-  } else {
-    print("Pakker indlæses ikke")
-  }} else {
-  print("Alle pakker er indlæst")
-  }
+if (installer_pakker == TRUE) {
+  source("data/00-pakker.r")
+}
 
 if (exists("analyse_data")) {
   print("Data allerede indlæst")
