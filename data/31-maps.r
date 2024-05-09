@@ -1,4 +1,8 @@
 
+source("data/12-load-data.r")
+source("data/13-dst.r")
+# Here I define the url to get data from DAWA/DAGI for landsdele. I define that the format should be geojson
+
 hent_geodata_afstemningssteder_fra_api <- FALSE
 
 if (hent_geodata_afstemningssteder_fra_api == TRUE) {
