@@ -34,4 +34,4 @@ source("data/21-ols.r")
 source("data/22-fixedeffects.r")
 
 ## Indlæser test fil
-source("data/88-leg-med-regres.r")
+# source("data/88-leg-med-regres.r")
