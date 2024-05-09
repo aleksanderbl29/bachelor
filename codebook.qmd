@@ -1,6 +1,6 @@
 ---
-title: Kodebog
-subtitle: Bachelorprojekt om vindmøller og retrospektiv vælgeradfærd
+# title: Kodebog
+# subtitle: Bachelorprojekt om vindmøller og retrospektiv vælgeradfærd
 date: ""
 format:
   pdf:
