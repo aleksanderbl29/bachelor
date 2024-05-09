@@ -7,7 +7,11 @@ sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
 ############# Forbered miljø #############
 ##########################################
 
-source("data/00-pakker.r")
+installer_pakker <- FALSE
+
+if (installer_pakker == TRUE) {
+  source("data/00-pakker.r")
+}
 
 ## Konfiguration af kørsel
 # Skabelse af dataset fra DAWA api-kald
