@@ -1,8 +1,9 @@
+library(tidyverse)
 ## Set defualt pakke repo
 options(repos = c(CRAN = "https://cloud.r-project.org"))
 
 ## Her er liste over alle de pakker der skal bruges for at reproducere dette arbejde
-pakkeliste <- c(
+pakkeliste_pakker <- c(
   "tidyverse",
   "httr",
   "jsonlite",
@@ -14,36 +15,44 @@ pakkeliste <- c(
   "gt",
   "kableExtra",
   "knitr",
-  "rmarkdown"
-)
-
-## Derudover er der brugt enkelte funktioner fra disse pakker
-enkelt_pakker <- c(
+  "rmarkdown",
+  "sf",
   "haven",
   "naniar"
 )
 
-## Installerer disse pakker men indlæser ikke
-install.packages(enkelt_pakker, dependencies = TRUE, quiet = TRUE)
+## Finder de brugte versioner
+pakkeliste_versioner <- c(
+  "2.0.0",
+  "1.4.7",
+  "1.8.8",
+  "1.4.3",
+  "3.2.1.1",
+  "1.0.1",
+  "2.0.0",
+  "0.12.0",
+  "0.10.1",
+  "1.4.0",
+  "1.46",
+  "2.26",
+  "1.0-16",
+  "2.5.4",
+  "1.1.0"
+)
 
-## Tjekker om alle pakker fra liste er i de installerede pakker
-mangler_pakker <- pakkeliste[!(pakkeliste %in% installed.packages()[,"Package"])]
+install.packages(pakkeliste_pakker)
 
-## Installerer pakker hvis de mangler
-if (length(mangler_pakker) > 0) {
-  install.packages(mangler_pakker, dependencies = TRUE)
-}
-
-## Indlæser alle pakker
-for (pakke.i in pakkeliste) {
-  suppressPackageStartupMessages(
-    library(
-      pakke.i,
-      character.only = TRUE
-      )
-  )
-}
-
+# 
+# pakkeliste <- tibble(pakkeliste_pakker, pakkeliste_versioner) |> rename(pakke = pakkeliste_pakker,
+#                                                                          version = pakkeliste_versioner)
+# 
+# for (i in nrow(pakkeliste)) {
+#   package <- pakkeliste$pakke[i]
+#   version <- pakkeliste$version[i]
+#   if (!(package %in% installed.packages())) {
+#     install.packages(package, repos = paste0("https://cran.r-project.org/src/contrib/Archive/", package, "/"), version = version)
+#   }
+# }
 
 ## Dropper midlertidig variabel
-rm(pakkeliste, mangler_pakker, pakke.i, enkelt_pakker)
+rm(i, package, pakkeliste_c, version, installerede_pakker, pakkeliste)
