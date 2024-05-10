@@ -15,6 +15,9 @@ m3 <- feols(red ~ ny_tilsluttet | valgsted_id + valg,
 m4 <- feols(blue ~ ny_tilsluttet | valgsted_id + valg,
             data = analyse_data)
 
+feols(red ~ i(valg, ref = "KV2001"), data)
+
+
 m5_data <- analyse_data %>%
   group_by(valgsted_id) %>%
   mutate(ny_tilsluttet_within = ny_tilsluttet - mean(ny_tilsluttet),
