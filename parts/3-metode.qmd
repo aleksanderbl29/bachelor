@@ -25,7 +25,18 @@ sign_stjerner
 
 ```{r}
 #| file: data/30-plots.r
+#| error: false
+#| cache: true
+#| warning: false
+#| output: false
+
+```
+
+
+```{r}
+#| fig-cap: Stemmesteder med ny vindmølle op til valg
 
 treatment_rollout_map_baggrund
 
 ```
+
