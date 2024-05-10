@@ -32,3 +32,4 @@ if (hent_geodata_afstemningssteder_fra_api == TRUE) {
 
 rm(url, hent_geodata_afstemningssteder_fra_api)
   
+  scale_fill_manual(values = wes_palette("Rushmore1")) +
