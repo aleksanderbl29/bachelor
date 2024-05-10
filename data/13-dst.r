@@ -11,7 +11,7 @@ kommunalvalg <- import_valg %>%
   select(Valgdag, ValgId) %>%
   rename(valg_dato = Valgdag,
          valg_id = ValgId) %>%
-  mutate(valg_dato = ymd(valg_dato)) %>% 
+  mutate(valg_dato = ymd(valg_dato)) %>%
   arrange(ymd(valg_dato))
 
 write_rds(kommunalvalg, "data/rep_data/kommunalvalg.rds")
@@ -19,11 +19,14 @@ head(kommunalvalg)
 rm(import_valg, kommunalvalg)
 
 ## Skaber df med kommuneid og navn
-kommuner <- geografi %>% 
-  select(kommunenavn, kommunenr, valgsted_id) %>% 
-  distinct(kommunenavn, kommunenr) %>% 
+exists("geografi")
+
+kommuner <- geografi %>%
+  select(kommunenavn, kommunenr, valgsted_id) %>%
+  distinct(kommunenavn, kommunenr) %>%
   arrange(kommunenavn)
 
+write_rds(geografi, "data/rep_data/geografi.rds")
 rm(geografi)
 
 gem_kolonner <- c("gruppe", "valgsted_id", "kreds_nr", "storkreds_nr", "landsdel_nr")
