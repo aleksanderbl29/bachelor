@@ -18,6 +18,9 @@ m4 <- feols(blue ~ ny_tilsluttet | valgsted_id + valg,
 feols(red ~ i(valg, ref = "KV2001"), data)
 
 
+bacon(red_pct ~ ny_tilsluttet, analyse_data, "valgsted_id", "valg")
+
+
 m5_data <- analyse_data %>%
   group_by(valgsted_id) %>%
   mutate(ny_tilsluttet_within = ny_tilsluttet - mean(ny_tilsluttet),
