@@ -8,12 +8,6 @@
 #
 #
 #
-#| tbl-cap: "Regressionstabel med gt pakken"
-#| label: tbl-reg-1
-library(tidyverse)
-library(gt)
-print("HER MANGLER VIDST NOGET")
-# gt_reg_tbl |> opt_stylize(style = 1, color = "pink", add_row_striping = TRUE) %>% tab_source_note("Data er egen tilvirkning, DST og ENS") %>% tab_footnote("Her er en fodnote") # %>% gt::as_latex()
 #
 #
 #
@@ -24,17 +18,38 @@ print("HER MANGLER VIDST NOGET")
 #
 #
 #
+sign_stjerner
 #
 #
 #
 #
-#| tbl-cap: "Regressionstabel med gt pakken"
-#| label: tbl-reg-html
-library(tidyverse)
-print("HER MANGLER VIDST OGSÅ NOGET")
-# gt_reg_tbl %>% opt_stylize(style = 1, color = "pink", add_row_striping = TRUE) %>% tab_source_note(source_note = md("Data er egen tilvirkning, *DST* og *ENS*")) %>% gt::as_raw_html()
+#
+#| file: data/30-plots.r
+#| error: false
+#| cache: true
+#| warning: false
+#| output: false
+
 #
 #
+#
+#
+#| fig-cap: Stemmesteder med ny vindmølle op til valg
+
+treatment_rollout_map_baggrund
+
+#
+#
+#
+#
+#| fig-cap: Manuel graf med stemmesteder
+
+ggplot() +
+  geom_sf(data = vind_afstemningssteder_geodata, alpha=0.1, linewidth = 0.01) +
+  geom_sf(data = f_rollout_vind_stemmesteder, mapping = aes(fill = valg), linewidth = 0) +
+  theme_minimal() +
+  theme(legend.position = "right")
+
 #
 #
 #
