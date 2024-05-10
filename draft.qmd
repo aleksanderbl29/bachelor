@@ -1,0 +1,30 @@
+---
+author: ""
+---
+## Grafer
+
+```{r}
+#| echo: true
+source_pakker <- TRUE
+sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
+```
+
+```{r}
+#| file: data/30-plots.r
+source("data/30-plots.r")
+print("henter data")
+```
+
+```{r}
+print("Hej her er en print statement")
+library(wesanderson)
+
+ggplot() +
+  geom_sf(data = vind_afstemningssteder_geodata, fill = "white", color = "lightgrey", linewidth = 0.1) +
+  geom_sf(data = f_rollout_vind_stemmesteder, mapping = aes(fill = valg), linewidth = 0.00001) +
+  theme_map() +
+  scale_fill_manual(values = wes_palette("Rushmore1")) +
+  theme(legend.position = "right")
+
+```
+
