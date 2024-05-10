@@ -5,6 +5,7 @@ options(repos = c(CRAN = "https://cloud.r-project.org"))
 ## Her er liste over alle de pakker der skal bruges for at reproducere dette arbejde
 pakkeliste_pakker <- c(
   "tidyverse",
+  "ggthemes",
   "httr",
   "jsonlite",
   "readxl",
