@@ -7,18 +7,17 @@ exists("import_valg")
 exists("import_stemmer")
 
 # Formaterer variable
-valg <- import_valg %>%
+kommunalvalg <- import_valg %>%
   select(Valgdag, ValgId) %>%
   rename(valg_dato = Valgdag,
          valg_id = ValgId) %>%
-  mutate(valg_dato = ymd(valg_dato))
+  mutate(valg_dato = ymd(valg_dato)) %>% 
+  arrange(ymd(valg_dato))
 
-kommunalvalg <- valg %>% arrange(ymd(valg$valg_dato))
-rm(valg)
+write_rds(kommunalvalg, "rep_data/kommunalvalg.rds")
 head(kommunalvalg)
+rm(import_valg, kommunalvalg)
 
-
-exists("geografi")
 ## Skaber df med kommuneid og navn
 kommuner <- geografi %>% 
   select(kommunenavn, kommunenr, valgsted_id) %>% 
