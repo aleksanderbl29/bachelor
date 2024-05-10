@@ -1011,3 +1011,6 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+## Mappe til replikationsdata
+data/rep_data/
