@@ -1,6 +1,8 @@
+library(tidyverse)
+library(ggthemes)
+library(wesanderson)
+library(sf)
 
-source("data/12-load-data.r")
-source("data/13-dst.r")
 # Here I define the url to get data from DAWA/DAGI for landsdele. I define that the format should be geojson
 ## Henter stemmesteder der har vindmøller
 vind_stemmesteder <- read_csv("data/downloads/mine_data/vind_steder.csv") %>%
