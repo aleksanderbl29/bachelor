@@ -94,3 +94,10 @@ lang_gruppe_steder <- lang_alle_stemmer %>%
          blue_pct = blue / stemmer)
 
 # datasummary_crosstab(data = alle_stemmer, formula = valg~partinavn)
+
+## Ryd op i midlertidige variable
+rm(alle_stemmer,
+   stemmer,
+   lang_alle_stemmer)
+
+rm(alle_nrow)
