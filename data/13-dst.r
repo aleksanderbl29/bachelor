@@ -28,7 +28,7 @@ rm(geografi)
 
 gem_kolonner <- c("gruppe", "valgsted_id", "kreds_nr", "storkreds_nr", "landsdel_nr")
 
-## Sammenlægger valg til tidy data
+## Sammenlægger stemmer til tidy data
 stemmer <- import_stemmer %>%
   select(!ends_with(c("Afgivne stemmer", "Andre ugyldige stemmer", "Blanke stemmer"))) %>%
   rename(gruppe = Gruppe,
@@ -40,7 +40,7 @@ stemmer <- import_stemmer %>%
   mutate(across(!c("valgsted_id"), ~ str_replace_all(., ",", "."))) %>%
   mutate(across(!c("valgsted_id"), as.double))
 
-rm(import_stemmer, import_valg)
+rm(import_stemmer)
 
 head(stemmer, 2)
 
