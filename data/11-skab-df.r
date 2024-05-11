@@ -93,6 +93,7 @@ vind_steder <- vind_steder %>%
   filter(!afssted == "sample data")
 
 loop_tid <- sluttid - starttid
+write_rds(loop_tid, "data/rep_data/11_loop_tid.rds")
 print(loop_tid)
 print(paste("Det tog", round(loop_tid, 2), "minutter at hente data"))
 
@@ -106,7 +107,7 @@ vind_steder <- vind_steder %>%
 
 head(vind_steder)
 write_excel_csv(vind_steder, "data/downloads/mine_data/vind_steder.csv")
-write_rds(vind_steder, "data/downloads/rep_data/vind_steder.rds")
+write_rds(vind_steder, "data/rep_data/vind_steder.rds")
 
 ## Fjern objekter der ikke skal bruges videre
 rm(loop_tid, sluttid, starttid, vind, vind_steder,
