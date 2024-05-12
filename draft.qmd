@@ -23,9 +23,18 @@ sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
 ```
 
 ```{r}
-#| file: data/30-plots.r
-source("data/30-plots.r")
-print("henter data")
+# source("data/30-plots.r")
+# print("henter data")
+```
+
+```{r hent-kort}
+source("data/31-maps.r")
+```
+
+```{r hent-data}
+## Henter data
+rollout_vind_stemmesteder <- read_rds("data/rep_data/31_rollout_stemmesteder.rds")
+vind_afstemningssteder_geodata <- read_rds("data/rep_data/31_vind_afstemningssteder_geodata.rds")
 ```
 
 {{< pagebreak >}}
