@@ -37,5 +37,8 @@ source("data/17-var-labels.r")
 ## Rydder op i data og gør df brugbare
 source("data/18-data-cleanup.r")
 
+## Gemmer data i produktionsfiler
+source("data/19-analyse-prep.r")
+
 ## Dropper midlertidige variable
 rm(api_call_enable)
