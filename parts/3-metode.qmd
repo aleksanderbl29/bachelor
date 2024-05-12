@@ -32,11 +32,18 @@ sign_stjerner
 
 ```
 
+::: {#fig-vindmølle-2 fig-cap="" fig-cap-location="top"}
 
-```{r}
-#| fig-cap: Stemmesteder med ny vindmølle op til valg
+![](output/billeder/valgsteder-map-1.png)
 
-treatment_rollout_map_baggrund
+\raggedright
 
-```
+Note: Stemmesteder fordelt på valgår. Hvert stemmested fremgår kun en gang.
 
+Kilde: Egen tilvirkning, @apidawa2024 og @danmarksstatistik2024
+
+\centering
+
+Afstemningssteder der har fået vindmølle i valgperiode
+
+:::
