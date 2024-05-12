@@ -28,16 +28,26 @@ source("data/30-plots.r")
 print("henter data")
 ```
 
-```{r}
-print("Hej her er en print statement")
-library(wesanderson)
+{{< pagebreak >}}
 
-ggplot() +
-  geom_sf(data = vind_afstemningssteder_geodata, fill = "white", color = "lightgrey", linewidth = 0.1) +
-  geom_sf(data = f_rollout_vind_stemmesteder, mapping = aes(fill = valg), linewidth = 0.00001) +
-  theme_map() +
-  scale_fill_manual(values = wes_palette("Rushmore1")) +
-  theme(legend.position = "right")
+![Afstemningssteder der har fået vindmølle i valgperiode](output/billeder/valgsteder-map-1.png){fig-alt="Stemmesteder fordelt på valgår. Hvert stemmested fremgår kun en gang."}
 
-```
+{{< pagebreak >}}
 
+::: {#fig-vindmølle-2 fig-cap="" fig-cap-location="top"}
+
+![](output/billeder/valgsteder-map-1.png)
+
+\raggedright
+
+Note: Stemmesteder fordelt på valgår. Hvert stemmested fremgår kun en gang.
+
+Kilde: Egen tilvirkning, @apidawa2024 og @danmarksstatistik2024
+
+\centering
+
+Afstemningssteder der har fået vindmølle i valgperiode
+
+:::
+
+{{< pagebreak >}}
