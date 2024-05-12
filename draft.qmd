@@ -1,10 +1,23 @@
 ---
 author: ""
+format:
+  pdf:
+    toc: false
+    lof: false
+    lot: false
 ---
-## Grafer
 
-```{r}
+# Grafer
+
+```{r setup-env}
 #| echo: true
+library(tidyverse)
+library(ggthemes)
+library(wesanderson)
+library(Manu)
+library(sf)
+library(cowplot)
+
 source_pakker <- TRUE
 sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
 ```
