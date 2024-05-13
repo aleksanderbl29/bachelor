@@ -28,7 +28,7 @@ head(kommunalvalg)
 rm(import_valg, kommunalvalg)
 
 ## Skaber df med kommuneid og navn
-exists("geografi")
+expect_true(exists("geografi"))
 
 kommuner <- geografi %>%
   select(kommunenavn, kommunenr, valgsted_id) %>%
