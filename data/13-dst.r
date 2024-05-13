@@ -33,9 +33,16 @@ expect_true(exists("geografi"))
 kommuner <- geografi %>%
   select(kommunenavn, kommunenr, valgsted_id) %>%
   distinct(kommunenavn, kommunenr) %>%
+  mutate(kommunenavn = case_when(kommunenavn == "Århus" ~ "Aarhus",
+                                 kommunenavn == "Brønderslev-Dronninglund" ~ "Brønderslev",
+                                 kommunenavn == "Frederiksværk-Hundested" ~ "Halsnæs",
+                                 kommunenavn == "Lyngby-Tårbæk" ~ "Lyngby-Taarbæk",
+                                 kommunenavn == "Vesthimmerlands" ~ "Vesthimmerland",
+                                 .default = kommunenavn)) %>% 
   arrange(kommunenavn)
 
-write_rds(geografi, "data/rep_data/geografi.rds")
+write_rds(kommuner, "data/rep_data/13_kommuner.rds")
+write_rds(geografi, "data/rep_data/13_geografi.rds")
 rm(geografi)
 
 gem_kolonner <- c("gruppe", "valgsted_id", "kreds_nr", "storkreds_nr", "landsdel_nr")
