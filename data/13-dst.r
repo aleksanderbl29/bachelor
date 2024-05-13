@@ -112,11 +112,9 @@ lang_gruppe_steder <- lang_alle_stemmer %>%
   mutate(red_pct = red / stemmer,
          blue_pct = blue / stemmer)
 
-# datasummary_crosstab(data = alle_stemmer, formula = valg~partinavn)
+## Gemmer lang_gruppe_steder til videre brug
+write_rds(lang_gruppe_steder, "data/rep_data/13_lang_gruppe_steder.rds")
 
-## Ryd op i midlertidige variable
-rm(alle_stemmer,
-   stemmer,
-   lang_alle_stemmer)
 
-rm(alle_nrow)
+## Rydder miljøet
+rm(list = ls())
