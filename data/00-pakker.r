@@ -19,7 +19,8 @@ pakkeliste_pakker <- c(
   "rmarkdown",
   "sf",
   "haven",
-  "naniar"
+  "naniar",
+  "logger"
 )
 
 ## Finder de brugte versioner
@@ -38,7 +39,8 @@ pakkeliste_versioner <- c(
   "2.26",
   "1.0-16",
   "2.5.4",
-  "1.1.0"
+  "1.1.0",
+  "0.3.0"
 )
 
 install.packages(pakkeliste_pakker)
@@ -56,4 +58,4 @@ install.packages(pakkeliste_pakker)
 # }
 
 ## Dropper midlertidig variabel
-rm(i, package, pakkeliste_c, version, installerede_pakker, pakkeliste)
+rm(list = ls())
