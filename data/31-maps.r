@@ -114,7 +114,9 @@ vind_stemmesteder <- vind_stemmesteder %>%
                           tilslutningsdato >= kommunalvalg_fra_09$valg_dato[2] & tilslutningsdato < kommunalvalg_fra_09$valg_dato[3] ~ "KV2017",
                           tilslutningsdato >= kommunalvalg_fra_09$valg_dato[3] & tilslutningsdato < kommunalvalg_fra_09$valg_dato[4] ~ "KV2021")) %>%
   drop_na(valg) %>%
-  arrange(year)
+  arrange(year) %>% 
+  mutate(valgaar = substr(valg, 3, 6))
+  
 
 f_rollout_vind_stemmesteder <- vind_afstemningssteder_geodata %>%
   st_join(vind_stemmesteder,join = st_contains) %>%
