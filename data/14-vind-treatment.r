@@ -112,6 +112,16 @@ analyse_data <- lang_gruppe_steder %>%
   select(!c("stemmeberettigede", "S", "mll_num", "x_koord", "y_koord", "afssted",
             "tilslutningsdato"))
 
+unikke_obs <- analyse_data %>%
+  distinct(across(c("valg", "valgsted_id")))
+
+unik_analyse_data <- analyse_data %>%
+  rowwise() %>%
+  mutate(kombineret = paste0(valg, valgsted_id, ny_tilsluttet)) %>%
+  distinct(kombineret)
+
+unique(unik_analyse_data$kombineret)
+
 ### https://www.statology.org/r-unique-multiple-columns/
 auto_distinct_analyse_data <- auto_distinct_analyse_data[!duplicated(
   auto_distinct_analyse_data[c("valg", "valgsted_id")]),]
