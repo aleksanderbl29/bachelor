@@ -23,21 +23,10 @@ kv2017 <- kommunalvalg$valg_dato[5]
 kv2021 <- kommunalvalg$valg_dato[6]
 
 ## Sætter en nedre grænse for, hvornår vindmøller må være sat op
-laveste_dato <- as_date(ymd("1996-01-01"))
+# laveste_dato <- as_date(ymd("1996-01-01"))
+# laveste_dato <- as_date(kv2001)
+laveste_dato <- as_date("1900-01-01")
 expect_true(exists("laveste_dato"))
-
-# vp_01_05 <- as.interval(as.period(kv2005 - kv2001), start = kv2001)
-# vp_05_09 <- as.interval(as.period(kv2009 - kv2005), start = kv2005)
-# vp_09_13 <- as.interval(as.period(kv2013 - kv2009), start = kv2009)
-# vp_13_17 <- as.interval(as.period(kv2017 - kv2013), start = kv2013)
-# vp_17_21 <- as.interval(as.period(kv2021 - kv2017), start = kv2017)
-# 
-# vp_01_05
-# vp_05_09
-# vp_09_13
-# vp_13_17
-# vp_17_21
-
 
 vind_treatment <- vind_stemmesteder %>%
   select(everything()) %>%
