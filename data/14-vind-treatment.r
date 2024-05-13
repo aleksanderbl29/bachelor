@@ -1,4 +1,11 @@
 library(tidyverse)
+library(testthat)
+
+## Indlæser vind_stemmesteder, kommunalvalg og lang_gruppe_steder
+vind_stemmesteder <- read_rds("data/rep_data/11_vind_steder.rds")
+kommunalvalg <- read_rds("data/rep_data/13_kommunalvalg.rds")
+lang_gruppe_steder <- read_rds("data/rep_data/13_lang_gruppe_steder.rds")
+
 
 ## Sikrer at de nødvendige dataframes og objekter findes
 expect_true(exists("vind_stemmesteder"))
