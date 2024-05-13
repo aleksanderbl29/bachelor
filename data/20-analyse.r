@@ -1,5 +1,6 @@
 library(tidyverse)
 library(testthat)
+library(logger)
 
 installer_pakker <- FALSE
 
@@ -8,12 +9,16 @@ if (installer_pakker == TRUE) {
 }
 
 if (exists("analyse_data")) {
-  print("Data allerede indlæst")
+  log_info("Data allerede indlæst")
 } else {
-  analyse_data <- read_csv("data/downloads/mine_data/replikation.csv")
+  analyse_data <- read_rds("data/rep_data/rep_analyse_data.rds")
 }
 
-sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
+if (!exists("sign_stjerner")) {
+  sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
+  log_info(paste("Signifikansniveau sættes med stjerner til:", "* = .1, ** = .05, *** = .01"))
+}
+
 
 antal_obs_samlet <- nrow(analyse_data)
 
