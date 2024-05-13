@@ -72,7 +72,8 @@ if (hent_geodata_afstemningssteder_fra_api == TRUE) {
 rm(hent_geodata_afstemningssteder_fra_api)
   
 ## Indlæser vind_afstemningssteder_geodata
-vind_afstemningssteder_geodata <- readRDS("data/downloads/mine_data/vind_afstemningssteder_geodata.rds")
+vind_afstemningssteder_geodata <- read_rds("data/rep_data/31_vind_afstemningssteder_geodata.rds")
+
 
 ## Sikrer der bruges samme CRS mellem de to dataset
 vind_stemmesteder <- vind_stemmesteder %>%
@@ -82,12 +83,12 @@ aarhus_afstemningssteder <- vind_afstemningssteder_geodata %>%
   filter(kommunenavn == "Aarhus") %>%
   ggplot(aes(fill = navn)) +
   geom_sf() +
-  theme_minimal() +
+  theme_map() +
   theme(legend.position = "none")
 
 bw_afstemningssteder <- ggplot(vind_afstemningssteder_geodata) +
   geom_sf() +
-  theme_minimal() +
+  theme_map() +
   labs(title = "Afstemningssteder i Danmark",
        caption = "Kilde: DAWA/DAGI") +
   theme(legend.position = "none",
@@ -96,8 +97,11 @@ bw_afstemningssteder <- ggplot(vind_afstemningssteder_geodata) +
 afstemningssteder <- ggplot() +
   geom_sf(data = vind_afstemningssteder_geodata) +
   geom_sf(data = vind_stemmesteder, aes(color = tilslutningsdato)) +
-  theme_minimal() +
+  theme_map() +
   theme(legend.position = "none")
+
+## Indlæser liste over kommunalvalg
+kommunalvalg <- read_rds("data/rep_data/13_kommunalvalg.rds")
 
 kommunalvalg_fra_09 <- kommunalvalg %>%
   filter(valg_dato > dmy("01-01-2008"))
