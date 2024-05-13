@@ -11,9 +11,6 @@ lang_gruppe_steder <- read_rds("data/rep_data/13_lang_gruppe_steder.rds")
 expect_true(exists("vind_stemmesteder"))
 expect_true(exists("kommunalvalg"))
 
-vind_stemmesteder
-kommunalvalg
-
 ## Finder datoen for alle valg
 kv2001 <- kommunalvalg$valg_dato[1]
 kv2005 <- kommunalvalg$valg_dato[2]
@@ -85,19 +82,19 @@ nye_21 <- nrow(kv21_treatment)
 
 nye_mller <- c(nye_01, nye_05, nye_09, nye_13, nye_17, nye_21)
 
-
 auto_distinct_analyse_data <- vind_treatment %>%
   full_join(lang_gruppe_steder, by = "valgsted_id") %>%
-  mutate(ny_tilsluttet = case_when(valg == "KV2001" & kv01 == 1 ~ 1,
+  mutate(ny_tilsluttet = as.numeric(case_when(valg == "KV2001" & kv01 == 1 ~ 1,
                                   valg == "KV2005" & kv05 == 1 ~ 1,
                                   valg == "KV2009" & kv09 == 1 ~ 1,
                                   valg == "KV2013" & kv13 == 1 ~ 1,
                                   valg == "KV2017" & kv17 == 1 ~ 1,
                                   valg == "KV2021" & kv21 == 1 ~ 1,
-                                  .default = 0),
+                                  .default = 0)),
          valg = as.factor(valg))
 
 analyse_data <- lang_gruppe_steder %>%
+  # left_join(treatment, by = "valgsted_id", unmatched = "error") %>%
   left_join(treatment, by = "valgsted_id", unmatched = "drop") %>%
   mutate(ny_tilsluttet = case_when(valg == "KV2001" & kv01 == 1 ~ 1,
                                    valg == "KV2005" & kv05 == 1 ~ 1,
@@ -105,10 +102,13 @@ analyse_data <- lang_gruppe_steder %>%
                                    valg == "KV2013" & kv13 == 1 ~ 1,
                                    valg == "KV2017" & kv17 == 1 ~ 1,
                                    valg == "KV2021" & kv21 == 1 ~ 1,
-                                   .default = 0)) %>% 
-  mutate(valg = as.factor(valg)) %>% 
+                                   kv01 == 0 & kv05 == 0 & kv09 == 0 & kv13 == 0 & kv13 == 0 & kv17 == 0 & kv21 == 0 ~ 0,
+                                   .default = NA)) %>%
+  mutate(valg = as.factor(valg),
+  valgsted_id = as.factor(valgsted_id)) %>%
+  mutate(across(4:49, ~replace_na(.x, 0))) %>% 
   select(!c("1", "2", "3", "4", "5", "6", "0", "01", "02", "03", "04", "05", "06", "7",
-            "K1", "K2", "T", "W", "Æ", "Å1")) %>% 
+            "K1", "K2", "T", "W", "Æ", "Å1")) %>%
   select(!c("stemmeberettigede", "S", "mll_num", "x_koord", "y_koord", "afssted",
             "tilslutningsdato"))
 
