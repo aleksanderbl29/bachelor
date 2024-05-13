@@ -23,7 +23,7 @@ kommunalvalg <- import_valg %>%
   mutate(valg_dato = ymd(valg_dato)) %>%
   arrange(ymd(valg_dato))
 
-write_rds(kommunalvalg, "data/rep_data/kommunalvalg.rds")
+write_rds(kommunalvalg, "data/rep_data/13_kommunalvalg.rds")
 head(kommunalvalg)
 rm(import_valg, kommunalvalg)
 
