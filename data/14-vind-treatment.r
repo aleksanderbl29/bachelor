@@ -116,6 +116,10 @@ analyse_data <- lang_gruppe_steder %>%
 auto_distinct_analyse_data <- auto_distinct_analyse_data[!duplicated(
   auto_distinct_analyse_data[c("valg", "valgsted_id")]),]
 
+## Finder kommunenr til df
+analyse_data <- analyse_data %>% 
+  mutate(kommunenr = as.double(substr(valgsted_id, 1, 3)))
+
 ## Gemmer objekter
 write_rds(analyse_data, "data/rep_data/14_analyse_data.rds")
 
