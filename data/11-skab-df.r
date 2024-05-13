@@ -107,7 +107,7 @@ vind_steder <- vind_steder %>%
 
 head(vind_steder)
 write_excel_csv(vind_steder, "data/downloads/mine_data/vind_steder.csv")
-write_rds(vind_steder, "data/rep_data/vind_steder.rds")
+write_rds(vind_steder, "data/rep_data/11_vind_steder.rds")
 
 ## Fjern objekter der ikke skal bruges videre
 rm(loop_tid, sluttid, starttid, vind, vind_steder,
