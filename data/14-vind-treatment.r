@@ -39,6 +39,9 @@ vind_treatment <- vind_stemmesteder %>%
          kv21 = if_else(tilslutningsdato > kv2017 & tilslutningsdato <= kv2021, 1, 0))
 colnames(vind_treatment)
 
+## Fjerner midlertidige variable
+rm(kv2001, kv2005, kv2009, kv2013, kv2017, kv2021)
+
 kv01_treatment <- vind_treatment %>%
   select(everything()) %>%
   filter(kv01 == 1) %>%
