@@ -1,10 +1,22 @@
 library(tidyverse)
+library(logger)
+library(patchwork)
 library(ggthemes)
+library(RColorBrewer)
+library(cowplot)
 library(wesanderson)
+library(Manu)
 library(sf)
+library(Hmisc)
 
 ## Indlæser objekter der skal bruges
-
+if (exists("valg_farver")) {
+  log_info("Farver er allerede indlæst")
+} else {
+  log_info("Indlæser farver....")
+  source("data/39-farver.r")
+  log_info("Farver indlæst korrekt")
+}
 
 ## Kode bygget ovenpå https://www.linkedin.com/pulse/easy-maps-denmark-r-mikkel-freltoft-krogsholm/
 # Here I define the url to get data from DAWA/DAGI for landsdele. I define that the format should be geojson
