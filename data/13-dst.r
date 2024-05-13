@@ -1,10 +1,19 @@
-# source("data/12-load-data.r")
-
 library(tidyverse)
+library(testthat)
 
-## Finder informationer fra valgoversigt
-exists("import_valg")
-exists("import_stemmer")
+## Indlæser data fra fil hvis ikke de allerede findes i miljø
+if (exists("import_valg") & exists("import_stemmer") &
+    exists("geografi") & exists("vind_stemmesteder")) {
+  print("Data er indlæst")
+} else {
+  source("data/12-load-data.r")
+}
+
+## Tjekker alle data er indlæst
+expect_true(exists("import_valg"))
+expect_true(exists("import_stemmer"))
+expect_true(exists("geografi"))
+expect_true(exists("vind_stemmesteder"))
 
 # Formaterer variable
 kommunalvalg <- import_valg %>%
