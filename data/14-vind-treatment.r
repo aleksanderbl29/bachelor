@@ -115,3 +115,27 @@ analyse_data <- lang_gruppe_steder %>%
 ### https://www.statology.org/r-unique-multiple-columns/
 auto_distinct_analyse_data <- auto_distinct_analyse_data[!duplicated(
   auto_distinct_analyse_data[c("valg", "valgsted_id")]),]
+
+## Gemmer objekter
+write_rds(analyse_data, "data/rep_data/14_analyse_data.rds")
+
+# ## Ryd op i midlertidige variable
+# rm(kv01_treatment,
+#    kv05_treatment,
+#    kv09_treatment,
+#    kv13_treatment,
+#    kv17_treatment,
+#    kv21_treatment)
+# 
+# rm(vind_treatment,
+#    vind_stemmesteder,
+#    lang_gruppe_steder,
+#    treatment,
+#    treatment_list)
+# 
+# rm(gem_kolonner)
+# 
+# rm(auto_distinct_analyse_data)
+
+## Rydder miljøet
+rm(list = ls())
