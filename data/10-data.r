@@ -1,3 +1,6 @@
+## Rydder miljø inden kørsel
+rm(list = ls())
+
 ## Forsøger at indlæse data, hvis den findes i mappen
 ## ellers skaber den data fra ny
 
@@ -32,10 +35,10 @@ source("data/15-borgmestre.r")
 source("data/16-did-prep.r")
 
 ## Give labels til variablene i analyse_data
-source("data/17-var-labels.r")
+# source("data/17-var-labels.r")
 
 ## Rydder op i data og gør df brugbare
-source("data/18-data-cleanup.r")
+# source("data/18-data-cleanup.r")
 
 ## Gemmer data i produktionsfiler
 source("data/19-analyse-prep.r")
