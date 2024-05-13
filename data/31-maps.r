@@ -27,23 +27,31 @@ url <- "https://api.dataforsyningen.dk/afstemningsomraader?format=geojson"
 vind_stemmesteder <- read_csv("data/downloads/mine_data/vind_steder.csv") %>%
   st_as_sf(coords = c("x_koord", "y_koord"), crs = 25832)
 
-## Forhøjer timeout
-getOption("timeout")
-options(timeout = 600)
-
-hent_geodata_afstemningssteder_fra_api <- FALSE
+## Indsætter default værdi. Henter ikke afstemningssteder fra API. Kan overskrives i miljøet
+if (!exists("hent_geodata_afstemningssteder_fra_api")) {
+  hent_geodata_afstemningssteder_fra_api <- FALSE
+}
 
 if (hent_geodata_afstemningssteder_fra_api == TRUE) {
-
+  ## Forhøjer timeout
+  log_info(paste("Timeout er på", getOption("timeout")))
+  log_info("Ændrer timeout til 600")
+  options(timeout = 600)
+  
+  ## Gemmer URL til API-kald
+  url <- "https://api.dataforsyningen.dk/afstemningsomraader?format=geojson"
+  
   # Henter geojson til tempfile
   geofile_afstemningssteder <- tempfile()
   
+  log_info("Starter download af geoJSON")
   starttid <- Sys.time()
   download.file(url, geofile_afstemningssteder)
   sluttid <- Sys.time()
+  log_info("GeoJSON downloadet")
   
   download_tid <- sluttid - starttid
-  print(download_tid)
+  log_info(paste("Det tog", download_tid, "minutter at downloade"))
   
   # Læser datafilen ind i R
   geodata_afstemningssteder <- st_read(geofile_afstemningssteder)
@@ -51,10 +59,17 @@ if (hent_geodata_afstemningssteder_fra_api == TRUE) {
   vind_afstemningssteder_geodata <- st_as_sf(geodata_afstemningssteder)
   
   ## Gemmer vind_afstemningssteder_geodata til disk
-  write_rds(vind_afstemningssteder_geodata, "data/downloads/mine_data/vind_afstemningssteder_geodata.rds")
+  write_rds(vind_afstemningssteder_geodata, "data/rep_data/31_vind_afstemningssteder_geodata.rds")
+  
+  ## Nulstiller timeout
+  log_info(paste0("Timeout er ", getOption("timeout")))
+  options(timeout = 60)
+  log_info(paste("Timeout er nulstillet og er nu", getOption("timeout")))
+  
+  rm(url)
 }
 
-rm(url, hent_geodata_afstemningssteder_fra_api)
+rm(hent_geodata_afstemningssteder_fra_api)
   
 ## Indlæser vind_afstemningssteder_geodata
 vind_afstemningssteder_geodata <- readRDS("data/downloads/mine_data/vind_afstemningssteder_geodata.rds")
