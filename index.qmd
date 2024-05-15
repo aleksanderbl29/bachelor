@@ -78,3 +78,5 @@ print("analyse er loaded")
 # Appendiks: Kodebog {.appendix}
 
 {{< include codebook.qmd >}}
+
+{{< include appendiks-code-eks.qmd >}}
