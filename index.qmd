@@ -5,6 +5,7 @@ format:
     template-partials:
       - "format/tex/before-body.tex"
       - "format/tex/_titlepage.tex"
+cap-location: top
 ---
 
 ```{r opsætning}
