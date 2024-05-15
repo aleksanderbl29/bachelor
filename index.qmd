@@ -7,13 +7,13 @@ format:
       - "format/tex/_titlepage.tex"
 ---
 
-```{r}
+```{r opsætning}
 #| echo: true
 source_pakker <- TRUE
 sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
 ```
 
-```{r}
+```{r indlæs-analyse}
 #| file: data/20-analyse.r
 #| cache: true
 print("analyse er loaded")
