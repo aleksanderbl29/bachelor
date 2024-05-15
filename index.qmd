@@ -45,21 +45,6 @@ print("analyse er loaded")
 
 {{< pagebreak >}}
 
-```{r}
-#| fig-cap: Manuel (i index) graf med stemmesteder
-library(tidyverse)
-library(ggthemes)
-
-ggplot() +
-  geom_sf(data = vind_afstemningssteder_geodata, fill = "white", color = "lightgrey", linewidth = 0.1) +
-  geom_sf(data = f_rollout_vind_stemmesteder, mapping = aes(fill = valg), linewidth = 0.00001) +
-  theme_map() +
-  theme(legend.position = "right")
-
-```
-
-{{< pagebreak >}}
-
 # Analyse
 
 {{< include parts/4-analyse.qmd >}}
