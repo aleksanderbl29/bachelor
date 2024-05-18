@@ -1,0 +1,6 @@
+
+```{r}
+msummary(appendix_a_modeller, stars = sign_stjerner, output = "kableExtra", coef_omit = 4, gof_omit = "AIC|BIC", coef_rename = TRUE) %>%
+  kable_styling(full_width = TRUE, latex_options = c("repeat_header"), font_size = 10) %>%
+  column_spec(1, width = "6cm")
+```
