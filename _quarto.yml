@@ -42,7 +42,6 @@ language: format/custom-lang-da.yml
 #   Folketinget i 2023. Resultaterne viser, at vælgere har en bred forståelse
 #   af politisk repræsentation
 
-engine: knitr
 
 # Output style
 format:
