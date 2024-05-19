@@ -1014,3 +1014,6 @@ rsconnect/
 
 ## Mappe til replikationsdata
 data/rep_data/
+
+## Index filer
+index_files/
