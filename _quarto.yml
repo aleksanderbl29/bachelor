@@ -22,6 +22,9 @@ execute:
   echo: false
   warning: false
   error: false
+  output: false
+
+engine: knitr
 
 author: ""
 
