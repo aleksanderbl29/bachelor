@@ -1,17 +1,15 @@
 
+\thispagestyle{empty}
 \vfill
 \center
 
 # Abstract {.unnumbered .unlisted}
 
-
 \flushleft
 \vspace{0.5cm}
 
-
-This paper explores the electoral reactions to the construction of wind turbines in the voters vicinity.
+This paper explores the electoral reactions to wind turbine development at a polling-precinct level.
 
 Using register data of the construction of wind turbines and election results from municipal elections in the years 2009 until 2021 at the level of the voting centres, I find XXX variation.
-
 
 \vfill\vfill
