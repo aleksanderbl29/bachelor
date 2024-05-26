@@ -72,9 +72,9 @@ log_info("analyse er loaded")
 
 {{< pagebreak >}}
 
-# Resultater
+# Diskussion
 
-{{< include parts/5-resultater.qmd >}}
+{{< include parts/5-diskussion.qmd >}}
 
 {{< pagebreak >}}
 
