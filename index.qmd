@@ -1,4 +1,4 @@
-<!-- ---
+---
 author: ""
 format:
   pdf:
@@ -19,17 +19,18 @@ cap-location: top
 {{< pagebreak >}}
 
 ```{r opsætning}
-#| echo: true
+#| echo: false
 library(tidyverse)
 library(logger)
 
 source_pakker <- TRUE
-sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
-
+sign_stjerner <- c("+" = .1, "*" = .05, "**" = .01, "***" = .001)
+analyse_separate_filer <- TRUE
 ```
 
 ```{r indlæs-analyse}
 #| file: data/20-analyse.r
+#| cache: true
 
 log_info("analyse er loaded")
 
@@ -39,12 +40,6 @@ log_info("analyse er loaded")
 
 \listoffigures
 \listoftables
-
-{{< pagebreak >}}
-
-# {.unnumbered .unlisted}
-
-{{< include parts/0-abstract.qmd >}}
 
 {{< pagebreak >}}
 
@@ -100,7 +95,3 @@ log_info("analyse er loaded")
 # Appendiks: Kodebog {.appendix}
 
 {{< include codebook.qmd >}}
-
-<!-- {{< pagebreak >}}
-
-{{< include appendiks-code-eks.qmd >}} -->
