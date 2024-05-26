@@ -10,10 +10,12 @@ project:
 title: Klimapolitik, egeninteresse og retrospektiv stemmeadfærd
 subtitle: Vælgernes elektorale reaktion på vindmøller i lokalområdet
 date: 07-06-2024
-lang: da
+# lang: da
 date-format: D. MMMM YYYY
 mainfont: "{{< var font >}}"
 sansfont: "{{< var font >}}"
+mathfont: "{{< var font >}}"
+
 fontsize: "{{< var fontsize >}}"
 bibliography: ../../../Andet/Zotero/zotero.bib
 csl: csl/politica-w-ibid.csl
