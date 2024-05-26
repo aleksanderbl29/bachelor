@@ -10,7 +10,13 @@ format:
     lof: false
     lot: false
 cap-location: top
---- -->
+---
+
+# {.unnumbered .unlisted}
+
+{{< include parts/0-abstract.qmd >}}
+
+{{< pagebreak >}}
 
 ```{r opsætning}
 #| echo: true
