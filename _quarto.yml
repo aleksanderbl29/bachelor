@@ -48,25 +48,23 @@ language: format/custom-lang-da.yml
 # Output style
 format:
   pdf:
+    fig-pos: "H"
     latex-auto-install: true
     # include-after-body: format/tex/after-body.tex
-    # include-before-body: format/tex/before-body.tex
     include-in-header:
       - file: format/tex/pagenumbers.tex
       - file: format/tex/in-header.tex
-    # template-partials:
-    #   - "format/tex/before-body.tex"
-    #   - "format/tex/_titlepage.tex"
     link-citations: true
     colorlinks: false
-    keep-tex: false
+    keep-tex: true
     # documentclass: article
+    # documentclass: scrreprt
     template-partials:
       - "format/tex/before-body.tex"
       - "format/tex/_titlepage.tex"
     lof: false
     lot: false
-    toc: true
+    toc: false
     geometry:
       - top=2cm
       - bottom=4cm
@@ -75,7 +73,10 @@ format:
       - heightrounded
     linestretch: 1.5
     papersize: a4
+    # fig-width: 10
+    # fig-height: 10
     mermaid:
       theme: forest
       fontFamily: "{{< var font >}}"
       fontSize: "{{< var mermaid_fontsize >}}"
+    quarto-required: 1.4.554   # Er produceret med denne version af Quarto
