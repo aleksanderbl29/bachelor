@@ -20,7 +20,9 @@ pakkeliste_pakker <- c(
   "sf",
   "haven",
   "naniar",
-  "logger"
+  "logger",
+  "DIDmultiplegtDYN",
+  "did"
 )
 
 ## Finder de brugte versioner
@@ -40,22 +42,12 @@ pakkeliste_versioner <- c(
   "1.0-16",
   "2.5.4",
   "1.1.0",
-  "0.3.0"
+  "0.3.0",
+  "1.0.10",
+  "2.1.2"
 )
 
 install.packages(pakkeliste_pakker)
-
-# 
-# pakkeliste <- tibble(pakkeliste_pakker, pakkeliste_versioner) |> rename(pakke = pakkeliste_pakker,
-#                                                                          version = pakkeliste_versioner)
-# 
-# for (i in nrow(pakkeliste)) {
-#   package <- pakkeliste$pakke[i]
-#   version <- pakkeliste$version[i]
-#   if (!(package %in% installed.packages())) {
-#     install.packages(package, repos = paste0("https://cran.r-project.org/src/contrib/Archive/", package, "/"), version = version)
-#   }
-# }
 
 ## Dropper midlertidig variabel
 rm(list = ls())
