@@ -110,15 +110,13 @@ analyse_data <- lang_gruppe_steder %>%
                                    kv09 == 0 & kv13 == 0 & kv17 == 0 & kv21 == 0 ~ 0,
                                    .default = NA)) %>%
   mutate(valg = as.factor(valg),
-  valgsted_id = as.factor(valgsted_id)) %>%
-  mutate(across(4:49, ~replace_na(.x, 0))) %>% 
-  select(!c("1", "2", "3", "4", "5", "6", "0", "01", "02", "03", "04", "05", "06", "7",
-            "K1", "K2", "T", "W", "Æ", "Å1")) %>%
+         valgsted_id = as.factor(valgsted_id)) %>%
+  mutate(across(4:21, ~replace_na(.x, 0))) %>% 
   select(!c("stemmeberettigede", "S", "mll_num", "x_koord", "y_koord", "afssted",
             "tilslutningsdato"))
 
 unikke_obs <- analyse_data %>%
-  distinct(across(c("valg", "valgsted_id")))
+  distinct(across(c("valg", "valgsted_id")), .keep_all = TRUE)
 
 unik_analyse_data <- analyse_data %>%
   rowwise() %>%
@@ -126,6 +124,7 @@ unik_analyse_data <- analyse_data %>%
   distinct(kombineret)
 
 unique(unik_analyse_data$kombineret)
+n_distinct(unik_analyse_data$kombineret)
 
 ### https://www.statology.org/r-unique-multiple-columns/
 auto_distinct_analyse_data <- auto_distinct_analyse_data[!duplicated(
