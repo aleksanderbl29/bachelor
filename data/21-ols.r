@@ -1,29 +1,51 @@
 library(tidyverse)
 library(modelsummary)
+library(marginaleffects)
+library(fixest)
 
-ols1_data <- analyse_data %>% 
-  mutate(ny_tilsluttet = ifelse(ny_tilsluttet == 1, TRUE, FALSE))
+did_bin_data <- analyse_data %>% 
+  filter(tilslutning_aar_valg == 0 | tilslutning_aar_valg == 1)
 
-ols_1 <- lm(borgmester_stemmer ~ ny_tilsluttet,
-                      data = ols1_data)
+ols_1 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg, data = did_bin_data)
 summary(ols_1)
 
-ols2_data <- analyse_data %>% 
-  select(everything()) %>% 
-  mutate(tilslutning_aar = case_when(kv09 == 1 & valg_id == "kv09" ~ 1,
-                                     kv09 == 1 & valg_id != "kv09" ~ (valgaar - 2009) / 4,
-                                     kv13 == 1 & valg_id == "kv13" ~ 1,
-                                     kv13 == 1 & valg_id != "kv13" ~ (valgaar - 2009) / 4,
-                                     kv17 == 1 & valg_id == "kv17" ~ 1,
-                                     kv17 == 1 & valg_id != "kv17" ~ (valgaar - 2009) / 4,
-                                     kv21 == 1 & valg_id == "kv21" ~ 1,
-                                     kv21 == 1 & valg_id != "kv21" ~ (valgaar - 2009) / 4,
-                                     .default = 0))
-
-ols_2 <- lm(borgmester_stemmer ~ tilslutning_aar, data = ols2_data)
+ols_2 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg + Parti, data = did_bin_data)
 summary(ols_2)
 
-msummary(list(ols_1, ols_2), stars = sign_stjerner)
+ols_3 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg * Parti, data = did_bin_data)
+summary(ols_3)
 
-gt_reg_tbl <- msummary(modeller_tbl_1, stars = sign_stjerner, output = "gt", gof_map = c("nobs", "r.squared", "adj.r.squared", "rmse", "vcov.type", "FE: valgsted_id", "FE: valg"), coef_rename = TRUE)
-gt_reg_tbl
+ols_4 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg * blok, data = did_bin_data)
+summary(ols_4)
+
+modeller_ols_tbl_1 <- list(ols_1, ols_2, ols_3)
+
+msummary(modeller_ols_tbl_1, stars = TRUE)
+
+ols_tbl_1_gof_map <- tribble(
+  ~raw, ~clean, ~fmt,
+  "nobs", "Obs.", 0,
+  # "adj.r.squared", "R2 just.", 3,
+  # "r2.within.adjusted", "R2 within just.", 3,
+  "rmse", "RMSE", 2,
+  # "vcov.type", "Std. fejl klynge", 20,
+  "FE: valgsted_id", "FE: Valgsted", 20,
+  "FE: valg", "FE: Valg", 20
+)
+
+ols_tbl_1 <- msummary(modeller_ols_tbl_1, stars = TRUE, output = "kableExtra",
+                      gof_map = ols_tbl_1_gof_map, coef_map = c(
+                        "(Intercept)" = "Skæring",
+                        "blue_blok" = "Blå blok",
+                        "PartiVenstre" = "Venstre",
+                        "tilslutning_aar_valg:blue_blok" = "Vindmølle tilsluttet x Blå blok",
+                        "tilslutning_aar_valg:PartiVenstre" = "Vindmølle tilsluttet x Venstre"
+                      ),
+                      vcov = ~valgsted_id)
+ols_tbl_1
+
+plot_predictions(ols_3, condition = c("tilslutning_aar_valg", "Parti"))
+
+plot_slopes(ols_3, variables = "tilslutning_aar_valg", by = "Parti")
+
+
