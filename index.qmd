@@ -38,6 +38,8 @@ log_info("analyse er loaded")
 
 \tableofcontents
 
+{{< pagebreak >}}
+
 \listoffigures
 \listoftables
 
