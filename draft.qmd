@@ -10,53 +10,194 @@ format:
 # Grafer
 
 ```{r setup-env}
-#| echo: true
+#| echo: false
 library(tidyverse)
 library(ggthemes)
 library(wesanderson)
 library(Manu)
 library(sf)
 library(cowplot)
+library(modelsummary)
 
 source_pakker <- TRUE
 sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
 ```
 
+{{< pagebreak >}}
+
 ```{r}
-# source("data/30-plots.r")
-# print("henter data")
+#| output: asis
+source("data/43-objekt.r")
+tbl_vindmølle_parti <- tbl_vindmølle_parti %>%
+  filter(row_number() %in% c(1, 2, 3, 4, 5)) %>%
+  add_row(parti = "Socialistisk Folkeparti, Alternativet & Dansk Folkeparti", pct_vind = "0.0%", vind = 0, aar_2009 = 0, aar_2013 = 0, aar_2017 = 0, aar_2021 = 0)
+kbl(tbl_vindmølle_parti, booktabs = TRUE, col.names = c("Parti", "Andel", "Antal", "2009", "2013", "2017", "2021"), align = "lcccccc") %>%
+  kable_styling(full_width = TRUE, font_size = 11) %>%
+  column_spec(1, width = "6cm") %>%
+  add_header_above(c(" " = 1, "Total" = 2, "Valgår" = 4))
 ```
 
-```{r hent-kort}
-source("data/31-maps.r")
+```{r}
+#| output: asis
+treat_analyse_data <- analyse_data %>%
+  filter(tilslutning_bin == 1)
+datasummary_crosstab(Parti~valgaar, statistic = 1 ~ 1 + Percent("col"), data = treat_analyse_data, output = "kableExtra")   # %>%
+  # collapse_rows(latex_hline = "linespace")
 ```
 
-```{r hent-data}
-## Henter data
-rollout_vind_stemmesteder <- read_rds("data/rep_data/31_rollout_stemmesteder.rds")
-vind_afstemningssteder_geodata <- read_rds("data/rep_data/31_vind_afstemningssteder_geodata.rds")
-```
 
 {{< pagebreak >}}
 
-![Afstemningssteder der har fået vindmølle i valgperiode](output/billeder/valgsteder-map-1.png){fig-alt="Stemmesteder fordelt på valgår. Hvert stemmested fremgår kun en gang."}
+```{r}
+source("data/20-analyse.r")
+```
+
+```{r}
+#| label: tbl-borgmester-interaktion
+#| tbl-cap: Sammenhæng mellem opsætning af vindmølle og borgmesterpartiets stemmeandel
+msummary(borgmester_parti_modeller, stars = sign_stjerner, output = "kableExtra", coef_omit = 7:8, gof_omit = "AIC|BIC", coef_rename = TRUE) %>%
+  kable_styling(full_width = TRUE, latex_options = c("repeat_header"), font_size = 10) %>%
+  column_spec(1, width = "6cm")
+```
+
+Som vi kan se af @tbl-borgmester-interaktion vil en socialdemokratisk borgmester (referencekategorien) opleve en fremgang i stemmerne ved næste valg på `r fe_m6$coeftable$Estimate[1]`
+
+```{r}
+library(modelsummary)
+# datasummary_balance(Parti ~ tilslutning_bin, data = analyse_data)
+table(analyse_data$tilslutning_bin, analyse_data$Parti)
+```
+
+
+
+
+
 
 {{< pagebreak >}}
 
-::: {#fig-vindmølle-2 fig-cap="" fig-cap-location="top"}
 
-![](output/billeder/valgsteder-map-1.png)
 
-\raggedright
+```{r}
+#| output: false
+pt_analyse_data <- analyse_data %>%
+  select(!time) %>%
+  mutate(gname1 = ifelse(tilslutning_bin == 1, valgaar, 0),
+         gname2 = ifelse(is.na(tilslutning_treat), NA, valgaar),
+         idname = as.numeric(valgsted_id)) %>%
+  mutate(forbogstav = substr(kommunenavn, 1,1))
 
-Note: Stemmesteder fordelt på valgår. Hvert stemmested fremgår kun en gang.
+bogstaver <- c(LETTERS, "Æ")
 
-Kilde: Egen tilvirkning, @apidawa2024 og @danmarksstatistik2024
+# Loop over each letter in bogstaver
+for (letter in bogstaver) {
+  # Subset the dataframe where 'forbogstav' matches the current letter
+  bogstav_analyse_data <- pt_analyse_data %>%
+    filter(forbogstav == letter)
 
-\centering
+  # Check if the subset is not empty
+  if (nrow(bogstav_analyse_data) > 0) {
+    # Create the plot
+    p <- bogstav_analyse_data %>%
+      ggplot(aes(x = valgaar, y = borgmester_stemmer_pct, color = tilsluttet_i)) +
+      geom_point() +
+      geom_line() +
+      theme(legend.position = "none") +
+      labs(title = paste("Parallele trends for kommuner med forbogstav", letter)) +
+      facet_wrap(~kommunenavn, ncol = 3)
 
-Afstemningssteder der har fået vindmølle i valgperiode
+    # Print the plot
+    print(p)
+  }
+}
 
-:::
+```
 
-{{< pagebreak >}}
+```{r}
+#| output: false
+#| fig-height: 3
+#| fig-width: 5
+#| eval: false
+pt_analyse_data <- analyse_data %>%
+  select(!time) %>%
+  mutate(gname1 = ifelse(tilslutning_bin == 1, valgaar, 0),
+         gname2 = ifelse(is.na(tilslutning_treat), NA, valgaar),
+         idname = as.numeric(valgsted_id)) %>%
+  mutate(forbogstav = substr(kommunenavn, 1,1))
+
+bogstaver <- c(LETTERS, "Æ")
+
+# Loop over each letter in bogstaver
+for (kommune in unique(pt_analyse_data$kommunenavn)) {
+  # Subset the dataframe where 'forbogstav' matches the current letter
+  bogstav_analyse_data <- pt_analyse_data %>%
+    filter(kommunenavn == kommune)
+
+  # Check if the subset is not empty
+  if (nrow(bogstav_analyse_data) > 0) {
+    # Create the plot
+    p <- bogstav_analyse_data %>%
+      ggplot() +
+      geom_point(data = analyse_data, aes(x = valgaar, y = borgmester_stemmer_pct)) +
+      geom_line(data = analyse_data, aes(x = valgaar, y = borgmester_stemmer_pct)) +
+      geom_point(data = bogstav_analyse_data, aes(x = valgaar, y = borgmester_stemmer_pct, color = tilsluttet_i, fill = valgsted_id)) +
+      geom_line(data = bogstav_analyse_data, aes(x = valgaar, y = borgmester_stemmer_pct, color = tilsluttet_i, fill = valgsted_id)) +
+      theme(legend.position = "right") +
+      labs(title = paste("Parallele trends for", kommune))
+    log_info(paste("Graf lavet for", kommune))
+
+    # Print the plot
+    print(p)
+  }
+}
+
+```
+
+
+```{r}
+#| output: false
+#| fig-height: 3
+#| fig-width: 5
+library(cowplot)
+pt_analyse_data <- analyse_data %>%
+  select(!time) %>%
+  mutate(gname1 = ifelse(tilslutning_bin == 1, valgaar, 0),
+         gname2 = ifelse(is.na(tilslutning_treat), NA, valgaar),
+         idname = as.numeric(valgsted_id)) %>%
+  mutate(forbogstav = substr(kommunenavn, 1,1))
+
+bogstaver <- c(LETTERS, "Æ")
+# unique(pt_analyse_data$kommunenavn)
+
+for (kommune in unique(pt_analyse_data$kommunenavn)[70:75]) {
+  # Subset the dataframe where 'forbogstav' matches the current letter
+  bogstav_analyse_data <- pt_analyse_data %>%
+    filter(kommunenavn == kommune)
+
+  # Check if the subset is not empty
+  if (nrow(bogstav_analyse_data) > 0) {
+    # Create the plot
+    p <- bogstav_analyse_data %>%
+      ggplot() +
+      geom_vline(xintercept = 2009, color = "pink") +
+      geom_vline(xintercept = 2013, color = "orange") +
+      geom_vline(xintercept = 2017, color = "lightgreen") +
+      geom_vline(xintercept = 2021, color = "lightblue") +
+      geom_line(data = bogstav_analyse_data, aes(x = valgaar, y = borgmester_stemmer_pct, color = tilsluttet_i)) +
+      theme(legend.position = "none") +
+      scale_color_manual(values = c(
+        "kv09" = "pink",
+        "kv13" = "orange",
+        "kv17" = "lightgreen",
+        "kv21" = "lightblue"
+      )) +
+      labs(title = paste("Parallele trends for", kommune)) +
+      theme_minimal() +
+      facet_wrap(~valgsted_id)
+    log_info(paste("Graf lavet for", kommune))
+
+    # Print the plot
+    print(p)
+    log_info(paste(kommune, "er printet"))
+  }
+}
+```
