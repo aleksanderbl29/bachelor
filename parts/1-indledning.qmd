@@ -1,3 +1,17 @@
-Her er min indledning
+For at forstå, hvordan man politisk kan gennemføre en overgang til vedvarende energi er det interessant at undersøge hvordan politikerne straffes eller belønnes for at skubbe på for dette.
 
-Jeg er i mit projekt blevet inspireret af @stokes2016 til at skrive om emnet
+For at forsøge at løse (eller imødekomme) klimaforandringerne er det essentielt at de folkevalgte kan implementere klimatiltag med negativ påvirkning på borgerne uden at blive straffet (mere end nødvendigt) på valgdagen. Særligt interesant er det for mig, hvordan og i hvor stort omfang det er muligt for lokalpolitikere at tillade klimatiltag med omkostninger der koncenterer sig om få borgere, mens tiltaget vil have store, men diffuse, fordele for samfundet i sin helhed.
+
+Det leder mig til at undersøge følgende spørgsmål:
+
+> Hvordan er vælgernes elektorale reaktion på opførslen af vindmøller i lokalområdet?
+
+Her vil jeg fokusere på, hvordan opførslen
+ til de siddende beslutningstagere og hvordan denne sammenhæng er (eller ikke er) forskellige på tværs af de politiske partier.
+
+Den primære inspiration til at undersøge hvordan vælgere reagerer på opsætning af vindmøller i lokalområdet kommer fra Leah C. @stokes2016, der gennem et naturligt eksperiment undersøger, hvordan borgere, der bor tæt på vindmølleprojekter, retrospektivt straffer beslutningstagerne for denne klimapolitik [@stokes2016]. Derudover er jeg interesseret i at undersøge denne sammenhæng i en dansk kontekst, hvor det eneste bidrag hidtil er et arbejdspapir [@larsen2021], der ikke undersøger forskelle i effekten mellem partier.
+
+###### NOTER
+- Har svært ved at få det overordnede spørgsmål til at lyde godt.
+- Jeg vil undersøge, hvordan vælgerne reagerer (belønner eller straffer) når der kommer en vindmølle tæt på dem.
+  - Synes det er vigtigt, at det er klimatiltag der har omkostninger for nogen og hvordan de omkostninger afvejes mod de benefits der er (for verden).
