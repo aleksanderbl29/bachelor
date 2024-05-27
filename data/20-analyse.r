@@ -31,11 +31,21 @@ antal_obs_samlet <- nrow(analyse_data)
 expect_true(exists("analyse_data"))
 expect_true(exists("sign_stjerner"))
 
-## Indlæser ols fil
-source("data/21-ols.r")
 
-## Indlæser FE fil
-source("data/22-fixedeffects.r")
+if (!exists("analyse_separate_filer")) {
+  analyse_separate_filer <- FALSE
+}
+
+if (analyse_separate_filer == FALSE) {
+  
+  ## Indlæser ols fil
+  source("data/21-ols.r")
+  
+  ## Indlæser FE fil
+  source("data/22-fixedeffects.r")
+  
+}
+
 
 ## Indlæser test fil
 # source("data/88-leg-med-regres.r")
