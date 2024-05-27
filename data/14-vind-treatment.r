@@ -133,23 +133,16 @@ analyse_data <- analyse_data %>%
 ## Gemmer objekter
 write_rds(analyse_data, "data/rep_data/14_analyse_data.rds")
 
-# ## Ryd op i midlertidige variable
-# rm(kv01_treatment,
-#    kv05_treatment,
-#    kv09_treatment,
-#    kv13_treatment,
-#    kv17_treatment,
-#    kv21_treatment)
-# 
-# rm(vind_treatment,
-#    vind_stemmesteder,
-#    lang_gruppe_steder,
-#    treatment,
-#    treatment_list)
-# 
-# rm(gem_kolonner)
-# 
-# rm(auto_distinct_analyse_data)
+cont_table <- table(analyse_data$valgsted_id, analyse_data$valg)
+
+filtered_cont_table <- cont_table[rowSums(cont_table) != 4, ]
+
+valgsteder_med_fejl <- filtered_cont_table %>% rownames()
+
+filtered_analyse_data <- analyse_data[analyse_data$valgsted_id %in% valgsteder_med_fejl, ]
+
+expect_true(nrow(filtered_analyse_data) == 0)
+
 
 ## Rydder miljøet
 rm(list = ls())
