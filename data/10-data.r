@@ -1,5 +1,11 @@
-## Rydder miljø inden kørsel
-rm(list = ls())
+library(tidyverse)
+library(logger)
+
+## Rydder miljø inden kørsel hvis ikke andet er specificeret (fra quarto)
+if (!exists("create_data")) {
+  log_info("Rydder miljøet inden datakørsel")
+  rm(list = ls())
+}
 
 ## Forsøger at indlæse data, hvis den findes i mappen
 ## ellers skaber den data fra ny
@@ -8,7 +14,9 @@ rm(list = ls())
 # sikrer at dummy_var findes
 # expect_true(exists("api_call_enable"))
 
-api_call_enable <- FALSE
+if (!exists("api_call_enable")) {
+  api_call_enable <- FALSE
+}
 
 if (api_call_enable == TRUE) {
 
@@ -35,13 +43,7 @@ source("data/15-borgmestre.r")
 source("data/16-did-prep.r")
 
 ## Give labels til variablene i analyse_data
-# source("data/17-var-labels.r")
-
-## Rydder op i data og gør df brugbare
-# source("data/18-data-cleanup.r")
+source("data/17-var-labels.r")
 
 ## Gemmer data i produktionsfiler
-source("data/19-analyse-prep.r")
-
-## Dropper midlertidige variable
-rm(api_call_enable)
+source("data/18-analyse-prep.r")
