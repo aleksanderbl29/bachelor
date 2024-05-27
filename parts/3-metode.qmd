@@ -46,6 +46,39 @@ datastruktur_vars <- datastruktur %>%
 kbl(datastruktur_vars)
 ```
 
+## Model
+
+I dette afsnit vil jeg gennemgå de modeller jeg har opstillet for at undersøge mit spørgsmål. Jeg kommer ind på overvejelser omkring min analyse, herunder modellering og valg af kontrolvariable.
+
+### Modelspecifikation
+
+For at estimere effekten af en nyopsat vindmølle vil jeg benytte mig af en række modeller. Resultaterne af disse vil jeg sammenligne for at kvalificere estimatet. Derudover vil jeg undersøge et udvalg af modellerne med en Goodman-Bacon dekomposition (HENVISNING) [@goodman-bacon2021]
+
+Den grundlæggende model er sammensat som det ses i @eq-model-1. Jeg tager udgangspunkt i en simpel fixed-effects model, som kan ses i @eq-model-1
+
+$$
+    Y_{it} = \beta_i + \beta_{1}D_{it} + \epsilon_{it}
+$$ {#eq-model-1}
+
+Hvor $Y_{it}$ er borgmesterpartiets stemmeandel for valgsted $i$ ved valg $t$. $\beta_i$ er stemmeandel for valgsted $i$, hvor der ikke er opsat en vindmølle og $\beta_{1}$ er ændringen i stemmeandel, når $D\neq0$. $D_{it}$ indikerer om en vindmølle er opsat i nærheden af valgsted $i$ i perioden fra $t-1$ til $t$ og $\epsilon_{it}$ der er fejlledet.
+
+For at tage højde for forskelle mellem valgsteder tilføjer jeg en dummy for valgstedet. Derudover tilføjer jeg en dummy for valgåret for at tage højde for generelle vælgerbevægelser, der sker på tværs af valgsteder. De udgør mine fixed effects, og det giver os den model der kan ses i @eq-model-2.
+
+$$
+    Y_{it} = \beta_i + \beta_{1}D_{it} + \alpha_i + \delta_t + \epsilon_{it}
+$$ {#eq-model-2}
+
+I @eq-model-2 er $\alpha_i$ vores fixed effect for valgsted $i$ og $\delta_t$ er vores fixed effect for valgår $t$.
+Udover den grundlæggende model vil jeg undersøge mine forventninger til parti-forskelle af treatmenteffekten ved modellerne der kan ses i @eq-model-3, hvor der inkluderes et interaktionsled.
+
+$$
+    Y_{it} = \beta_i + \beta_{1}D_{it}Parti_{kt} + \alpha_i + \delta_t + \epsilon_{it}
+$$ {#eq-model-3}
+$$
+    Y_{it} = \beta_i + \beta_{1}D_{it}Blok_{kt} + \alpha_i + \delta_t + \epsilon_{it}
+$$ {#eq-model-4}
+
+I @eq-model-3 er der nu tilføjet $Parti$ der indikerer det parti der er borgmester i valgsted $i$'s kommune $k$ på valgtidspunkt $t$. Tilsvarende undersøger jeg også modellen i @eq-model-4, hvor der er tilføjet en indikator for $Blok$, der har værdien $0$ for et borgmesterparti fra rød blok og værdien $1$ for et borgmesterparti fra blå blok.
 #| file: data/30-plots.r
 #| error: false
 #| cache: true
