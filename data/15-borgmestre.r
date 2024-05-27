@@ -17,7 +17,7 @@ borgmestre <- read_xlsx("data/downloads/Borgmestre/borgmestre_samlet.xlsx", shee
   mutate(kommunenavn = case_when(kommunenavn == "Bornholm" ~ "Bornholms Region",
                                  .default = kommunenavn)) %>% 
   arrange(kommunenavn) %>% 
-  filter(valgaar > 2007)
+  filter(valgaar > 2006)
 
 ## Indlæser geografi
 geografi <- read_rds("data/rep_data/13_geografi.rds")
@@ -28,7 +28,8 @@ kommuner <- read_rds("data/rep_data/13_kommuner.rds")
 ## Tester at der ingen fejl matches er på kommunenavn og alle kommuner findes.
 ## Fjerner df efter brug
 anti_borgmestre <- borgmestre %>% 
-  anti_join(kommuner, by = "kommunenavn")
+  anti_join(kommuner, by = "kommunenavn") %>% 
+  filter(valgaar > 2006)
 expect_true(nrow(anti_borgmestre) == 0)
 expect_true(n_distinct(borgmestre$kommunenavn) == 98)
 rm(anti_borgmestre)
@@ -46,11 +47,12 @@ analyse_data <- analyse_data %>%
   mutate(valg_id = paste0("kv", substr(valg, 5, 6))) %>% 
   mutate(kommune_valg_id = paste0(kommunenr, valg_id),
          valgaar = paste0(20, substr(valg_id, 3, 4))) %>% 
-  filter(valgaar > 2007)
+  filter(valgaar > 2004)
 
 ## Tjekker at alle valgsteder matcher en kommune
 anti_tjek_analyse <- analyse_data %>% 
-  anti_join(borgmestre, by = "kommune_valg_id")
+  anti_join(borgmestre, by = "kommune_valg_id") %>% 
+  filter(valgaar > 2006)
 expect_true(nrow(anti_tjek_analyse) == 0)
 rm(anti_tjek_analyse)
 
@@ -72,8 +74,9 @@ analyse_data <- analyse_data %>%
                                         Parti == "Alternativet"                ~ Å,
                                         Parti == "Dansk Folkeparti"            ~ O,
                                         .default = NA)) %>% 
-  mutate(borgmester_stemmer_pct = borgmester_stemmer / stemmer * 100)
+  mutate(borgmester_stemmer_pct = borgmester_stemmer / stemmer * 100) %>% 
+  mutate(Parti = as.factor(Parti))
 
 
 write_rds(analyse_data, "data/rep_data/15_analyse_data.rds")
-
+write_rds(borgmestre, "data/rep_data/15_borgmestre.rds")
