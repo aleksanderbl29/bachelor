@@ -1,12 +1,18 @@
 library(tidyverse)
 library(testthat)
 library(logger)
+ 
+# ## Rydder miljøet inden kørsel
+rm(list = ls())
 
-installer_pakker <- FALSE
+if (!exists("installer_pakker")) {
+  installer_pakker <- FALSE
+}
 
 if (installer_pakker == TRUE) {
   source("data/00-pakker.r")
 }
+rm(installer_pakker)
 
 if (exists("analyse_data")) {
   log_info("Data allerede indlæst")
@@ -15,10 +21,9 @@ if (exists("analyse_data")) {
 }
 
 if (!exists("sign_stjerner")) {
-  sign_stjerner <- c("*" = .1, "**" = .05, "***" = .01)
+  sign_stjerner <- c("+" = .1, "*" = .05, "**" = .01, "***" = .001)
   log_info(paste("Signifikansniveau sættes med stjerner til:", "* = .1, ** = .05, *** = .01"))
 }
-
 
 antal_obs_samlet <- nrow(analyse_data)
 
