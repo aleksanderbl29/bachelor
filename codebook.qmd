@@ -1,4 +1,4 @@
----
+<!-- ---
 # title: Kodebog
 # subtitle: Bachelorprojekt om vindmøller og retrospektiv vælgeradfærd
 date: ""
@@ -7,7 +7,7 @@ format:
     toc: false
     lof: false
     lot: false
----
+--- -->
 
 Her er en oversigt over de variable der er at finde i datasættet til replikation. Derudover er der beskrevet, hvilke data der er brugt til at skabe variablene. For hver variabel er der en tilhørende beskrivelse af dens indhold.
 
