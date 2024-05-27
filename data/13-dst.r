@@ -112,7 +112,20 @@ lang_gruppe_steder <- lang_alle_stemmer %>%
   mutate(red = rowSums(pick(A, B, F, Ø, Å, G), na.rm = TRUE),
          blue = rowSums(pick(C, I, O, D, I, V), na.rm = TRUE)) %>%
   mutate(red_pct = red / stemmer,
-         blue_pct = blue / stemmer)
+         blue_pct = blue / stemmer) %>%
+  mutate(diverse_parti = rowSums(pick(J, G, K, N, H, M, U, Y, Z, Q, R, P,
+                                      E, "1", "2", "3", "0",
+                                      "01", "02", "03", "04", "05", "06",
+                                      K1, K2, T, W, Å1), na.rm = TRUE)) %>%
+  select(!c("J", "G", "K", "N", "H", "M", "U", "Y", "Z", "Q", "R", "P", "E",
+            "1", "2", "3", "0", "01", "02", "03", "04", "05",
+            "06", "K1", "K2", "T", "W", "Å1"))
+log_info("'Andre' kolonne lavet")
+
+## Befolkningsdata
+
+
+
 
 ## Gemmer lang_gruppe_steder til videre brug
 log_info("Gemmer lang_gruppe_steder til videre brug")
