@@ -1,5 +1,11 @@
-Her er min metode
+```{r hent-objekt-metode}
+#| file: data/43-objekt.r
+library(logger)
+library(kableExtra)
+log_info("Henter objekter til metode")
+```
 
+I denne del af opgaven vil jeg gennemgå metoden der vil blive brugt til at undersøge mit hovedspørgsmål.
 
 ## Data
 
