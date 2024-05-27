@@ -99,9 +99,15 @@ print(paste("Det tog", round(loop_tid, 2), "minutter at hente data"))
 
 
 vind_steder <- vind_steder %>%
-  mutate(valgsted_id = if_else(nchar(afssted_nr) == 1, sprintf("%003d", afssted_nr),
-                               if_else(nchar(afssted_nr) == 2, sprintf("%03d", afssted_nr),
-                                       if_else(nchar(afssted_nr) == 3, sprintf("%3d", afssted_nr), NA)))) %>%
+  mutate(valgsted_id = if_else(
+    nchar(afssted_nr) == 1,
+    sprintf("%003d", afssted_nr),
+    if_else(
+      nchar(afssted_nr) == 2,
+      sprintf("%03d", afssted_nr),
+      if_else(nchar(afssted_nr) == 3, sprintf("%3d", afssted_nr), NA)
+    )
+  )) %>%
   mutate(valgsted_id = paste0(kommunekode, valgsted_id)) %>%
   select(!c("kommunekode", "afssted_nr"))
 
