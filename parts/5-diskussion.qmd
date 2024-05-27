@@ -1,1 +1,17 @@
-Her er min diskussion
+I denne del af opgaven vil jeg gennemgå mine funds implikationer både for politik og den videre litteratur. Derudover vil jeg revurdere mit forskningsdesign og komme ind på, hvad der kunne være gjort anderledes og hvilke mangler og udfrodringer de valg eventuelt vil have.
+
+## Implikationer
+
+- Nogle partier kan genneføre klimapolitik der går ud over folk; andre kan ikke
+  - Forskellen lægger sig op ad den fordelingspolitiske skillelinje.
+
+## Forbedringer til opgaven
+
+- Jeg har ingen forbedringer
+
+### Data
+
+- Det ville være fedt at have data, hvor ingen enheder er treatet til at starte med
+  - Det er bare vildt svært når der er tale om vindmøller, fordi det udvikler sig hele tiden.
+  - Måske kan det virke på en anden case.
+- Regressioner inkluderer også situationer hvor borgmesterparti ikke genopstiller (ofte lokalliste). Analyse uden de observationer kan ses i @tbl-appendix-a-uden
