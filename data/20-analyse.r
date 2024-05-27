@@ -31,6 +31,12 @@ antal_obs_samlet <- nrow(analyse_data)
 expect_true(exists("analyse_data"))
 expect_true(exists("sign_stjerner"))
 
+## Deklarerer custom nummer formaterings funktion
+log_info("Deklarerer custom nummer formaterings funktion")
+nm_fm <- function(x) {
+  format(round(x, 2), big.mark = ".", decimal.mark = ",", scientific = FALSE)
+}
+
 
 if (!exists("analyse_separate_filer")) {
   analyse_separate_filer <- FALSE
