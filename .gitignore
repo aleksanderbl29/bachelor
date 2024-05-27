@@ -3,6 +3,9 @@
 .Rhistory
 .Rapp.history
 
+# Output files from tex
+index.tex
+
 # Session Data files
 .RData
 .RDataTmp
