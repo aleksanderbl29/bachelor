@@ -103,6 +103,15 @@ For at forsøge at imødekomme nogle af de udfordringer jeg har beskrevet ovenfo
 
 Ved at centrere om treatmenttidspunktet sikrer jeg at der ikke bruges enheder der har modtaget treatment i en tidligere periode som sammenligning (i kontrolgruppen) for med de nyligt treatede [@huntington-klein2022: 460]. Derudover sikrer jeg ved at interagere treatmenttidspunktet med indikatoren for valgstedet, at der ikke sammenlignes med treatede enheder, fordi der fjernes en del af sammenligningerne [@huntington-klein2022: 460]. Jeg risikerer dog, at den fundne effekt bliver mindre, men om ikke andet mere pålidelig.
 
+## Generaliserbarhed
+
+I dette afsnit vil jeg gennemgå mine overvejelser omkring dette studies generaliserbarhed. For
+
+### Fordeling af vindmøller
+
+For at vurdere den generelle eksterne validitet af mit design vil jeg se på, hvordan vindmøllerne er fordelt på flere parametre. Her vil jeg kortlægge den geografiske fordeling og fordelingen på borgmesterpartier.
+
+```{r 30-plots}
 #| file: data/30-plots.r
 #| error: false
 #| cache: true
@@ -111,18 +120,81 @@ Ved at centrere om treatmenttidspunktet sikrer jeg at der ikke bruges enheder de
 
 ```
 
-::: {#fig-vindmølle-2 fig-cap="" fig-cap-location="top"}
+#### Den geografiske fordeling
+For at undersøge, hvordan vindmøllerne er geografisk fordelt har jeg produceret @fig-vindmølle-geo
+
+::: {#fig-vindmølle-geo}
 
 ![](output/billeder/valgsteder-map-1.png)
 
 \raggedright
-
+\footnotesize
+\setstretch{1}
 Note: Stemmesteder fordelt på valgår. Hvert stemmested fremgår kun en gang.
 
-Kilde: Egen tilvirkning, @apidawa2024 og @danmarksstatistik2024
-
-\centering
+Kilde: Egen tilvirkning på baggrund af kortdata fra @apidawa2024, valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
 
 Afstemningssteder der har fået vindmølle i valgperiode
 
 :::
+
+
+
+#### Fordeling på partier
+
+::: {#fig-vindmølle-parti}
+
+```{r 33-stemme-plots}
+#| file: data/33-stemme-plots.r
+#| cache: true
+```
+```{r valg-parti-kort}
+#| fig-width: 10
+#| fig-height: 8
+#| output: true
+valg_parti_kort
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+Note: Vindmøller fordelt på parti. Hvert valg har sit eget kort. De sorte prikker indikerer en ny vindmølle. Farven indikerer den siddende borgmesters parti ved hvert valg. \newline
+Kilde: Egen tilvirkning på baggrund af kortdata fra @apidawa2024, valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
+
+Kort over borgmestre gennem undersøgelsens valg
+
+:::
+
+Som vi kan se af @fig-vindmølle-parti er der en overvægt af vindmøller opsat i kommuner, der har Venstre-borgmestre. Det underbygges yderligere af @tbl-vindmølle-parti, hvor vi kan se, at `r venstre_vind_pct` af vindmøllerne er placeret i Venstre-kommuner.
+
+::: {#fig-år-valgsted-kort}
+
+```{r}
+#| output: true
+#| fig-width: 10
+#| fig-height: 8
+parti_aar_valgsted_kort
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+Note: Vindmøller fordelt på valgsteder. Hvert valg har sit eget kort. Farvede valgsteder har fået vindmølle. Farven indikerer den siddende borgmesters parti ved hvert valg. \newline
+Kilde: Egen tilvirkning på baggrund af kortdata fra @apidawa2024, valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
+
+Kort over valgsteders partiorientering ved vindmølle-valg
+
+:::
+
+I @tbl-vindmølle-parti kan vi se, at der er en overvægt at valgsteder i Venstre-kommuner, der har fået vindmøller mellem valg. En del af dette kan forklares med Venstre-kommunernes geografiske placering som set i @fig-vindmølle-geo og @fig-vindmølle-parti, der er mod kysterne og hvor der er meget vind. Der er dog stadig en del vindmøller i socialdemokratiske kommuner, hvorfor jeg ikke vurderer det som et seriøst problem.
+
+```{r}
+#| label: tbl-vindmølle-parti
+#| tbl-cap: "Fordeling af vindmøller på partier"
+#| output: asis
+tbl_vindmølle_parti
+```
+
+### Sortering i data
+
+For alle regressioner, der inkluderer blok-inddeling er borgmestre fra lokallister frasorteret. Det er gjort for at muliggøre den traditionelle blokinddeling. Det resulterer i at vi mister `r analyse_data %>% filter(Parti == "Lokalliste") %>% distinct(kommune_valg_id) %>% nrow` valgsted/valg observationer
