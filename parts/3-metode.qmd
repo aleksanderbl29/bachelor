@@ -79,6 +79,30 @@ $$
 $$ {#eq-model-4}
 
 I @eq-model-3 er der nu tilføjet $Parti$ der indikerer det parti der er borgmester i valgsted $i$'s kommune $k$ på valgtidspunkt $t$. Tilsvarende undersøger jeg også modellen i @eq-model-4, hvor der er tilføjet en indikator for $Blok$, der har værdien $0$ for et borgmesterparti fra rød blok og værdien $1$ for et borgmesterparti fra blå blok.
+
+## Fixed effects
+
+Jeg har valgt at gå med en tovejs fixed effects model for at imødekomme det udeladt variabel bias [@stock2020: 367], der helt uundgåeligt vil forekomme med det datasæt jeg har produceret.
+
+Mine modeller estimeres ved hjælp af `feols` fra @berge2018 og @berge2024.
+
+### Antagelser under fixed effects
+
+For at vi kan stole på resultaterne fra en fixed-effects model er det vigtigt at en række antagelser er opfyldt. I dette afsnit vil jeg gennemgå antagelserne og evaluere tilstedeværelsen for mine data og for mine modeller.
+
+#### Parallelle trends
+
+Antagelsen om parallelle trends siger at der i fraværet af treatment skal være samme udvikling på den afhængige variabel for de treatede enheder såvel som de ikke-treatede [@dechaisemartin2023: 2]. Denne antagelse er videreført fra antagelsen om parallelle trends der bruges ved en traditionel differences-in-differences tilgang, hvor vi i denne fixed effects model også skal vurdere de aldrig-treatede enheder også opfylder antagelsen om parallele trends [@sun2021: 7].
+
+
+### Fixed Effects udfordringer
+
+Den fixed effects model jeg bruger er i bund og grund en udvidet differences-in-differences model der har flere tidsperioder (end to) og flere $i$ eller enheder (valgsteder). Da et estimat fra sådan en tovejs fixed effects model (som den jeg bruger) i bund og grund er en differences-in-differneces der sammenligner enheder før og efter treatment, på tværs af enhederne [@huntington-klein2022: 389-297;@goodman-bacon2021]. @goodman-bacon2021 har bevist at denne type tovejs fixed effects faktisk sammenligner alle mulige diferences-in-differences sammenhænge på tværs af tid; det er et rigtigt problem, hvis treatment indtræffer på forskellige tidspunkter.
+
+For at forsøge at imødekomme nogle af de udfordringer jeg har beskrevet ovenfor vil jeg gøre følgende: 1) centrere hvert valgsteds tidslinje omkring dets treatmenttidspunkt (modsat kalendertid) [@huntington-klein2022: 460; @sun2021] og, 2) interagere treatmenttidspunktet med indikatoren for valgstedet [@sun2021: 22].
+
+Ved at centrere om treatmenttidspunktet sikrer jeg at der ikke bruges enheder der har modtaget treatment i en tidligere periode som sammenligning (i kontrolgruppen) for med de nyligt treatede [@huntington-klein2022: 460]. Derudover sikrer jeg ved at interagere treatmenttidspunktet med indikatoren for valgstedet, at der ikke sammenlignes med treatede enheder, fordi der fjernes en del af sammenligningerne [@huntington-klein2022: 460]. Jeg risikerer dog, at den fundne effekt bliver mindre, men om ikke andet mere pålidelig.
+
 #| file: data/30-plots.r
 #| error: false
 #| cache: true
