@@ -1,10 +1,11 @@
 library(tidyverse)
 library(testthat)
+library(logger)
 
 ## Indlæser data fra fil hvis ikke de allerede findes i miljø
 if (exists("import_valg") & exists("import_stemmer") &
     exists("geografi") & exists("vind_stemmesteder")) {
-  print("Data er indlæst")
+  log_info("Data er indlæst")
 } else {
   source("data/12-load-data.r")
 }
@@ -23,8 +24,8 @@ kommunalvalg <- import_valg %>%
   mutate(valg_dato = ymd(valg_dato)) %>%
   arrange(ymd(valg_dato))
 
+log_info("Gemmer oversigt over kommunalvalg")
 write_rds(kommunalvalg, "data/rep_data/13_kommunalvalg.rds")
-head(kommunalvalg)
 rm(import_valg, kommunalvalg)
 
 ## Skaber df med kommuneid og navn
@@ -38,16 +39,18 @@ kommuner <- geografi %>%
                                  kommunenavn == "Frederiksværk-Hundested" ~ "Halsnæs",
                                  kommunenavn == "Lyngby-Tårbæk" ~ "Lyngby-Taarbæk",
                                  kommunenavn == "Vesthimmerlands" ~ "Vesthimmerland",
-                                 .default = kommunenavn)) %>% 
+                                 .default = kommunenavn)) %>%
   arrange(kommunenavn)
 
+log_info("Gemmer oversigt over kommuner")
 write_rds(kommuner, "data/rep_data/13_kommuner.rds")
 write_rds(geografi, "data/rep_data/13_geografi.rds")
 rm(geografi)
 
 gem_kolonner <- c("gruppe", "valgsted_id", "kreds_nr", "storkreds_nr", "landsdel_nr")
 
-## Sammenlægger stemmer til tidy data
+##############################################
+log_info("Sammenlægger stemmer til tidy data")
 stemmer <- import_stemmer %>%
   select(!ends_with(c("Afgivne stemmer", "Andre ugyldige stemmer", "Blanke stemmer"))) %>%
   rename(gruppe = Gruppe,
@@ -61,8 +64,7 @@ stemmer <- import_stemmer %>%
 
 rm(import_stemmer)
 
-head(stemmer, 2)
-
+log_info("Trækker stemmer ud og navngiver partier")
 alle_stemmer <- stemmer %>%
   select(any_of(gem_kolonner), starts_with("KV")) %>%
   pivot_longer(cols = starts_with("KV"),
@@ -87,17 +89,17 @@ alle_stemmer <- stemmer %>%
                                parti == "Å" ~ "Alternativet",
                                parti == "Stemmeberettigede" ~ "Stemmeberettigede",
                                parti == "Gyldige stemmer" ~ "Gyldige stemmer"))
-head(alle_stemmer)
-unique(alle_stemmer$parti)
-unique(alle_stemmer$partinavn)
-unique(alle_stemmer$valg)
 
-alle_nrow <- nrow(alle_stemmer)
+# unique(alle_stemmer$parti)
+# unique(alle_stemmer$partinavn)
+# unique(alle_stemmer$valg)
 
+log_info("Sammenlægger data til langt format")
 lang_alle_stemmer <- alle_stemmer %>%
   select(!partinavn) %>%
   pivot_wider(names_from = parti, values_from = stemmer)
 
+log_info("Samler data på gruppeniveau")
 lang_gruppe_steder <- lang_alle_stemmer %>%
   select(everything()) %>%
   mutate(valgsted_id = as.double(gruppe)) %>%
@@ -113,8 +115,8 @@ lang_gruppe_steder <- lang_alle_stemmer %>%
          blue_pct = blue / stemmer)
 
 ## Gemmer lang_gruppe_steder til videre brug
+log_info("Gemmer lang_gruppe_steder til videre brug")
 write_rds(lang_gruppe_steder, "data/rep_data/13_lang_gruppe_steder.rds")
-
 
 ## Rydder miljøet
 rm(list = ls())
