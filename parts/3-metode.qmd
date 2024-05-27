@@ -9,27 +9,43 @@ I denne del af opgaven vil jeg gennemgå metoden der vil blive brugt til at unde
 
 ## Data
 
-I dette projekt vil jeg benytte mig af et originalt datasæt sammesat af valgstatistik fra Danmarks statistiks valgdatabase [@danmarksstatistik2024] og optegnelser over vindmølleindstallationer i Danmark [@energistyrelsen2024]. Heraf udvælges vindmølleinstallationer i valgperioderne fra kommunalvalg fra 2001 til 2021. Disse placeres i radius af et valgsted ved hjælp af afstemingssted-API fra @apidawa2024. Det giver samlet et datasæt med `r antal_obs_samlet` observationer over valgsteder gennem tiden.
+Til dette projekt har jeg skabt et datasæt sammensat af valgstatistik for kommunalvalg fra Danmarks Statistiks valgdatabase [@danmarksstatistik2024] og optegnelser over vindmølleindstallationer i Danmark [@energistyrelsen2024].
+
+Jeg begrænser de valg jeg undersøger til alle kommunalvalg efter 2007, hvor strukturreformen blev gennemført og ændrede strukturen i kommunerne [@kommunalreformen2007]. Der blev antallet af kommuner også ændret.
+
+Af data fra @energistyrelsen2024 over opsatte vindmøller siden 14.12.1977 udvælger jeg de vindmøller der er opsat tidligst `r 365 * 4` dage før kommunalvalget i 2009 (som er det første valg efter strukturreformen). Heraf udvælges vindmølleinstallationer i valgperioderne fra kommunalvalg fra 2009 til 2021. Disse placeres i radius af et valgsted ved hjælp af afstemingssted-API fra @apidawa2024. Det giver samlet et datasæt med `r antal_obs_samlet` observationer over valgsteder gennem tiden. I alt `r n_distinct(analyse_data$valgsted_id)` unikke valgsteder er medtaget i mit endelige datasæt.
 
 For en oversigt over de danske borgmestre gennem tiden har jeg sammensat @kjaer2018 og @kommunerneslandsforening2023, der udgør grundlaget for at definere hvilket parti der er borgmesterparti.
 
-## Model
-
-Jeg har valgt at gå med en tovejs fixed effects model (HENVISNING)
-
-$Y_{it} = \alpha_0 + \gamma_i + \delta_t + \alpha{D}_{it} + \epsilon_{it}$
-
-## Valgt signifikansniveau
-
-Jeg har valgt at tildele stjener som følger:
+Det giver en datastruktur der ligner den i nedenstående @tbl-datastruktur-id og @tbl-datastruktur-vars, der viser hhv. identifikatorvariable og analysevariable for hver observation .
 
 ```{r}
-sign_stjerner
+#| label: tbl-datastruktur-id
+#| tbl-cap: "Datastruktur for identifikator i datasæt"
+#| output: true
+datastruktur_id <- datastruktur %>%
+    select(valgsted_id, valg, Parti, blue_blok) %>%
+    rename("Valgsted" = valgsted_id,
+                "Valg" = valg,
+                "Parti" = Parti,
+                "Blå blok" = blue_blok)
+
+kbl(datastruktur_id)
 ```
 
-## Fordeling af vindmøller
-
 ```{r}
+#| label: tbl-datastruktur-vars
+#| tbl-cap: "Datastruktur for analysevariable"
+#| output: true
+datastruktur_vars <- datastruktur %>%
+    select(!c(valgsted_id, valg, Parti, blue_blok)) %>%
+    rename("Stemmer til borgmesterens parti" = borgmester_stemmer,
+                "% Stemmer til borgmesterens parti" = borgmester_stemmer_pct,
+                "Vindmølle tilsluttet" = tilslutning_aar_valg)
+
+kbl(datastruktur_vars)
+```
+
 #| file: data/30-plots.r
 #| error: false
 #| cache: true
