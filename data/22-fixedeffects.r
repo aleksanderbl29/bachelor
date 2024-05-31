@@ -27,19 +27,14 @@ fe_m1 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg, data = analyse_dat
 fe_m1
 summary(fe_m1, cluster = "valgsted_id")
 
-fe_m2 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg | valg, data = analyse_data)
+fe_m2 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg + sunab(tilslutning_bin, tilslutning_aar_valg), data = analyse_data)
 fe_m2
 
-fe_m3 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg | valgsted_id, data = analyse_data)
+fe_m3 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg + sunab(tilslutning_bin, tilslutning_aar_valg), data = analyse_data_uden)
 fe_m3
 
-fe_m4 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg | valgsted_id + valg, data = analyse_data)
+fe_m4 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg | valgsted_id + valg, data = analyse_data_uden)
 fe_m4
-
-fe_modeller_1_3 <- list(fe_m1, fe_m2, fe_m3, fe_m4)
-
-msummary(fe_modeller_1_3, stars = TRUE)
-msummary(list(fe_m1, fe_m2), stars = TRUE)
 
 
 ## Borgmesterparti som kontrolvariabel
@@ -70,6 +65,12 @@ fe_m7
 
 fe_m8 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg * Parti | valgsted_id + valg, data = analyse_data)
 fe_m8
+
+analyse_data_plt <- analyse_data %>% 
+  filter(!Parti %in% c("Dansk Folkeparti", "Alternativet", "Socialistisk Folkeparti"))
+
+fe_m8_plt <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg * Parti | valgsted_id + valg, data = analyse_data_plt)
+fe_m8_plt
 
 fe_m10 <- feols(borgmester_stemmer_pct ~ tilslutning_aar_valg + Parti, data = analyse_data)
 fe_m10
@@ -112,25 +113,27 @@ expect_true(nrow(filtered_analyse_data) == 0)
 feols(borgmester_stemmer_pct ~ tilslutning_aar_valg | valgsted_id + valg, data = analyse_data)
 
 
-tbl_borgmester_interaktion_modeller <- list("Simpel 1" = fe_m1,
-                                            "S og A 1" = test_fe_m1,
-                                            # "Simpel 2" = fe_m2,
-                                            # "Simpel 3" = fe_m3,
-                                            "Simpel 4" = fe_m4,
-                                            "Simpel m parti" = fe_m10,
+tbl_borgmester_modeller <- list("Model 1" = fe_m1,
+                                "Fixed Effects" = fe_m4,
+                                "Kun genopstillede partier" = fe_m3)
+
+tbl_borgmester_interaktion_modeller <- list("Simpel m parti" = fe_m10,
                                             "Interak. 1" = fe_m7,
                                             "S og A interak. 1" = test_fe_m7,
                                             "Interak. 2" = fe_m8,
                                             "S og A interak. 2" = test_fe_m8)
 
 
-## Laver funktion der formaterer tal som character, så latex accepterer skrifttype fra Quarto
-format_num <- function(x) {
-  if (is.numeric(x)) {
-    return(as.character(round(x, 3)))
-  }
-  return(x)
-}
+
+tbl_borgmester_modeller_gof_map <- tribble(
+  ~raw, ~clean, ~fmt,
+  "nobs", "Obs.", 0,
+  "adj.r.squared", "R2 adj.", 3,
+  "r2.within.adjusted", "R2 within adj.", 3,
+  "rmse", "RMSE", 2,
+  "FE: valgsted_id", "Fixed Effects", 20,
+  "FE: valg", "Fixed Effects", 20
+)
 
 tbl_borgmester_interaktion_modeller_gof_map <- tribble(
   ~raw, ~clean, ~fmt,
@@ -145,17 +148,20 @@ tbl_borgmester_interaktion_modeller_gof_map <- tribble(
   "FE: valg", "Fixed Effects", 20
 )
 
-# tbl_borgmester_interaktion_modeller_gof_map <- tribble(
-#   ~raw, ~clean, ~fmt,
-#   "nobs", "Obs.", format_num,
-#   "adj.r.squared", "R2 just.", format_num,
-#   "r2.within.adjusted", "R2 within just.", format_num,
-#   "rmse", "RMSE", format_num,
-#   # "vcov.type", "Std. fejl klynge", 20,
-#   "FE: valgsted_id", "FE: Valgsted", format_num,
-#   "FE: valg", "FE: Valg", format_num
-# )
 
+
+tbl_borgmester <- msummary(tbl_borgmester_modeller,
+                           output = "kableExtra", gof_omit = "AIC|BIC",
+                           coef_map = c(
+                             "(Intercept)" = "Skæring",
+                             "tilslutning_aar_valg" = "Vindmølle tilsluttet"
+                           ), vcov = ~valgsted_id,
+                           gof_map = tbl_borgmester_modeller_gof_map,
+                           estimate = "{estimate}{stars}", escape = FALSE) %>%
+  kable_styling(full_width = TRUE, latex_options = c("repeat_header"), latex_table_env = "fonttable", font_size = 10) %>%
+  column_spec(1, width = "5cm") %>% 
+  add_header_above(c(" " = 1, "Afhængig: Stemmeandel til borgmesterparti i %" = 3))
+tbl_borgmester
 
 tbl_borgmester_interaktion <- msummary(tbl_borgmester_interaktion_modeller,
                                        output = "kableExtra", gof_omit = "AIC|BIC",
@@ -170,7 +176,7 @@ tbl_borgmester_interaktion <- msummary(tbl_borgmester_interaktion_modeller,
                                        estimate = "{estimate}{stars}", escape = FALSE) %>%
   kable_styling(full_width = TRUE, latex_options = c("repeat_header"), latex_table_env = "fonttable", font_size = 10) %>%
   column_spec(1, width = "5cm") %>% 
-  add_header_above(c(" " = 1, "Afhængig: Stemmeandel til borgmesterparti i %" = 8))
+  add_header_above(c(" " = 1, "Afhængig: Stemmeandel til borgmesterparti i %" = 5))
 tbl_borgmester_interaktion
 
 
