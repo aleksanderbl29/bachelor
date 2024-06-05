@@ -82,19 +82,17 @@ log_info("analyse er loaded")
 
 {{< pagebreak >}}
 
+# Appendiks A: Borgmesterens parti {.appendix .unnumbered}
+
+{{< include parts/appendix/a-borgmester-parti.qmd >}}
+
+# Appendiks B: Generel udvikling i borgmesterpartiets stemmeandel {.appendix .unnumbered}
+
+{{< include parts/appendix/b-loess-prl-trends.qmd >}}
+
+{{< pagebreak >}}
+
 # Litteratur
 
 ::: {#refs}
 :::
-
-{{< pagebreak >}}
-
-\appendix
-
-# Appendiks: Borgmesterens parti {.appendix}
-
-{{< include parts/appendix/a-borgmester-parti.qmd >}}
-
-# Appendiks: Kodebog {.appendix}
-
-{{< include codebook.qmd >}}
