@@ -26,6 +26,7 @@ library(logger)
 source_pakker <- TRUE
 sign_stjerner <- c("+" = .1, "*" = .05, "**" = .01, "***" = .001)
 analyse_separate_filer <- TRUE
+quarto <- TRUE
 ```
 
 ```{r indlæs-analyse}
