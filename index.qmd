@@ -49,8 +49,49 @@ log_info("plots er loaded")
 
 {{< pagebreak >}}
 
+```{r figur-tegn}
+
+vindmølle_geo_tegn <- (4*4) + nchar("Valgår") + nchar("Bornholm")
+
+vindmølle_parti_tegn <- (4*4) + sum(nchar(unique(as.character(join_kommuner_geodata$Parti))))
+
+år_valgsted_kort_tegn <- (4*4) + sum(nchar(unique(f2_rollout_vind_stemmesteder$Parti)))
+
+marginsplot_1_tegn <- (2 * nchar("Valg før vindmølle")) + (2 * nchar("Vindmølle opsat")) + nchar("Andel stemmer til borgmesterparti") + nchar("Model 1") + nchar("Model 2")
+
+marginsplot_2_tegn <- nchar("Valg før vindmølle") + nchar("Vindmølle opsat") + nchar("Parti") + sum(nchar(unique(as.character(analyse_data_plt$Parti))))
+
+slope_plot_parti_tegn <- sum(nchar(unique(as.character(analyse_data_plt$Parti)))) + nchar("Ændring i stemmeandel")
+
+marginsplot_3_tegn <- nchar("Valg før vindmølle") + nchar("Vindmølle opsat") + nchar("Blok") + nchar("Rød") + nchar("Blå") + nchar("Andel stemmer til borgmesterparti")
+
+slope_plot_blok_tegn <- nchar("Rød blok") + nchar("Blå blok") + nchar("Ændring i stemmeandel")
+
+faktisk_mønster_tegn <- nchar("Vindmølle sættes op") + nchar("Borgmester er fra") + nchar("Blå blok") + nchar("Venstre") + nchar("Rød blok") + nchar("Socialdemokratiet") + nchar("Færre stemmer til borgmesterparti") + nchar("Flere stemmer til borgmesterparti")
+
+h1_sammenhæng <- nchar("Vindmølle sættes op") + nchar("Utilfreds med beslutning") + nchar("Mindre støtte til borgmesteren")
+
+h2_sammenhæng <- nchar("Vindmølle sættes op") + (2 * nchar(" borgmester")) + nchar("Højreorienteret") + nchar("Venstreorienteret") + nchar("Ingen forventning til vindmøller") + nchar("Forventning om opsætning af vindmølle") + nchar("Færre stemmer til borgmesterparti") + nchar("Flere stemmer til borgmesterparti")
+
+figurer_antal_tegn <- sum(vindmølle_geo_tegn,
+                          vindmølle_parti_tegn,
+                          år_valgsted_kort_tegn,
+                          marginsplot_1_tegn,
+                          marginsplot_2_tegn,
+                          slope_plot_parti_tegn,
+                          marginsplot_3_tegn,
+                          slope_plot_blok_tegn,
+                          faktisk_mønster_tegn,
+                          h1_sammenhæng,
+                          h2_sammenhæng)
+
+```
+
+
 \listoffigures
 \listoftables
+
+I figurer og kausalmodeller er der samlet `r figurer_antal_tegn` tegn.
 
 {{< pagebreak >}}
 
