@@ -105,19 +105,19 @@ I figurer og kausalmodeller er der samlet `r figurer_antal_tegn` tegn.
 
 {{< include parts/2-teori.qmd >}}
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
 # Metode
 
 {{< include parts/3-metode.qmd >}}
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
 # Analyse
 
 {{< include parts/4-analyse.qmd >}}
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
 # Diskussion
 
