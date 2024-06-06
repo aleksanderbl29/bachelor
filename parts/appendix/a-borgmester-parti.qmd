@@ -1,19 +1,15 @@
-<!-- \lipsum[1-2] -->
+\small
+I @tbl-appendix-a-borgmester-regres ses den fulde regression, hvor alle partiers koefficienter er præsenteret. Som nævnt på side \pageref{appendiks-regres} er der kun signifikante resultater for SF og Konservative. Begge mål er negative, hvilket kan skyldes lav mængde observationer og generelt lavere sstemmeandelsniveau for borgmestre fra de partier.
 
 ```{r}
 #| label: tbl-appendix-a-borgmester-regres
 #| tbl-cap: Fuld regressionstabel for borgmesterpartier
 #| output: true
-msummary(appendix_a_modeller, stars = sign_stjerner, output = "gt", gof_omit = "AIC|BIC", gof_map = tbl_borgmester_interaktion_modeller_gof_map, notes = list("Klyngerobuste standardfejl og fixed effects for valgsted og valg", "Referencekategorien er Socialdemokratiet. SF, Alternativet og DF udeladt af model 3."), coef_rename = TRUE) %>%
-  tab_spanner(label = "Afhængig: Stemmeandel til borgmesterparti i %", columns = -1)
+msummary(appendix_a_modeller, stars = sign_stjerner, gof_omit = "AIC|BIC", output = "kableExtra", gof_map = tbl_borgmester_interaktion_modeller_gof_map, coef_rename = TRUE) %>%
+  kable_styling(full_width = TRUE, latex_options = c("repeat_header"), font_size = 7) %>%
+  column_spec(1, width = "10cm") %>%
+  add_header_above(c(" " = 1, "Afhængig: Stemmeandel til borgmesterparti i %" = 2)) %>%
+  footnote(general = "Klyngerobuste standardfejl og fixed effects for valgsted og valg", "Referencekategorien er Socialdemokratiet. SF, Alternativet og DF udeladt af model 3.")
 ```
 
-{{< pagebreak >}}
-
-```{r}
-#| label: tbl-appendix-a-uden
-#| tbl-cap: Regressionstabel for borgmesterpartier uden kommuner, hvor borgmesterparti ikke er genopstillet.
-#| output: true
-msummary(appendix_a_modeller_uden, stars = sign_stjerner, output = "gt", gof_omit = "AIC|BIC", gof_map = tbl_borgmester_interaktion_modeller_gof_map, notes = list("Klyngerobuste standardfejl og fixed effects for valgsted og valg", "Referencekategorien er Socialdemokratiet. SF, Alternativet og DF udeladt af model 3."), coef_rename = TRUE) %>%
-  tab_spanner(label = "Afhængig: Stemmeandel til borgmesterparti i %", columns = -1)
-```
+\normalsize
