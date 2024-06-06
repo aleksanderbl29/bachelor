@@ -102,7 +102,7 @@ I figurer og kausalmodeller er der samlet `r figurer_antal_tegn` tegn.
 
 {{< include parts/1-indledning.qmd >}}
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
 # Teori
 
@@ -141,6 +141,10 @@ I figurer og kausalmodeller er der samlet `r figurer_antal_tegn` tegn.
 # Appendiks B: Generel udvikling i borgmesterpartiets stemmeandel {.appendix .unnumbered}
 
 {{< include parts/appendix/b-loess-prl-trends.qmd >}}
+
+# Appendiks C: API-kald til vindmølle-valgsted match {.appendix .unnumbered}
+
+{{< include parts/appendix/c-dawa-api.qmd >}}
 
 {{< pagebreak >}}
 
