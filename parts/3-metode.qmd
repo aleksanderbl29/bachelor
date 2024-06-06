@@ -2,22 +2,146 @@
 #| file: data/43-objekt.r
 library(logger)
 library(kableExtra)
+library(modelsummary)
 log_info("Henter objekter til metode")
 ```
 
-I denne del af opgaven vil jeg gennemgå metoden der vil blive brugt til at undersøge mit hovedspørgsmål.
+```{r}
+#| file: data/32-did-plots.r
+log_info("Henter did plots")
+```
 
-## Data
+I denne del af opgaven vil jeg gennemgå metoden der vil blive brugt til at undersøge mit hovedspørgsmål. Her vil jeg komme ind på min analysestrategi i form af den statistiske modellering og dernæst vil jeg forholde mig til faldgruber omkring fixed effects modeller. Herefter vil jeg beskrive indsamlingen og opbygningen af mit originale datasæt, hvor jeg også vil beskrive de variable der vil blive brugt i analysen. Slutteligt vil jeg forholde mig til fordelingen af vindmøller på tværs af valgår og geografi samt studiets overordnede generaliseringspotentiale.
+
+## Model
+
+I dette afsnit vil jeg gennemgå de modeller jeg har opstillet for at undersøge mit spørgsmål gennem det naturlige eksperiment. Jeg kommer ind på overvejelser omkring min analyse, herunder modellering og valg af kontrolvariable.
+
+### Modelspecifikation
+
+For at estimere effekten af en nyopsat vindmølle vil jeg benytte mig af en række modeller. Resultaterne af disse vil jeg sammenligne for at kvalificere estimatet.
+
+Den grundlæggende model er sammensat som det ses i @eq-model-1. Jeg tager udgangspunkt i en simpel fixed-effects model, som kan ses i @eq-model-1.
+
+$$
+    Y_{it} = \beta_i + \beta_{1}D_{it} + \epsilon_{it}
+$$ {#eq-model-1}
+
+Hvor $Y_{it}$ er borgmesterpartiets stemmeandel for valgsted $i$ ved valg $t$. $\beta_i$ er stemmeandel for valgsted $i$, hvor der ikke er opsat en vindmølle og $\beta_{1}$ er ændringen i stemmeandel, når $D\neq0$. $D_{it}$ indikerer om en vindmølle er opsat i nærheden af valgsted $i$ i perioden fra $t-1$ til $t$ og $\epsilon_{it}$ der er fejlledet.
+
+For at tage højde for forskelle mellem valgsteder tilføjer jeg en dummy for valgstedet. Derudover tilføjer jeg en dummy for valgåret for at tage højde for generelle vælgerbevægelser, der sker på tværs af valgsteder. De udgør mine fixed effects, og det giver os den model der kan ses i @eq-model-2.
+
+$$
+    Y_{it} = \beta_i + \beta_{1}D_{it} + \alpha_i + \delta_t + \epsilon_{it}
+$$ {#eq-model-2}
+
+I @eq-model-2 er $\alpha_i$ vores fixed effect for valgsted $i$ og $\delta_t$ er vores fixed effect for valgår $t$.
+Udover den grundlæggende model vil jeg undersøge mine forventninger til parti-forskelle af treatmenteffekten ved modellerne der kan ses i @eq-model-3, hvor der inkluderes et interaktionsled.
+
+$$
+    Y_{it} = \beta_i + \beta_{1}(D_{it} \times Parti_{kt}) + \alpha_i + \delta_t + \epsilon_{it}
+$$ {#eq-model-3}
+$$
+    Y_{it} = \beta_i + \beta_{1}(D_{it} \times Blok_{kt}) + \alpha_i + \delta_t + \epsilon_{it}
+$$ {#eq-model-4}
+
+I @eq-model-3 er der nu tilføjet $Parti$ der indikerer det parti der er borgmester i valgsted $i$'s kommune $k$ på valgtidspunkt $t$. Tilsvarende undersøger jeg også modellen i @eq-model-4, hvor der er tilføjet en indikator for $Blok$, der har værdien $0$ for et borgmesterparti fra rød blok og værdien $1$ for et borgmesterparti fra blå blok.
+
+Denne heterogene *treatmenteffekt* jeg forventer i form af forskelle mellem partier kan dels være med til at mindske resultatet for min @eq-model-2, hvor det kan være nødvendigt at benytte en anden estimator som forslået af @dechaisemartin2023 [29], men jeg vælger at forsat bruge samme analysestrategi til alle modeller for konsistens i resultater og eventuelle fejlestimationer. Derudover er forskellen det primære omdrejningspunkt i @eq-model-3, hvorfor jeg med interaktionen over den variabel der beskriver det heterogene forhold kan undersøge sammenhængen.
+
+## Fixed effects
+
+Jeg har valgt at gå med en tovejs fixed effects model for at imødekomme det udeladt variabel bias [@stock2020: 367], der helt uundgåeligt vil forekomme med det datasæt jeg har produceret. Mine modeller estimeres ved hjælp af `feols` fra @berge2024.
+
+### Antagelser under fixed effects
+
+For at vi kan stole på resultaterne fra en fixed-effects model er det vigtigt at en række antagelser er opfyldt. I dette afsnit vil jeg gennemgå antagelserne og evaluere tilstedeværelsen for mine data og for mine modeller.
+
+Først og fremmest antager @dechaisemartin2020 [5] at paneldatasættet er balanceret, hvilket mit konstruerede datasæt er. Det betyder at alle observationer enheder $i$ forekommer en gang i alle tidsperioder $t$. Derudover antager de, at der er parallele trends, hvilket betyder at der i fraværet af treatment skal være samme udvikling på den afhængige variabel for de treatede enheder såvel som de ikke-treatede [@dechaisemartin2023: 2]. Denne antagelse er videreført fra antagelsen om parallelle trends der bruges ved en traditionel differences-in-differences tilgang, hvor vi i denne fixed effects model også skal vurdere de aldrig-treatede enheder også opfylder antagelsen om parallele trends [@sun2021: 7].
+
+::: {#fig-prl-trends}
+
+```{r}
+#| output: true
+#| fig-width: 8
+#| fig-height: 4
+prl_trends
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+
+Note: Der er i de parallele trends ingen linje for valget i 2021, da der linjen går fra første målepunkt til sidste tidspunkt inden vindmølleopsætning. Der er kun et målepunkt for de valgsteder der modtager en vindmølle mellem 2009 og 2013, hvorfor 2009 er illusteret som et punkkt. Derudover er der ingen måling for valgsteder der i perioden efter valget i 2021 vil modtage en vindmølle. Linjerne er skåret af ved sidste observation inden treatment indtræffer. \newline
+Kilde: Datasæt af egen tilvirkning på baggrund af valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
+
+Visualisering af trends pr treatmentgruppe
+
+:::
+
+En grafisk inspektion af antagelsen om parallele trends kan ses i @fig-prl-trends nedenfor. Jeg vurderer antagelsen om parallele trends til at være tilpas overholdt, da der for gruppen der modtager en vindmølle i perioden mellem 2013 og 2017 har helt parallel linje med de aldrig-treatede. Dog er der små problemer med trenden for dem der modtager vindmølle i 2017, hvilket skyldes, at borgmesterpartierne generelt modtager en større andel af stemmerne ved valget i 2017. I @fig-appendiks-prl-trends i Appendiks B (side \pageref{fig-appendiks-prl-trends}) har jeg illustreret udviklingen for alle treatmentgrupper med en loess kurve i stedet for de rette linjer. Der kan det tydeligt ses, at der er en pludselig stigning i det generelle niveau, hvilket jeg vurderer til at være årsagen til det lille brud på antagelsen om parallele trends i @fig-prl-trends. Med denne generelle stigning vurderer jeg ikke antagelsen om parallele trends mellem de *aldrig-treatede* og treatmentgrupperne som brudt.
+
+### Fixed Effects udfordringer
+
+Den fixed effects model jeg bruger er i bund og grund en udvidet differences-in-differences model der har flere tidsperioder og flere enheder. Da et estimat fra en sådan tovejs fixed effects model er en differences-in-differneces der sammenligner enheder før og efter treatment, på tværs af enhederne, kan vi støde på problemer i både estimatets validitet og fortolkningen heraf [@huntington-klein2022: 389-297;@goodman-bacon2021]. @goodman-bacon2021 har bevist at denne type tovejs fixed effects faktisk sammenligner alle mulige diferences-in-differences sammenhænge på tværs af tid; det er et rigtigt problem, hvis treatment indtræffer på forskellige tidspunkter. Det er tilfældet med tilslutningen af vindmøller, hvor der er forskel på hvilke valgperioder, hvor vindmøllen konstrueres. Når det er tilfældet kan vi komme ud for, at en gruppe der er blevet eller vil blive *treatet* (med en vindmølle) kan agere kontrolgruppe for sig selv eller andre valgsteder. Derudover kan det være problematisk at benytte enheder der *vil blive* treatet som kontrolgruppe for enheder der bliver treatet på et andet tidspunkt.
+
+For at forsøge at imødekomme nogle af de udfordringer jeg har beskrevet ovenfor vil jeg gøre følgende: 1) centrere hvert valgsteds tidslinje omkring dets treatmenttidspunkt (modsat kalendertid) [@huntington-klein2022: 460; @sun2021] og, 2) interagere treatmenttidspunktet med indikatoren for valgstedet [@sun2021: 22]. Treatmenttidspunktet er i denne sammenhæng det tidspunkt, hvor en vindmølle er opført; i data-afsnittet nedenfor beskrives hvordan jeg måler dette.
+
+#### Centrering omkring treatmenttidspunkt
+
+Når jeg skriver, at jeg vil centrere hvert valgsteds tidslinje omkring dets treatmenttidspunkt, giver jeg alle valgsteder uden vindmøller en værdi $D=0$. Et valgsteds observation ved valget umiddelbart efter opsætningen af en vindmølle får værdien $D=1$, hvor den valget herefter får værdien $D=2$. Jeg har visualiseret denne omkodning i @tbl-centrering-treat. Her har jeg udvalgt en enhed, der får tilsluttet en vindmølle d. 22 december 2013, altså i perioden mellem kommunalvalget i 2013 og kommunalvalget i 2017, hvor treatmentindikatoren $D$ er centreret omkring.
+
+::: {#tbl-centrering-treat}
+
+```{r}
+#| output: true
+analyse_data %>% filter(valgsted_id == 101017 | valgsted_id == 101001) %>% select(1, valgaar, 35:36) %>% kable(col.names = c("Valgsted", "Tidspunkt", "Borgmesterpartiets stemmeandel", "Treatmentindikator"), booktabs = T) %>%
+    row_spec(0:9, align = "c") %>%
+    row_spec(4, hline_after = T)
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+
+\vspace{0.3cm}
+
+Note: Valgsted 101017 får opsat vindmølle mellem 2013 og 2017 og tidslinjen er centreret omkring treatmenttidspunkt. Vlagsted 101001 får ingen vindmølle opsat, hvorfor *treatmentindikator* er $0$ i hele perioden. Borgmesterpartiets stemmeandel er angivet i procent. \newline
+Kilde: Datasæt af egen tilvirkning på baggrund af valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
+
+\normalsize
+\setstretch{1.5}
+
+Eksempel på valgsteder med centreret treatment
+
+:::
+
+
+Ved at centrere om treatmenttidspunktet sikrer jeg at der ikke bruges enheder der har modtaget treatment i en tidligere periode som sammenligning (i kontrolgruppen) for med de nyligt treatede [@huntington-klein2022: 460].
+
+#### Interaktionsmodel mellem treatmenttidspunkt og enhed
+
+Når der tilføjes en interaktion mellem treatmentindikatoren og enhedsindikatoren vil vi i realiteten fjerne alle situationer, hvor enheder der er eller vil blive treatet bliver sammenlignet med sig selv før eller efter i tid. Her sikrer jeg, at der kun kan sammenlignes $D=1$ med referencekategorien $D=0$.
+
+$$
+    Y_{it} = \beta_i + \beta_{1}(D_{it} \times Parti_{kt}) + \beta_{2}(D_{it} \times \alpha_i) + \alpha_i + \delta_t + \epsilon_{it}
+$$ {#eq-sunab}
+
+Tilføjelsen af dette interaktionsled giver os @eq-sunab, hvor en estimation af $\hat{Y}_{it}$ kræver direkte sammenligning mellem den treatede enhed og kontrolgruppen. Kontrolgruppen er de observationer der altid har værdien $D=0$, ligesom valgsted $101001$ i @tbl-centrering-treat. Når der nu er så relativt få sammenligninger tilbage i modellen kan vi risikere at finde en mindre effekt end ellers, men denne sammenhæng vil jeg vurdere til at være mere reliabel [@huntington-klein2022: 460;@sun2021: 23-25].
+
+## Data {#dataafsnit}
 
 Til dette projekt har jeg skabt et datasæt sammensat af valgstatistik for kommunalvalg fra Danmarks Statistiks valgdatabase [@danmarksstatistik2024] og optegnelser over vindmølleindstallationer i Danmark [@energistyrelsen2024].
 
-Jeg begrænser de valg jeg undersøger til alle kommunalvalg efter 2007, hvor strukturreformen blev gennemført og ændrede strukturen i kommunerne [@kommunalreformen2007]. Der blev antallet af kommuner også ændret.
+Jeg begrænser de valg jeg undersøger til alle kommunalvalg efter 2007, hvor strukturreformen blev gennemført og ændrede strukturen i kommunerne [@kommunalreformen2007]. Der blev antallet af kommuner også ændret. Af det, benytter jeg mig af valgdata for de 4 kommunalvalg mellem 2009 og 2021. Disse valgdata stammer fra Danmarks Statistiks valgdatabase, hvor der er udtrukket stemmedata på valgstedsniveau [@danmarksstatistik2024]. Da valgstedernes områder kan ændre sig en smule fra valg til valg, har jeg benyttet mig af Valgdatabasens geografiske omregningsfunktion, således at alle valgsteder optræder med den geografiske inddeling der var ved valget i 2021 [@danmarksstatistik2024a].
 
-Af data fra @energistyrelsen2024 over opsatte vindmøller siden 14.12.1977 udvælger jeg de vindmøller der er opsat tidligst `r 365 * 4` dage før kommunalvalget i 2009 (som er det første valg efter strukturreformen). Heraf udvælges vindmølleinstallationer i valgperioderne fra kommunalvalg fra 2009 til 2021. Disse placeres i radius af et valgsted ved hjælp af afstemingssted-API fra @apidawa2024. Det giver samlet et datasæt med `r antal_obs_samlet` observationer over valgsteder gennem tiden. I alt `r n_distinct(analyse_data$valgsted_id)` unikke valgsteder er medtaget i mit endelige datasæt.
+Af data fra @energistyrelsen2024 over opsatte vindmøller siden 14.12.1977 udvælger jeg de vindmøller der er opsat tidligst `r 365 * 4` dage før kommunalvalget i 2009 (som er det første valg efter strukturreformen). Heraf udvælges vindmølleinstallationer i valgperioderne fra kommunalvalg fra 2009 til 2021. Disse placeres i radius af et valgsted ved hjælp af afstemingssted-API fra @apidawa2024. Det API-kald, der er brugt til dette match kan for transparens findes i @lst-dawa-api i Appendiks C (side \pageref{lst-dawa-api}). Denne sammenlægning er foretaget med den offentligt tilgængelige version af Danmarks Adressers Web API d.21. april 2024 og giver samlet et datasæt med `r antal_obs_samlet` observationer over valgsteder gennem tiden. I alt `r n_distinct(analyse_data$valgsted_id)` unikke valgsteder er medtaget i mit endelige datasæt.
 
-For en oversigt over de danske borgmestre gennem tiden har jeg sammensat @kjaer2018 og @kommunerneslandsforening2023, der udgør grundlaget for at definere hvilket parti der er borgmesterparti.
+Vindmøllens opsætning er registreret ved dens tilslutningsdato, som er den dato, hvor vindmøllen er tilsluttet elnettet [@energistyrelsen2024].
 
-Det giver en datastruktur der ligner den i nedenstående @tbl-datastruktur-id og @tbl-datastruktur-vars, der viser hhv. identifikatorvariable og analysevariable for hver observation .
+For en oversigt over de danske borgmestre gennem tiden har jeg sammensat @kjaer2018 og @kommunerneslandsforening2023, der udgør grundlaget for at definere hvilket parti der er borgmesterparti i en given kommune på et givent tidpsunkt.
+
+Resultatet af den sammensætning af forskellige datakilder giver en datastruktur der ligner den i nedenstående @tbl-datastruktur-id og @tbl-datastruktur-vars, der viser hhv. identifikatorvariable og analysevariable for hver observation.
 
 ```{r}
 #| label: tbl-datastruktur-id
@@ -46,70 +170,104 @@ datastruktur_vars <- datastruktur %>%
 kbl(datastruktur_vars)
 ```
 
-## Model
+## Variable
 
-I dette afsnit vil jeg gennemgå de modeller jeg har opstillet for at undersøge mit spørgsmål. Jeg kommer ind på overvejelser omkring min analyse, herunder modellering og valg af kontrolvariable.
+I dette korte afsnit vil jeg beskrive de variable jeg vil bruge til min analyse. Først vil jeg beskrive den afhængige, dernæst de primære og sekundære uafhængige variable. Til sidst vil jeg beskrive variablene der skal udgøre mine fixed effects.
 
-### Modelspecifikation
+### Den afhængige variabel
 
-For at estimere effekten af en nyopsat vindmølle vil jeg benytte mig af en række modeller. Resultaterne af disse vil jeg sammenligne for at kvalificere estimatet. Derudover vil jeg undersøge et udvalg af modellerne med en Goodman-Bacon dekomposition (HENVISNING) [@goodman-bacon2021]
+I denne undersøgelse vil jeg fokusere på borgmesterpartiets stemmandel i procent som min afhængige variable. Dette gør jeg, fordi det er et meget direkte mål for den elektorale reaktion på borgmesterens performance i den forgående valgperiode. I @tbl-datasummary-depvar kan vi se, at den siddende borgmesters parti i gennemsnit får `r nm_fm(mean(analyse_data$borgmester_stemmer_pct))` procent af stemmerne. Derudover er det bemærkelsesværdigt, at den mindste værdi på den afhængige variabel er `r nm_fm(min(analyse_data$borgmester_stemmer_pct))` procent af stemmerne. Denne lave værdi skyldes, at der ved nogle valg ikke er genopstillede kandidater fra borgmesterpartiet, eksempelvis når borgmesteren er fra en Lokalliste. Derudover fortæller standardafvigelsen på `r nm_fm(sd(analyse_data$borgmester_stemmer_pct))`, at der er rimeligt stor spredning i, hvor mange stemmer borgmesterpartiet får på tværs af de `r nrow(analyse_data)` stemmesteder der er inkluderet i mit datasæt.
 
-Den grundlæggende model er sammensat som det ses i @eq-model-1. Jeg tager udgangspunkt i en simpel fixed-effects model, som kan ses i @eq-model-1
+::: {#tbl-datasummary-depvar}
 
-$$
-    Y_{it} = \beta_i + \beta_{1}D_{it} + \epsilon_{it}
-$$ {#eq-model-1}
+```{r datasummary-depvar}
+#| output: true
+library(modelsummary)
+datasummary((`Borgmesterpartiets stemmeandel` = borgmester_stemmer_pct) + (`Antal gyldige stemmer` = stemmer) ~ (Gns. = Mean) + SD + Min + (Maks = Max), data = analyse_data)
+```
 
-Hvor $Y_{it}$ er borgmesterpartiets stemmeandel for valgsted $i$ ved valg $t$. $\beta_i$ er stemmeandel for valgsted $i$, hvor der ikke er opsat en vindmølle og $\beta_{1}$ er ændringen i stemmeandel, når $D\neq0$. $D_{it}$ indikerer om en vindmølle er opsat i nærheden af valgsted $i$ i perioden fra $t-1$ til $t$ og $\epsilon_{it}$ der er fejlledet.
+\raggedright
+\footnotesize
+\setstretch{1}
 
-For at tage højde for forskelle mellem valgsteder tilføjer jeg en dummy for valgstedet. Derudover tilføjer jeg en dummy for valgåret for at tage højde for generelle vælgerbevægelser, der sker på tværs af valgsteder. De udgør mine fixed effects, og det giver os den model der kan ses i @eq-model-2.
+\vspace{0.3cm}
 
-$$
-    Y_{it} = \beta_i + \beta_{1}D_{it} + \alpha_i + \delta_t + \epsilon_{it}
-$$ {#eq-model-2}
+Note: Borgmesterpartiets stemmeandel er angivet i procent. \newline
+Kilde: Datasæt af egen tilvirkning på baggrund af valgstatistik fra @danmarksstatistik2024.
 
-I @eq-model-2 er $\alpha_i$ vores fixed effect for valgsted $i$ og $\delta_t$ er vores fixed effect for valgår $t$.
-Udover den grundlæggende model vil jeg undersøge mine forventninger til parti-forskelle af treatmenteffekten ved modellerne der kan ses i @eq-model-3, hvor der inkluderes et interaktionsled.
+Deskriptiv statistik for afhængig variabel
 
-$$
-    Y_{it} = \beta_i + \beta_{1}D_{it}Parti_{kt} + \alpha_i + \delta_t + \epsilon_{it}
-$$ {#eq-model-3}
-$$
-    Y_{it} = \beta_i + \beta_{1}D_{it}Blok_{kt} + \alpha_i + \delta_t + \epsilon_{it}
-$$ {#eq-model-4}
+:::
 
-I @eq-model-3 er der nu tilføjet $Parti$ der indikerer det parti der er borgmester i valgsted $i$'s kommune $k$ på valgtidspunkt $t$. Tilsvarende undersøger jeg også modellen i @eq-model-4, hvor der er tilføjet en indikator for $Blok$, der har værdien $0$ for et borgmesterparti fra rød blok og værdien $1$ for et borgmesterparti fra blå blok.
+Udover fordelingen af borgmesterpartiets stemmenadel er det også interessant at se på, hvordan stemmeafgivelsen på valgstederne fordeler sig. I @tbl-datasummary-depvar kan vi også se, at der er stor spredning i, hvor mange gyldige stemmer, der gives mellem valgstederne. Der er i gennemsnit `r nm_fm(mean(analyse_data$stemmer))` gyldige stemmer på tværs af valg og valgsteder. Der er også relativt store udvsing i størrelsen på valgstederne, hvor den mindste har `r nm_fm(min(analyse_data$stemmer))` gyldige stemmer, mens den største har `r nm_fm(max(analyse_data$stemmer))` gyldige stemmer. Derudover er der stor variation i størrelsen udover det generelle interval, hvor det gennemsnitlige valgsted falder indenfor $+/-$ en standardafvigelse fra gennemsnittet. De gyldige stemmer forekommer i denne tabel som decimaltal, hvilket kan skyldes den geografiske omregning der er foretaget hos @danmarksstatistik2024a, hvor valgstedernes stemmeandele er fordelt på de geografiske områder der stemmer overens med stemmestedets område ved kommunalvalget i 2021.
 
-## Fixed effects
+### Treatmentindikator
 
-Jeg har valgt at gå med en tovejs fixed effects model for at imødekomme det udeladt variabel bias [@stock2020: 367], der helt uundgåeligt vil forekomme med det datasæt jeg har produceret.
+Indikatoren for et valgsteds treamenttidspunkt er, som beskrevet tidligere, kodet, så et valgsted der har fået tislluttet en vindmølle i peroden mellem to valg vil tage værdien $D=1$ ved målingen ved det næste valg. Ligeledes vil det valgsted havde værdien $D=0$ ved valget inden. Det er gjort efter anbefaling fra @sun2021. Det giver en fordeling som vi kan se i @tbl-datasummary-trvar. Det meget lave gennemsnit er en ret god indikator for, at fordelingen mellem min kontrol- og treatmentgrupper er en smule skæv. Det havde for analysens vægt været fordelagtigt, at der var en større pulje af *treatede* valgsteder, altså valgsteder med opsatte vindmøller, men det er på den anden side ikke et reelt problem, da jeg her behandler data for hele den population jeg er interesseret i.
 
-Mine modeller estimeres ved hjælp af `feols` fra @berge2018 og @berge2024.
+Jeg forventer, at der i noget omfang er selektion ind i, hvilke valgsteder der får opstillet vindmøller. Blandt andet er der mange kystnære valgsteder der får opsat vindmøller, som vi vil se senere (side \pageref{fig-vindmølle-geo}). Derudover kan der også være nogle kommuner der generelt er mere tilbøjelige til at tillade vindmøllekonstruktion. Dog forventer jeg, at denne tilbøjelighed (eller mangel på samme) er nogenlunde konstant gennem den relativt korte tidsperiode jeg undersøger, hvorfor jeg ikke vurderer det til at være en udfordring. På samme måde forventer jeg ikke at de andre faktorer bidrager til selektion ind i vindmøllegruppen vil ændre sig over tid, mens der også tages højde for disse tids- og stedsinvariante faktorer med min fixed effects model.
 
-### Antagelser under fixed effects
+::: {#tbl-datasummary-trvar}
 
-For at vi kan stole på resultaterne fra en fixed-effects model er det vigtigt at en række antagelser er opfyldt. I dette afsnit vil jeg gennemgå antagelserne og evaluere tilstedeværelsen for mine data og for mine modeller.
+```{r datasummary-trvar}
+#| output: true
+library(modelsummary)
+datasummary((`Tilslutning af vindmølle` = tilslutning_aar_valg) ~ (Gns. = Mean) + SD + Min + (Maks = Max), data = analyse_data)
+```
 
-#### Parallelle trends
+\raggedright
+\footnotesize
+\setstretch{1}
 
-Antagelsen om parallelle trends siger at der i fraværet af treatment skal være samme udvikling på den afhængige variabel for de treatede enheder såvel som de ikke-treatede [@dechaisemartin2023: 2]. Denne antagelse er videreført fra antagelsen om parallelle trends der bruges ved en traditionel differences-in-differences tilgang, hvor vi i denne fixed effects model også skal vurdere de aldrig-treatede enheder også opfylder antagelsen om parallele trends [@sun2021: 7].
+\vspace{0.3cm}
 
+Kilde: Datasæt af egen tilvirkning på baggrund af valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
 
-### Fixed Effects udfordringer
+Deskriptiv statistik for treatmentindikator
 
-Den fixed effects model jeg bruger er i bund og grund en udvidet differences-in-differences model der har flere tidsperioder (end to) og flere $i$ eller enheder (valgsteder). Da et estimat fra sådan en tovejs fixed effects model (som den jeg bruger) i bund og grund er en differences-in-differneces der sammenligner enheder før og efter treatment, på tværs af enhederne [@huntington-klein2022: 389-297;@goodman-bacon2021]. @goodman-bacon2021 har bevist at denne type tovejs fixed effects faktisk sammenligner alle mulige diferences-in-differences sammenhænge på tværs af tid; det er et rigtigt problem, hvis treatment indtræffer på forskellige tidspunkter.
+:::
 
-For at forsøge at imødekomme nogle af de udfordringer jeg har beskrevet ovenfor vil jeg gøre følgende: 1) centrere hvert valgsteds tidslinje omkring dets treatmenttidspunkt (modsat kalendertid) [@huntington-klein2022: 460; @sun2021] og, 2) interagere treatmenttidspunktet med indikatoren for valgstedet [@sun2021: 22].
+### Partier
 
-Ved at centrere om treatmenttidspunktet sikrer jeg at der ikke bruges enheder der har modtaget treatment i en tidligere periode som sammenligning (i kontrolgruppen) for med de nyligt treatede [@huntington-klein2022: 460]. Derudover sikrer jeg ved at interagere treatmenttidspunktet med indikatoren for valgstedet, at der ikke sammenlignes med treatede enheder, fordi der fjernes en del af sammenligningerne [@huntington-klein2022: 460]. Jeg risikerer dog, at den fundne effekt bliver mindre, men om ikke andet mere pålidelig.
+De heterogene effekter der forventes i hypotese H2, samt af @eq-model-3 og @eq-model-4, kræver også variable til at beskrive de akser, hvor effekten kan være forskellig henover. I @tbl-datasummary-parti kan vi se, hvordan fordelingen af valgsteder, der er placeret i et givent borgmesterpartis kommune varierer en smule gennem tiden. Denne fordeling er nogenlunde ligelig mellem især Socialdemokratiet og Venstre, mens fordelingen også er forholdsvis konstant gennem tiden. Det giver en indikation om, at der ikke er så stor udskiftning i borgmesterpartierne i de enkelte kommuner. Denne opgørelse kan ses som fordelingen af partier på tværs af valg, og er den variabel der interageres over i @eq-model-3.
+
+::: {#tbl-datasummary-parti}
+
+```{r datasummary-parti}
+#| output: true
+library(modelsummary)
+datasummary((`Borgmesterparti` = Parti) ~ N*as.factor(valgaar), data = analyse_data)
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+
+\vspace{0.3cm}
+
+Kilde: Datasæt af egen tilvirkning på baggrund af valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
+
+Deskriptiv statistik for partivariable
+
+:::
+
+Derudover er det bemærkelsesværdigt, at der kun er et valgsted der har haft Dansk Folkeparti som borgmesterparti, men det skyldes, at Læsø Kommune, der kun har et valgsted, i perioden 2017 til 2021 havde en borgmester fra Dansk Folkeparti [@wormslev2021]. Karsten Nielsen, der var borgmester på Læsø, var i størstedelen af sin periode borgmester for Dansk Folkeparti indtil han skiftede til Venstre i sommeren 2021 [@wormslev2021]. Jeg har valg at kode hans embede til Dansk Folkeparti. De få observationer for Alternativet bunder i en lignende historie, hvor Alternativet havde en borgmesterpost på Fanø i perioden 2017 til 2021 [@nielsen2017]. På Fanø er der således kun 2 stemmesteder.
 
 ## Generaliserbarhed
 
-I dette afsnit vil jeg gennemgå mine overvejelser omkring dette studies generaliserbarhed. For
+I dette afsnit vil jeg gennemgå mine overvejelser omkring dette studies generaliserbarhed. Først vil jeg kommentere på mit valg af indikator for vindmøllens tilstedeværelse samt distinktionen mellem opsætning af vindmøller, beslutning om konstruktion af vindmøller og tilslutningsdato for en vindmølle. Dernæst vil jeg gennemgå den geografiske fordeling af vindmøller, og derfor også de *treatede* enheder. Til sidst vil jeg vurdere fordelingen af vindmøller på tværs af politiske partier.
+
+Generelt for denne undersøgelse gælder det, at der kan generaliseres til lignende cases, værende andre skandinaviske lande eller andre former for vedvarende energi der opføres i landskabet. Derudover vurderer jeg også, at den stærke interne validitet, der udspringer af de opstillede fixed effects modeller, betydeligt øger relevansen af undersøgelsen.
+
+### Måletidspunkt og tilslutning vs konstruktion
+
+I denne ogpave har jeg valgt at benytte vindmøllens tilslutningsdato som indikator for vindmøllens *tilstedeværelse* i lokalområdet. Det har jeg primært gjort af hensyn til tilgængelighed af data og opgavens omfang. @energistyrelsen2024 har meget gode optegnelser over, hvornår vindmøllerne er tilsluttet elnettet og disse data er også relativt let tilgængelige. For i stedet at fokusere på den beslutning hvor konstruktionen af en vindmølle tillades ville det kræve deltajerede optegnelser over alle behandlinger af lokalplansændringer i den periode jeg undersøger, hvilket bestemt kan indsamles, men det kræver mange flere timer, end hvad der har været til rådighed for dette projekt.
+
+Selvom der i realiteten kan være forskel mellem en vindmølles konstruktion, opsætning, tilslutning eller selve beslutningen om at vindmøllen skal opføres, så vil jeg i denne opgave primært beskæftige mig med vindmøllens tilslutningsdato som målepunkt. Det virker ikke usandsynligt, at der kan være andre mekanismer på spil, hvis der fokuseres på selve beslutningsprocessen eller -tidspunktet, mens der også kan tænkes at være forskelle mellem tilslutningsdato og den dato vindmøllen konstrueres/opsættes eller opnår sin maksimale højde. Alle disse er mulige måletidspunkter, hvor jeg dog vurderer, at perioden mellem kommunalvalg er lang nok, til der indenfor en eller to perioder kan gennemføres beslutningsproces, konstruktion og tilslutning. Der ses lange behandlingstider på vindmøllekonstruktioner, da der er mange godkendelsesprocesser i gang i flere dele af kommunerne og diverse relevante styrelser [@greenpowerdenmark2023]. Derudover vurderer jeg, at denne skævvridning der kan medføres af de lange processer der kan være knyttet med opsætningen af en eller flere vindmøller, vil være jævnt fordelt mellem valgperioderne, hvorfor jeg går ud fra, at de nogenlunde udligner hinanden. Når jeg omtaler tilslutningsdatoen vil jeg nævne det som tilslutning, opsætning, konstruktion, opførsel og lignende begreber. Alle disse skal i denne sammenhæng forstås som synonymer for vindmøllens tilslutningsdato.
 
 ### Fordeling af vindmøller
 
-For at vurdere den generelle eksterne validitet af mit design vil jeg se på, hvordan vindmøllerne er fordelt på flere parametre. Her vil jeg kortlægge den geografiske fordeling og fordelingen på borgmesterpartier.
+For at vurdere den generelle eksterne validitet af mit design vil jeg se på, hvordan vindmøllerne er fordelt på flere parametre. Her vil jeg kortlægge den geografiske fordeling af vindmølleinstallationerne og derudover fordelingen af vindmøller på borgmesterpartierne.
 
 ```{r 30-plots}
 #| file: data/30-plots.r
@@ -120,9 +278,6 @@ For at vurdere den generelle eksterne validitet af mit design vil jeg se på, hv
 
 ```
 
-#### Den geografiske fordeling
-For at undersøge, hvordan vindmøllerne er geografisk fordelt har jeg produceret @fig-vindmølle-geo
-
 ::: {#fig-vindmølle-geo}
 
 ![](output/billeder/valgsteder-map-1.png)
@@ -130,17 +285,20 @@ For at undersøge, hvordan vindmøllerne er geografisk fordelt har jeg producere
 \raggedright
 \footnotesize
 \setstretch{1}
-Note: Stemmesteder fordelt på valgår. Hvert stemmested fremgår kun en gang.
-
+Note: Stemmesteder fordelt på valgår. Hvert stemmested fremgår kun en gang. \newline
 Kilde: Egen tilvirkning på baggrund af kortdata fra @apidawa2024, valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
 
 Afstemningssteder der har fået vindmølle i valgperiode
 
 :::
 
+#### Den geografiske fordeling
 
+For at undersøge, hvordan vindmøllerne er geografisk fordelt har jeg produceret @fig-vindmølle-geo nedenfor. I @fig-vindmølle-geo har jeg farvelagt de valgsteder, hvor der er konstrueret en vindmølle mellem valg. Farverne indikerer hvilket valg vindmøllen er konstrueeret inden. Det umiddelbare jeg lægger mærke til på kortet er, at der er en relativt ligelig fordeling mellem valgårene i forhold til hvor mange der modtager vindmøller. Derudover skal det noteres at kun den første vindmølle ved et valgsted er optegnet, hvilket også stemmer overens med den treatmentoperationalisering jeg gennemgik tidligere. Udover den løbende tilslutning er der en stor skævhed i forhold til den geografiske placering af vindmøllerne. Fra et perspektiv af en der skal konstruere en vindmølle giver det god intutitiv mening at vindmøllerne primært placeres ved kysterne, da der her er mere vind end omkring de store byer [@andel2024]. Denne overvægt af kystkommuner kan påvirke i hvor høj grad fundene fra dette studie kan generaliseres til eksempelvis vindmølleinstallationer omkring mellemstore byer eller midt i landet. Dog er det mønster vi ser i @fig-vindmølle-geo det faktiske konstruktionsmønster i Danmark, hvorfor jeg vurderer at det er mere interessant at kunne sige noget om, hvordan den elektorale reaktion er for de steder, hvor der i realiteten konstrueres vindmøller. Altså giver den geografiske fordeling i @fig-vindmølle-geo ingen grund til alarm.
 
 #### Fordeling på partier
+
+Som vi kan se af @fig-vindmølle-parti er der en overvægt af vindmøller opsat i kommuner, der har Venstre-borgmestre. Det underbygges yderligere af @tbl-vindmølle-parti, hvor vi kan se, at `r venstre_vind_pct` af vindmøllerne er placeret i Venstre-kommuner. Derudover er der flere områder i landet der kontinuerligt får vindmøller, hvoraf vi vil miste nogle ved sorteringen der gennemgås nedenfor. Derudover er det værd at bemærke at de kyst-kommuner jeg nævnte ovenfor ofte har borgmestre fra Venstre, hvilket kan give en lille overrepræsentation af Venstre-observationer. Jeg forventer dog ikke, at denne forskel er stor nok til at vi skal bekymre os om den.
 
 ::: {#fig-vindmølle-parti}
 
@@ -149,8 +307,8 @@ Afstemningssteder der har fået vindmølle i valgperiode
 #| cache: true
 ```
 ```{r valg-parti-kort}
-#| fig-width: 10
-#| fig-height: 8
+#| fig-width: 8
+#| fig-height: 6
 #| output: true
 valg_parti_kort
 ```
@@ -161,18 +319,22 @@ valg_parti_kort
 Note: Vindmøller fordelt på parti. Hvert valg har sit eget kort. De sorte prikker indikerer en ny vindmølle. Farven indikerer den siddende borgmesters parti ved hvert valg. \newline
 Kilde: Egen tilvirkning på baggrund af kortdata fra @apidawa2024, valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
 
-Kort over borgmestre gennem undersøgelsens valg
+Kort over borgmesterpartier fra 2009-2021
 
 :::
 
-Som vi kan se af @fig-vindmølle-parti er der en overvægt af vindmøller opsat i kommuner, der har Venstre-borgmestre. Det underbygges yderligere af @tbl-vindmølle-parti, hvor vi kan se, at `r venstre_vind_pct` af vindmøllerne er placeret i Venstre-kommuner.
+{{< pagebreak >}}
+
+### Sortering i data
+
+For at sikre at jeg kun inkluderer de observationer, hvor et valgsted har fået deres første vindmølle, har jeg som nævnt kun registreret den vindmølle der er først opsat som treatment for et valgsted. Det har jeg gjort for at sikre, at hvert valgsted, hvor der opsættes en vindmølle, kun observeres som *treatet* en enkelt gang i datasættet. I den proces forsvinder der desværre en række møller, hvor vi ender med en fordeling som ses i @fig-år-valgsted-kort. Her kan vi se, at der er en overvægt af Venstre-vindmøller. Det underbygges yderligere af @tbl-vindmølle-parti hvor vi også kan se, at der er en overvægt at valgsteder i Venstre-kommuner, der har fået vindmøller mellem valg. En del af dette kan forklares med Venstre-kommunernes geografiske placering som set i @fig-vindmølle-parti, der er mod kysterne og hvor der er meget vind. Der er dog stadig en del vindmøller i socialdemokratiske kommuner, hvorfor jeg ikke vurderer det som et seriøst problem.
 
 ::: {#fig-år-valgsted-kort}
 
 ```{r}
 #| output: true
-#| fig-width: 10
-#| fig-height: 8
+#| fig-width: 8
+#| fig-height: 6
 parti_aar_valgsted_kort
 ```
 
@@ -186,15 +348,15 @@ Kort over valgsteders partiorientering ved vindmølle-valg
 
 :::
 
-I @tbl-vindmølle-parti kan vi se, at der er en overvægt at valgsteder i Venstre-kommuner, der har fået vindmøller mellem valg. En del af dette kan forklares med Venstre-kommunernes geografiske placering som set i @fig-vindmølle-geo og @fig-vindmølle-parti, der er mod kysterne og hvor der er meget vind. Der er dog stadig en del vindmøller i socialdemokratiske kommuner, hvorfor jeg ikke vurderer det som et seriøst problem.
+\vspace{0.75cm}
 
 ```{r}
 #| label: tbl-vindmølle-parti
-#| tbl-cap: "Fordeling af vindmøller på partier"
+#| tbl-cap: "Fordeling af vindmøller på borgmesterpartier"
 #| output: asis
 tbl_vindmølle_parti
 ```
 
-### Sortering i data
+### Manglende observationer
 
-For alle regressioner, der inkluderer blok-inddeling er borgmestre fra lokallister frasorteret. Det er gjort for at muliggøre den traditionelle blokinddeling. Det resulterer i at vi mister `r analyse_data %>% filter(Parti == "Lokalliste") %>% distinct(kommune_valg_id) %>% nrow` valgsted/valg observationer
+For alle regressioner, der inkluderer blok-inddeling er borgmestre fra lokallister frasorteret. Det er gjort for at muliggøre den traditionelle blokinddeling, men går på kompromis med det perfekt balancerede panel som antaget af @dechaisemartin2020. Det resulterer i, at vi mister `r analyse_data %>% filter(Parti == "Lokalliste") %>% distinct(kommune_valg_id) %>% nrow` valgsted/valg observationer.
