@@ -37,6 +37,14 @@ log_info("analyse er loaded")
 
 ```
 
+```{r indlæs-plots}
+#| file: data/30-plots.r
+#| cache: true
+
+log_info("plots er loaded")
+
+```
+
 \tableofcontents
 
 {{< pagebreak >}}
