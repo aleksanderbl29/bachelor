@@ -1,5 +1,7 @@
 library(tidyverse)
 
+extrafont::loadfonts()
+
 ## Indlæser farver og skrifttype
 source("data/39-farver.r")
 
