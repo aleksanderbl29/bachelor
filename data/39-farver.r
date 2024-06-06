@@ -7,6 +7,12 @@ valg_farver <- c("KV2009" = "#E69F00",
                  "KV2017" = "#009E73",
                  "KV2021" = "#F0E442")
 
+log_info("Skaber labels til valgfarver")
+valg_farve_labels <- c("KV2009" = "2009",
+                       "KV2013" = "2013",
+                       "KV2017" = "2017",
+                       "KV2021" = "2021")
+
 log_info("Skaber farvepalette til partier")
 partier_farver <- c("Socialdemokratiet" = "#f04d46",
                     "Venstre" = "#00639E",
