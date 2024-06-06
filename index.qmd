@@ -51,6 +51,8 @@ log_info("plots er loaded")
 
 ```{r figur-tegn}
 
+prl_trends_tegn <- nchar("Sidste valg inden vindmølle") + nchar("2013") + nchar("2017") + nchar("Aldrig treatet") + nchar("Borgmesterpartiets stemmeandel i %") + (4*3) + (4*4)
+
 vindmølle_geo_tegn <- (4*4) + nchar("Valgår") + nchar("Bornholm")
 
 vindmølle_parti_tegn <- (4*4) + sum(nchar(unique(as.character(join_kommuner_geodata$Parti))))
@@ -83,7 +85,8 @@ figurer_antal_tegn <- sum(vindmølle_geo_tegn,
                           slope_plot_blok_tegn,
                           faktisk_mønster_tegn,
                           h1_sammenhæng,
-                          h2_sammenhæng)
+                          h2_sammenhæng,
+                          prl_trends_tegn)
 
 ```
 
