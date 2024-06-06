@@ -1,0 +1,60 @@
+Det API-kald der er brugt i R til at producere datasættet som beskrevet i metodeafsnittet under *Data* (side \pageref{dataafsnit}) kan ses i @lst-dawa-api nedenfor.
+
+::: {#lst-dawa-api lst-pos="H"}
+
+\scriptsize
+
+```{r}
+#| echo: true
+#| eval: false
+#| output: true
+
+lapply(c("tidyverse", "httr", "jsonlite"), require, character.only = TRUE)
+
+## Definer URL der skal bruges
+url_DAWA <- "https://api.dataforsyningen.dk/afstemningsomraader"
+
+## Indlæs excel fil med vindmølledata og omdøber kolonnenavne med det samme
+vind <- read_xlsx("data/downloads/vind.xlsx") %>%
+  select(everything()) %>%
+  rename(x_koord = "X (øst) koordinat \r\nUTM 32 Euref89",
+         y_koord = "Y (nord) koordinat \r\nUTM 32 Euref89",
+         tilslutningsdato = "Dato for oprindelig nettilslutning")
+
+## Skaber tribble til påfyldning af data fra loop
+vind_steder <- tribble(
+  ~mll_num, ~x_koord, ~y_koord, ~afssted, ~afssted_nr, ~kommunekode, ~tilslutningsdato,
+  0, 0, 0, "sample data", 0, 0, as_date(0)
+)
+
+## Kører loop på DAWA
+for (i in 1:nrow(vind)) {
+  koord_x <- vind[i, ]$x_koord
+  koord_y <- vind[i, ]$y_koord
+  møllenummer <- as.numeric(vind[i, ]$`Møllenummer (GSRN)`)
+  tilslutningsdato <- vind[i, ]$tilslutningsdato
+
+  url <- paste0(url_DAWA, "/reverse", "?", "x=", koord_x, "&y=", koord_y, "&srid=25832")
+  response <- content(GET(url = url))
+  afssted = response$afstemningssted$navn
+  afssted_nr = as.numeric(response$nummer)
+  kommunekode = as.numeric(response$kommune$kode)
+  vind_steder <- add_row(vind_steder,
+          x_koord = koord_x,
+          y_koord = koord_y,
+          afssted = afssted,
+          afssted_nr = afssted_nr,
+          kommunekode = kommunekode,
+          mll_num = møllenummer,
+          tilslutningsdato = tilslutningsdato)
+  print(paste(i, "af", antal_obs, "er:",response$afstemningssted$navn))
+  rm(koord_x, koord_y, url, response)
+}
+
+## Fjerner første tomme kolonne
+vind_steder <- vind_steder %>%
+  select(everything()) %>%
+  filter(!afssted == "sample data")
+```
+
+:::
