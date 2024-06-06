@@ -6,6 +6,7 @@ library(RColorBrewer)
 library(cowplot)
 library(sf)
 library(rmapshaper)
+library(cowplot)
 
 ## Indlæser objekter der skal bruges
 if (exists("valg_farver") & exists("partier_farver")) {
@@ -108,7 +109,7 @@ map_2_33 <- join_kommuner_geodata %>%
 
 valg_parti_kort <- ggplot() +
   geom_sf(data = join_kommuner_geodata, color = "grey", aes(fill = Parti)) +
-  geom_sf(data = vind_stemmesteder, size = 0.01) +
+  geom_sf(data = vind_stemmesteder, size = 0.5, color = "black") +
   theme_map() +
   scale_fill_manual(values = partier_farver) +
   theme(legend.position = "left") +
