@@ -1,17 +1,67 @@
-I denne del af opgaven vil jeg gennemgå mine funds implikationer både for politik og den videre litteratur. Derudover vil jeg revurdere mit forskningsdesign og komme ind på, hvad der kunne være gjort anderledes og hvilke mangler og udfrodringer de valg eventuelt vil have.
+I denne del af opgaven vil jeg gennemgå implikationer af mine fund både for politik og den videre litteratur. Derudover vil jeg revurdere mit forskningsdesign og komme ind på, hvad der kunne være gjort anderledes og hvilke mangler og udfrodringer de valg eventuelt vil have.
 
-## Implikationer
+## Opgavens bidrag og implikationer
+
+Dette bidrag skriver sig ind i litteraturen omkring retrospektiv vælgeradfærd og de elektorale reaktioner på klimapolitik. Når jeg finder, at der for venstreorienterede borgmestre er positive elektorale effekter, mens der er negative elektorale effekter for højreorienterede borgmestre har det naturligvis store implikationer for, hvilke typer politikere der har mulighed for at facilitere overgangen til vedvarende energiproduktion.
 
 - Nogle partier kan genneføre klimapolitik der går ud over folk; andre kan ikke
   - Forskellen lægger sig op ad den fordelingspolitiske skillelinje.
+  - Ligger også op ad klimapolitik som fordelingspolitik som jeg fik fra @aklin2020
 
-## Forbedringer til opgaven
 
-- Jeg har ingen forbedringer
+## Teoretiske udfordringer
+
+- @isaksson2024a finder en nixon-goes-to-china effekt for forventningerne til, hvordan partierne opfører sig. Det er dog ikke retrospektiv stemmeadfærd, men mere ovre i en forventning til, hvad partiet kommer til at gøre. Nærmest en *prospektiv stemmeadfærd*.
+
+## Designforbedringer
+
+
+
+- @isaksson2024a undersøger ændringen i andelen af stemmer til socialdemokraterne og moderatarne, hvor jeg undersøger
+- Effektstørrelsen kan godt tænkes at blive undervurderet, når jeg ved, at nogle (eller mange) vindmøllegrupperinger er i såkaldte vindmøllelaug. Der har borgerne i vindmøllernes nærhed en økonomisk interesse i vindmøllerne, hvorfor de sandsynligvis vil synes bedre om dem. Den effekt tænker jeg vil skubbe de negative effekter for de højreorienterede og måske ikke gøre så meget ved de venstreorienterede. oplagt videre forskning.
+
+### Alternative metodiske tilgange
+
+Udover den tovejs fixed effects-tilgang jeg har benyttet i denne undersøgelse er det også relevant at overveje en tilgang baseret på @dechaisemartin2023 [16]. Den tilgang jeg har valgt, baseret på @sun2021, giver dog substantielt god mening for mig, da det *baseline outcome* vi her undersøger er udviklingen for valgsted $i$ fra periode $t-1$ til periode $t$.
 
 ### Data
 
 - Det ville være fedt at have data, hvor ingen enheder er treatet til at starte med
   - Det er bare vildt svært når der er tale om vindmøller, fordi det udvikler sig hele tiden.
   - Måske kan det virke på en anden case.
-- Regressioner inkluderer også situationer hvor borgmesterparti ikke genopstiller (ofte lokalliste). Analyse uden de observationer kan ses i @tbl-appendix-a-uden
+Regressioner inkluderer også situationer hvor borgmesterparti ikke genopstiller (ofte lokalliste). Det er
+
+## Forskelle mellem forventing og resultat {#forskelle-forventning-result}
+
+Af @fig-system-parti kan vi se, hvordan sammenhængen rent faktisk er, efter at have gennemgået analysen. Det fraviger fra @fig-kausalmodel-forskel som jeg opstillede i forbindelse med hypoteseudledningen. Her kan vi altså se, at der kun for nogle grupper af partier er negative effekter ved vindmølleopsætning, hvor andre grupper oplever positiv ændring.
+Det kan skyldes at de studier mine forventninger er baseret på har inkluderet vindmølle opsætning for år tilbage, hvor f.eks. @larsen2021 inkluderede alle vindmøller og kommunalvalg fra 2001 til 2019. I mine data har jeg udelukkende undersøgt nyere valg fra 2007 til 2021, hvor det kan tænkes at den generelle holdning til vindenergi er blevet mere positiv. Det kan tænkes, at der er opsat relativt flere vindmøller i perioden fra 2001 til 2009 som min undersøgelse ikke beskæftiger sig med. Derudover er det ikke utænkeligt at den elektorale respons kan ændre sig over tid i takt med, at borgerne bliver mere eller mindre klimabevidste.
+
+MÅSKE HENVISNING ITL HVOR MANGE DER ER SAT OP GENNEM TIDEN
+
+```{dot}
+//| label: fig-system-parti
+//| fig-cap: Faktisk mønster
+//| output: true
+digraph {
+  rankdir = TB
+  graph []
+  node [shape = plaintext]
+    x [label = "Vindmølle sættes op"]
+    yp [label = "Flere stemmer til borgmesterparti"]
+    yn [label = "Færre stemmer til borgmesterparti"]
+    fra [label = "Borgmester er fra"]
+    b [label = "Blå blok"]
+    r [label = "Rød blok"]
+    v [label = "Venstre"]
+    s [label = "Socialdemokratiet"]
+  edge []
+    x -> fra
+    fra -> {b r v s}
+    {v b} -> yn
+    {r s} -> yp
+}
+```
+
+## Oplæg til videre undersøgelse
+
+Udover de sammenhænge jeg har har fundet, hvor der er sammenhæng mellem borgmesterpartiets højre-/venstreorientereing, kan det også være interessant at undersøge i hvor stort omfang forskellen i den elektorale respons afhænger af de generelle holdninger til fordelingspolitiske spørgsmål. Det kan gøres for videre at udforske mit argument, der bygger på @aklin2020, om klimapolitik som omfordeling. Dette vil kræve et reliabelt mål for holdningen til fordelingspolitik på tværs af valgsteder og valg, der kan sammenholdes med et datasæt der ligner det jeg har produceret til dette projekt. Et sådant mål kan være svært at indsamle, da det kræver store mængder respondenter for at kunne sikre reliabiliteten på så lavt inddelingsniveau som jeg forventer effekten finder sted på.
