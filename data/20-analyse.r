@@ -3,7 +3,13 @@ library(testthat)
 library(logger)
  
 # ## Rydder miljøet inden kørsel
-rm(list = ls())
+if (!exists("quarto")) {
+  quarto <- FALSE
+}
+
+if (isFALSE(quarto)) {
+  rm(list = ls())
+}
 
 if (!exists("installer_pakker")) {
   installer_pakker <- FALSE
