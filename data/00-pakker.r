@@ -22,7 +22,8 @@ pakkeliste_pakker <- c(
   "naniar",
   "logger",
   "DIDmultiplegtDYN",
-  "did"
+  "did",
+  "extrafont"
 )
 
 ## Finder de brugte versioner
@@ -44,7 +45,8 @@ pakkeliste_versioner <- c(
   "1.1.0",
   "0.3.0",
   "1.0.10",
-  "2.1.2"
+  "2.1.2",
+  "0.19"
 )
 
 install.packages(pakkeliste_pakker)
