@@ -48,7 +48,10 @@ language: format/custom-lang-da.yml
 # Output style
 format:
   pdf:
-    fig-pos: "H"
+    # fig-pos: "tb"
+    # fig-pos: "h"
+    fig-pos: "thb"
+    # fig-pos: "H"
     latex-auto-install: true
     # include-after-body: format/tex/after-body.tex
     include-in-header:
