@@ -45,10 +45,6 @@ log_info("plots er loaded")
 
 ```
 
-\tableofcontents
-
-{{< pagebreak >}}
-
 ```{r figur-tegn}
 
 prl_trends_tegn <- nchar("Sidste valg inden vindmølle") + nchar("2013") + nchar("2017") + nchar("Aldrig treatet") + nchar("Borgmesterpartiets stemmeandel i %") + (4*3) + (4*4)
@@ -91,10 +87,28 @@ figurer_antal_tegn <- sum(vindmølle_geo_tegn,
 ```
 
 
+\tableofcontents
+
+\vfill
+
+Tegn i brødtekst: `r nm_fm(65000)` \newline
+Tegn i figurer og kausalmodeller: `r nm_fm(figurer_antal_tegn)` \newline
+Tegn i appendiks: `r nm_fm(234890)` \newline
+
+\vfill
+
+{{< pagebreak >}}
+
 \listoffigures
 \listoftables
 
-I figurer og kausalmodeller er der samlet `r figurer_antal_tegn` tegn.
+\vfill
+
+Tegn i brødtekst: `r nm_fm(65000)` \newline
+Tegn i figurer og kausalmodeller: `r nm_fm(figurer_antal_tegn)` \newline
+Tegn i appendiks: `r nm_fm(234890)` \newline
+
+\vfill
 
 {{< pagebreak >}}
 
@@ -134,6 +148,13 @@ I figurer og kausalmodeller er der samlet `r figurer_antal_tegn` tegn.
 
 {{< pagebreak >}}
 
+# Litteratur
+
+::: {#refs}
+:::
+
+{{< pagebreak >}}
+
 # Appendiks A: Borgmesterens parti {.appendix .unnumbered}
 
 {{< include parts/appendix/a-borgmester-parti.qmd >}}
@@ -145,10 +166,3 @@ I figurer og kausalmodeller er der samlet `r figurer_antal_tegn` tegn.
 # Appendiks C: API-kald til vindmølle-valgsted match {.appendix .unnumbered}
 
 {{< include parts/appendix/c-dawa-api.qmd >}}
-
-{{< pagebreak >}}
-
-# Litteratur
-
-::: {#refs}
-:::
