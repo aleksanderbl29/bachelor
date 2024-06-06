@@ -1,1 +1,143 @@
-Her er min teori
+I dette afsnit vil jeg først opridse den forståelse af retrospektiv stemmeadfærd der ligger bag det grundlæggende argument i min undersøgelse. Dernæst vil jeg gennemgå, hvordan et NIMBY-argument kan have indvirkning på den elektorale reaktion på vindmøllekonstruktion. Herefter vil jeg beskrive en konkurrende hypotese om, hvordan jeg forventer den elektorale reaktion er forskellig på tværs af partier. Endvidere vil jeg sondre mellem en generel og en heterogen elektoral reaktion på vindmøllekonstruktion og til sidst vil jeg opsummere og illustrere de overordnede forventninger og gennemgå mine hypoteser.
+
+## Retrospektiv stemmeadfærd
+
+Den primære mekanisme jeg undersøger i dette projekt er vælgernes retrospektive stemmadfærd. Den retrospektive stemmeadfærd kan komme til udtryk som en elektoral reaktion på såkaldte *irrelevante begivenheder*, der påvirker vælgeradfærden [@healy2010], mens den også ses som reel elektoral feedback på vælgernes opfattelse af de politiske beslutningstageres *performance* i den forgående periode [@healy2013]. Jeg vil i dette projekt anlægge en retrospektiv stemmeadfærds-vinkel, der baserer sig på performancevurderingen af borgmesteren. Jeg forstår retrospektiv stemmeadfærd som en kortsigtet ændring i vælgeradfærd, hvor vælgeren vurderer om beslutningstagernes performance i den forgående periode er *tilfredsstillende* over en tærskel [@kramer1971: 134].
+
+I de kommende afsnit vil jeg gennemgå flere mekanismer der kan have del i forklaringen af borgernes elektorale reaktion på konstruktionen af vindmøller i lokalområdet, hvor de alle vil være en del af det overordnede perspektiv med retrospektiv stemmeadfærd. Det stemmer overens med den etablerede litteratur, hvor eksempelvis @stokes2016 også argumenterer for, at den retrospektive evaluering af politiske tiltag er grundlæggende for den demokratiske ansvarstildeling [@stokes2016: 958] og heraf også den elektorale respons jeg undersøger.
+
+## Not in my backyard
+
+Den eksisterende litteratur, der beskæftiger sig med generelle byggeprojekter og udbygning af vedvarende energi i lokalområdet, er ofte karakteriseret ved en forklaring baseret på det såkaldte "Not In My Backyard" (NIMBY) argument. Det går grundlæggende på, at man som borger ikke er interesseret i at der skal udbygges store projekter lige i ens lokalområde. Endvidere er NIMBY-argumentet ofte sammenlagt med en støtte til projektet, hvis bare det var placeret et sted, der ikke er ens lokalområde. Studier har undersøgt elektroral feedback ved udbyggelsen af *affordable housing* [@brouwer2024; @ogrady2020; @hankinson2018], anlæg til *fracking* [@dokshin2016] og ikke mindst *klimaprojekter* [@stokes2016; @petrova2013].
+
+For at udbygge dette argument vil jeg primært benytte mig af @petrova2013 og supplere med argumenter fra @stokes2016. Jeg vil først definere NIMBY-mekanismen og den forståelse jeg drager heraf, dernæst vil jeg beskrive, hvordan sådanne argumenter kan relateres til den case jeg ser på; vindmøller i baghaven.
+
+### Accept, støtte eller modstand
+I litteraturen præsenteres NIMBY som en vokal type modstand der ofte ses som respons til forslag et byggeprojekt (her: vindmøller), hvor der udtrykkes frygt for skadende sideeffekter i lokalmiljøet.
+I Danmark ses denne form for modstand i den grad også, hvor der jævnligt er historier om, hvordan grupper af borgere ikke er interesserede i, at der skal bygges vindmøller tæt på dem [@nyvold2019]. Samtidig ses en helt generel støtte til vindmølleprojekter, hvor mellem 67% og 82% af borgerne byder vindøllerne velkomne, afhængigt af landsdel [@videnomvind2022]
+
+@petrova2013 kommenterer på, at mange i litteraturen sætter accept af vindmølle projekter lig med støtte til dem. Det er der flere probelmer i, men for mit projekt er det ikke en udfodring, da jeg i og for sig ikke er interesseret i om befolkningen accepterer, støtter eller afskyr vindmølleprojekter i lokalområdet. Det jeg er nysgerrig på, er, hvordan de udtrykker den holdning de nu engang har til vindmøllen.
+
+Selvom jeg ikke selvstændigt er interesseret i, hvor høj grad borgerne accepterer vindmølleprojekter, er det stadig vigtigt at sondre over de forskellige typer reaktioner, der kan være for borgerne og hvordan disse kan kobles til den elektorale respons der vil blive målt i dette projekt. Selvom der er mange borgere der tydeligt og offentligt er utrilfredse med vindmølleudvikling [@nyvold2019] er det ikke nødvendigvis denne gruppe vokale borgere, der i realiteten udgør majoriteten. Denne vokale lokale modstand er dog ofte skyld i skrinlægning af vindmølleprojekter, hvor der eksempelvis i 2017 blev nedlagt fire vindmølleprojekter efter protest fra de lokale. Hvor stor en andel af de utilfredse borgere der faktisk udtrykker modstand, og hvor mange der lader den blive ved spisebordet er uvidst. Denne utilfredshed med lokalpolitikernes beslutning om at tillade konstruktion af en eller flere vindmøller kan tænkes at sidde latent i borgerne og bidrage til vurderingen af politikerne ved næste valg [@kramer1971: 134]. Tilsvarende kan en tilfredshed med vindmøllekonstruktionen latent sidde hos borgeren og påvirke evalueringen på valgdagen.
+
+Det grundlæggende argument er, at fysisk nærhed til vindmøller føder negative følelser omkring vindmøller og mod dem, der er ansvarlige for både placering og eksistens [@isaksson2022]. Hvis disse negative følelser omkring vindmøller udtrykkes i form af elektoral respons, som @stokes2016 og @larsen2021 finder, så kan det have store konsekvenser for beslutningstagernes fortsatte embede.
+
+Udover, at den umiddelbare nærhed til vindmøllen kan være irriterende for den enkelte borger, så er der generelt flere faktorer, der kan spille ind i forhold til det famøse NIMBY-argument. Her kan både socioøkonomiske, miljømæssig, beslutnings- og processmæssige og landskabs- og visuelle hensyn påvirke NIMBY-attituden [@petrova2013: 579]. Her er især de koncentrerede omkostninger og socioøkonomiske udfordringer for lokalbefolkningen interessante i et egeninteresse- og retrospektivt perspektiv. Disse koncentrerede omkostninger kan komme i mange former, hvor frygt for negative priseffekter for borgernes ejendom [@droes2016], mens også den nedsatte naturskønhed i lokalområdet har betydning for nogle [@nyvold2019]. @droes2016 [15] finder en signifikant nedgang i ejendommes værdi, når de er placeret indenfor 2 kilometers radius af en vindmølle. Denne type værdinedgang gør ondt i vælgernes pengepung; og det ved vi påvirker stemmeadfærden [@tilley2018: 560-563]. Disse negative lokale effekter kan altså være med til at mobilisere vælgerne til at stemme for en anden fordeling af disse omkostninger, hvis altså disse koncentrerede omkostninger ikke kan accepteres af dem, de primært påvirker [@isaksson2024a: 2].
+
+### Forventning
+
+Af @petrova2013 og @stokes2016 samt ovenstående forventer jeg, at opsætningen af en vindmølle i lokalområdet vil afføde en negativ elektoral reaktion ved det kommende kommunalvalg. Det illustreres i den simple @fig-kausalmodel-h1.
+
+```{dot}
+//| label: fig-kausalmodel-h1
+//| fig-cap: Simpel sammenhæng - H1
+digraph {
+  rankdir = LR
+  graph []
+  node [shape = plaintext]
+    x [label = "Vindmølle sættes op"]
+    midt [label = "Utilfreds med beslutning"]
+    y [label = "Mindre støtte til borgmesteren"]
+  edge []
+    x -> midt -> y
+}
+```
+
+Generelt forventer jeg, at når borgerne er utilfredse med vindmølle-installationer i baghaven vil de udvise NIMBY-adfærd [@petrova2013]. Derudover forventer jeg specifikt på den danske case, at vælgerne reagerer negativt på opsætningen af vindmøller i stil med fund fra @stokes2016 og @larsen2021. Det leder mig til følgende hypotese:
+
+> **Hypotese 1**: *En borgmester der får opsat en vindmølle vil opleve mindre støtte ved valget derefter.*
+
+## Forskelle mellem partier
+
+Jeg regner med at der er forskellig effekt af opsætning af vindmøller afhængig af, hvilket parti borgmesteren kommer fra. Det baserer jeg primært på en tanke om klimapolitik som fordelingspolitik fra @aklin2020 og analyse af forventninger og elektorale reaktioner i Sverige fra @isaksson2024a. Derudover vil jeg underbygge nogle af argumenterne med bl.a @bayulgen2021 og @klimavalg-kap-2.
+
+### Forventninger til partiet
+
+For at vælgerne kan evaluere partiers performance forskelligt må det kræves, at der er forskellige forventninger til dem. Med andre ord skal vælgerens tærskel for, hvornår politikernes performance er *tilstrækkelig* [@kramer1971: 134] være forskellig på tværs af partierne. @isaksson2024a undersøger, hvordan vælgernes forventninger til de siddende politikere kan betinge den reaktion der fødes på klimapolitik. De undersøger opførslen af vindmøllefarme i Sverige, hvor de finder, at for partier, der forventes at tillade konstruktionen af vindmølle, vil der være en negativ elektoral reaktion, mens der for partier, hvor det ikke forventes, vil opleves en positiv elektoral reaktion. @isaksson2024a beskriver altså et relativt komplekst billede af elektorale reaktioner på vindmøllekonstruktioner, hvor jeg forventer at en lignende kompleksitet vil overføres til den danske kontekst. Ikke mindst finder @isaksson2024a, at når en venstreorienteret borgmester tillader konstruktionen af en vindmøllefarm vil de højreorienterede partier opleve en stigning i stemmeandel mens borgmesterpartiet oplever en nedgang [@isaksson2024a: 7]. Tilsvarende findes det modsatte mønster.
+
+#### Emneejerskab
+
+Emneejerskab er en hel politologisk gren for sig selv, men jeg tillader mig at låne noget af tankegangen til dette projekt. Jeg forestiller mig i stil med @isaksson2024a at vælgerne reagerer på borgmesterpartiets *performance* ud fra de forventninger de har til den klimapolitik der skal gennemføres. I det danske valgprojekt finder @klimavalg-kap-2 [50-55], at røde partier generelt har emneejerskab over klimaområdet og *det at beskytte miljøet* i dansk politik. I dette projekt undersøger jeg dog det kommunale niveau, modsat nationalt niveau i @klimavalg-kap-2, men ikke desto mindre vurderer jeg at emneejerskabet oversættes mellem de to politiske lag.
+
+Dette emneejerskab sætter jeg i direkte kobling med borgernes forventning til partiet. Selvom der er forskel på national og kommunal politik vurderer jeg, at der på klimaområdet er rigtig fint overlap mellem eksempelvis Venstres holdning i Folketinget og i kommunalpolitik. I den forbindelse forestiller jeg mig, at vi vil se forskelligartede elektorale effekter for de enkelte kommuner afhængigt af, hvilket parti der har borgmesterposten.
+
+#### Klimapolitik som omfordeling
+
+@aklin2020 beskriver klimapolitik som værende en konflikt omkring fordeling af goder og omkostninger. Disse omkostninger kan både komme i form af konsekvenserne ved klimaforandringerne, men også som nedgang i livskvalitet ved forsøg på løsning af selv samme. Goderne kan komme i form af andres forsøg på løsning af klimapolitik, eksempelvis vedvarende energi produceret andetsteds, eller de fælles fordele der kommer af færre klimaforandringer. Denne definition af klimapolitik som en art fordeling kan i min teoretiske ramme af parti-forventninger og retrospektiv stemmeadfærd supplere forståelsen af, hvordan forskellige partier elektoralt straffes og belønnes.
+
+Konkret er de venstreorienterede partier i Danmark generelt positive overfor omfordeling og beskatning, hvor de højreorienterede partier generelt er negative overfor omfordeling, i hvert fald relativt til hinanden [@stubager2021a: 155].
+
+Hvis vi kobler disse to pointer kan den skillelinje mellem (om-)fordeling af klimaindsats, og goderne der kommer heraf, forventer jeg, at der vil være en større forventning til de venstreorienterede partier om at gennemføre klimapolicy, hvor det modsatte må være gældende for de højreorienterede partier. *Hvis* denne skillelinje også findes i klimapolitik vil den sandsynligvis lægge sig op ad den traditionelle fordelingspolitiske skillelinje. Dog skal dette ikke forståes som at der skal sættes lighedstegn mellem støtte til klimapolitik og støtte til omfordeling, men blot at der i klimapolitikkens natur sker en omfordeling som kan aktivere de samme holdninger som traditionel fordelingspolitik.
+
+@margalit2024 finder i et surveyeksperiment, at vælgerne i større grad end først antaget, støtter de omfordelingspolitikker der kommer dem selv til fordel. Dette egeninteresseperspektiv kan også være med til at forklare, hvorfor både et NIMBY-argument og omfordelingsargumentet kan være relevant.
+
+### Positive effekter
+
+Modsat de negative perspektiver på vindmølleudvikling der er fremlagt ovenfor, finder @bayulgen2021 at der i Minnesota er positive elektorale effekter ved at opsætte vindmøller. I samme stil finder @urpelainen2022, at der for demokratiske, pro-vindenergi, kandidater er positive elektorale effekter ved konstruktionen af vindmøller i lokalområdet. En lignende effekt kan tænkes at finde sted for venstreorienterede partier i Danmark, hvor jeg med omfordelingsbrillerne fra @aklin2020 kan se, at positive holdninger til klimapolitik lægger sig rigtigt pænt op ad den fordelingspolitiske skillelinje vi har i Danmark.
+
+Udover de klima- og fordelingspolitiske forskelle der er mellem partierne vil jeg også regne med, at partier, hvis vælgere generelt er mere klimabevidste, også forventer stærkere klimapolitik fra deres lokalpolitikere. @andersen2021 [223-224] finder, at Socialdemokratiske vælgere, og de venstreorienterede partiers vælgere generelt, er meget klimabevidste. Klimabevidstheden er også signifikant forskellig fra hinanden på tværs af rød og blå blok [@andersen2021: 224].
+
+Dette leder mig samlet til nedenstående hypoteser, der udgør grundlaget for anden del af min undersøgelse og også indbefatter mine konkrete forventninger. Forventningerne vil jeg kort uddybe i slutningen af dette teoriafsnit.
+
+Generelt forventer jeg, at borgmestre fra venstreorienterede partier vil opleve en positiv elektoral reaktion på opsætningen af en vindmølle, hvor højreorienterede partiers borgmestre vil opleve en negativ elektoral reaktion. Det leder mig til følgende hypotese og underhypoteser:
+
+> **Hypotese 2**: *Ændringen i støtte til borgmesteren efter opsætningen af en vindmølle betinges af borgmesterens parti*
+
+Udover den primære betingede hypotese har jeg for klarhed opdelt sammenhængen over de to poler, hvor jeg forventer en modsatrettet forskel. Forskellen ses, ligesom i @fig-kausalmodel-forskel, i nedenstående to hypoteser, der vil danne grundlag for analysen af forskelle mellem partier.
+Først forventer jeg for højreorienterede borgmestre, at de vil opleve en nedgang i støtte efter opsætning af en vindmølle.
+
+> **Hypotese 2a**: *En højreorienteret borgmester vil opleve mindre støtte ved valget efter opsætning af en vindmølle*
+
+Dernæst forventer jeg, at venstreorienterede borgmesterpartier vil opleve en opgang i støtte efter opsætningen af en vindmølle.
+
+> **Hypotese 2b**: *En venstreorienteret borgmester vil opleve større støtte ved valget efter opsætning af en vindmølle*
+
+Altså har jeg en klar forventning om, at der vil være forskel på, hvordan den elektorale reaktion på vindmøllekonstruktion fordeler sig på tværs af borgmesterpartier. Jeg forventer derudover at desto mere højre- eller venstreorienteret et borgmesterparti er, desto større vil den elektorale reaktion være på vindmøllekonstruktionen. Dog vil denne forstærkning have et øvre loft, da der naturligvis også indgår andre faktorer i vælgernes politiske beslutningsproces.
+
+### Illustration
+
+For at fuldstændig klargøre den forskel jeg forventer at se mellem højre- og venstreorienterede borgmesterpartier har jeg valgt at illustrere mekanismen i @fig-kausalmodel-forskel. I @fig-kausalmodel-forskel kan vi se, at når borgerne har forventning til, at et borgmesterparti vil tillade konstruktionen af en vindmølle, så vil de også belønne dem, når den faktisk konstrueres. Tilsvarende ses en modsat mekanisme, hvor borgere der ikke har forventet at borgmesterpartiet vil tillade konstruktionen af en vindmølle i deres lokalområde, så vil denne blive elektoralt straffet.
+
+```{dot}
+//| label: fig-kausalmodel-forskel
+//| fig-cap: Illustration af mekanisme for partiforskelle - H2
+//| output: true
+digraph {
+  rankdir = TB
+  graph []
+  node [shape = plaintext]
+    x [label = "Vindmølle sættes op"]
+    yp [label = "Flere stemmer til borgmesterparti"]
+    yn [label = "Færre stemmer til borgmesterparti"]
+    fvh [label = "Ingen forventning til vindmøller"]
+    fvv [label = "Forventning om opsætning af vindmølle"]
+    h [label = "Højreorienteret borgmester"]
+    v [label = "Venstreorienteret borgmester"]
+  edge []
+    x -> {v h}
+    h -> fvh
+    v -> fvv
+    fvh -> yn
+    fvv -> yp
+}
+```
+
+## Hypoteser og forventninger
+
+For at opsummere mine forskelligartede forventninger vil jeg opsummere hypoteserne og kort beskrive, hvilket mønster jeg vil se i casen for at jeg finder støtte til hver af dem.
+
+> **Hypotese 1**: *En borgmester der får opsat en vindmølle vil opleve mindre støtte ved valget derefter*.
+
+For at jeg kan finde støtte til denne hypotese kræves det, at jeg ser en nedgang i stemmeandelen for borgmesterpartiet, når der opsættes en vindmølle. Helt konkret leder jeg efter en nedgang i stemmeandelen der gerne må være større end $1$ procentpoint, før jeg vil antage den som relevant for den virkelige verden. Desto større nedgang udover det ene procentpoint, desto større støtte.
+
+> **Hypotese 2**: *Ændringen i støtte til borgmesteren efter opsætningen af en vindmølle betinges af borgmesterens parti*.
+
+For at jeg kan finde støtte til denne hypotese kræves det, at jeg ser en nedgang i stemmeandelen for de højreorienterede borgmesterpartier og en opgang i stemmeandelen fro de venstreorienterede borgmesterpartier.
+
+> **Hypotese 2a**: *En højreorienteret borgmester vil opleve mindre støtte ved valget efter opsætning af en vindmølle*.
+
+Konkret vurderer jeg igen at en substantielt signifikant ændring i stemmeandelen skal være på mindst 1 procentpoint, før jeg vurdere ændringen bare en lille smule interessant. Derudover forventer jeg også, at desto mere højreorienteret et borgmesterparti er, desto større vil nedgangen være.
+
+> **Hypotese 2b**: *En venstreorienteret borgmester vil opleve større støtte ved valget efter opsætning af en vindmølle*.
+
+For de venstreorienterede borgmesterpartier forventer jeg i stil med ovenstående, at desto mere venstreorienteret et borgmesterparti er, desto større vil opgangen være. Her vil jeg dog, som nævnt, regne med en form for loft-effekt.
