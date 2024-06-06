@@ -130,8 +130,9 @@ vind_stemmesteder <- vind_stemmesteder %>%
 f_rollout_vind_stemmesteder <- vind_afstemningssteder_geodata %>%
   st_join(vind_stemmesteder,join = st_contains) %>%
   mutate(year = year(tilslutningsdato)) %>%
-  filter(year > 2007) %>% 
-  arrange(tilslutningsdato)
+  filter(year > 2007) %>%
+  arrange(tilslutningsdato) %>% 
+  distinct(afstemningsstednavn, .keep_all = TRUE)
 
 borgmestre <- read_rds("data/rep_data/15_borgmestre.rds") %>%
   mutate(kommunenavn = case_when(kommunenavn == "Halsnæs" ~ "Frederiksværk-Hundested",
@@ -141,7 +142,7 @@ borgmestre <- read_rds("data/rep_data/15_borgmestre.rds") %>%
                                  .default = kommunenavn))
 
 f_rollout_vind_stemmesteder <- f_rollout_vind_stemmesteder %>%
-  mutate(valgaar = as.double(valgaar)) %>% 
+  mutate(valgaar = as.double(valgaar)) %>%
   left_join(borgmestre, by = c("kommunenavn" = "kommunenavn", "valgaar" = "valgaar"), relationship = "many-to-many")
 
 
@@ -235,7 +236,7 @@ dk_map_1 <- ggplot() +
   ) +
   cowplot::theme_map() +
   theme(legend.position = "right") +
-  scale_fill_manual(values = valg_farver) +
+  scale_fill_manual(values = valg_farver, labels = valg_farve_labels) +
   labs(fill = "Valgår")
 
 bhlm_map_1 <- ggplot() +
@@ -259,7 +260,7 @@ bhlm_map_1 <- ggplot() +
     plot.subtitle = element_text(size = 8),
     text = element_text(family = "Times New Roman")
   ) +
-  scale_fill_manual(values = valg_farver)
+  scale_fill_manual(values = valg_farver, labels = valg_farve_labels)
 
 valgsteder_map_valg <- dk_map_1 + inset_element(
   bhlm_map_1,
