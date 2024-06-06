@@ -79,4 +79,4 @@ format:
       theme: forest
       fontFamily: "{{< var font >}}"
       fontSize: "{{< var mermaid_fontsize >}}"
-    quarto-required: 1.4.554   # Er produceret med denne version af Quarto
+    quarto-required: 1.4.555   # Er produceret med denne version af Quarto
