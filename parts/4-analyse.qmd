@@ -1,39 +1,191 @@
-Her er min analyse
-
-Der skal også stå noget om hvad jeg kunne have gjort anderledes
-{{< pagebreak >}}
-## Regressionstabel
-her skal min tabel være. Den hedder @tbl-reg-1.
-
-@tbl-reg-1 er lavet med gt pakken.
-
-```{r}
-#| tbl-cap: "Regressionstabel med gt pakken"
-#| label: tbl-reg-1
-library(tidyverse)
-library(gt)
-print("HER MANGLER VIDST NOGET")
-# gt_reg_tbl |> opt_stylize(style = 1, color = "pink", add_row_striping = TRUE) %>% tab_source_note("Data er egen tilvirkning, DST og ENS") %>% tab_footnote("Her er en fodnote") # %>% gt::as_latex()
+```{r 20-analyse}
+#| file: data/20-analyse.r
 ```
 
-I denne opgave har jeg brugt følgende pakker
-
-@arel-bundock2022
-
-{{< pagebreak >}}
-
-## Regressionstabel fra html
-her skal min tabel være. Den hedder @tbl-reg-html.
-
-@tbl-reg-html er lavet med gt pakken.
-
-```{r}
-#| tbl-cap: "Regressionstabel med gt pakken"
-#| label: tbl-reg-html
-library(tidyverse)
-print("HER MANGLER VIDST OGSÅ NOGET")
-# gt_reg_tbl %>% opt_stylize(style = 1, color = "pink", add_row_striping = TRUE) %>% tab_source_note(source_note = md("Data er egen tilvirkning, *DST* og *ENS*")) %>% gt::as_raw_html()
+```{r 22-fixedeffects}
+#| file: data/22-fixedeffects.r
+logger::log_info("Henter Fixed Effects modeller")
 ```
 
-For markdown output fra en celle kan man bruge output:asis (tænker her på gt tables der kan lave MD output)
-https://quarto.org/docs/computations/execution-options.html
+```{r 32-did-plots}
+#| file: data/32-did-plots.r
+#| cache: true
+```
+
+I dette afsnit vil jeg gennemgå resultaterne af min analyse og vurdere sammenhængen mellem opsætning af en ny vindmølle og støtte til borgmesteren. Analysen er struktureret omkring mine hypoteser, hvor den første går på den direkte sammenhæng mellem vindmøller og borgmesterpartiets stemmeandel, mens den anden drejer sig om, hvordan denne sammenhæng er forskellig på tværs af partier. Jeg vil gennemgå hver hypotese for sig og slutteligt opsummere mine fund.
+
+## Støtten til borgmesterpartiet
+
+Af @tbl-borgmester ses regressioner mellem tilslutning af vindmøller og støtten til borgmesterpartiet ved næstkommende valg. I den første model, *balanceret panel*, er alle observationer inkluderet i et balanceret paneldatasæt, mens der i den anden model, *genopstillede partier*, kun er inkluderet observationer, hvor borgmesterpartiet er genopstillet. Det er gjort for at sammenligne effektstørrelserne mellem datasæt, hvor det også kan ses, at forskellene mellem dem er marginale mens signifikansniveauet ikke ændres.
+
+Model 1 er en simpel OLS mellem en opsat vindmølle og borgmesterpartiets stemmeandel ved næstkommende valg, hvor der ikke er inkluderet fixed effects for valg og valgsted. Her ser vi en signifikant effekt af en opsat vindmølle på `r nm_fm(fe_m1$coeftable$Estimate[2])` procentpoint. Det betyder substantielt, at en borgmester oplever en fremgang på `r nm_fm(fe_m1$coeftable$Estimate[2])` procentpoint stemmer ved valget efter opsættelsen af en vindmølle.
+
+Når der i Model 2 og Model 3 tilføjes fixed effects for valgsted og valgtidspunkt, samt interaktion mellem treatmenttidspunkt og valgsted i Model 3, kan vi se, at effekten fuldstændig forsvinder. Standardfejlene er nu mange gange større en effekten og $r^2$ within er også minimal. Det tyder altså på, at der i en simpel model, hvor valgsted- og valgeffekter er renset, ingen effekt er af opsætningen af en vindmølle. Hverken statistisk eller substantielt.
+
+Det giver ingen støtte til den første hypotese H1, hvor jeg ingen signifikant effekt ser. Det er i modsætning til @larsen2021 og @stokes2016. Resultaterne i den mindre pålidelige Model 1 stemmer udmærket overens med resultaterne fra @bayulgen2021, men den er som nævnt uden kontroller eller fixed effects.
+
+::: {#tbl-borgmester}
+
+```{r}
+#| output: true
+tbl_borgmester
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+Note: Klyngerobuste standardfejl på valgstedniveau. Fixed effects for valg og valgsted. $\beta_i$ er udeladt for modeller med fixed effects. *Treatmenttidspunkt x Valgsted ID* indikerer interaktion anbefalet af @sun2021 som gennemgået i metodeafsnittet. \newline
++ p < 0,1, * p < 0,05, ** p < 0,01, *** p < 0,001
+
+Sammenhæng mellem opsætning af vindmølle og borgmesterpartiets stemmeandel
+:::
+
+I @fig-marginsplot-1 kan vi se de forudsagte værdier ved opsætningen af en vindmølle på baggrund af Model 1 og Model 2 fra @tbl-borgmester. Her kan vi grafisk se samme mønster som regressionstabellen giver os, hvor en borgmester i Model 1 vil opleve en stemmemæssig fremgang mens en borgmester i Model 2 substantielt ingen fremgang vil opleve. Det giver stadig ingen støtte til hypotese H1, hvorfor jeg endeligt afkræfter denne hypotese.
+
+::: {#fig-marginsplot-1 fig-pos="H"}
+
+```{r marginsplot-1}
+#| fig-height: 6
+#| fig-width: 10
+#| output: true
+marginsplot_1
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+Note: Model 1 og Model 2 fra @tbl-borgmester. *Valg før vindmølle* er værdien $D=0$ mens *Vindmølle opsat* er værdien $D=1$. Linjen er tegnet mellem de forudsagte værdier på baggrund af regressionerne. De forudsagte værdier er beregnet med @marginaleffects.
+
+Forudsagte værdier - Vindmølleopsætnings aftryk på borgmesterpartiets stemmeprocent
+:::
+
+I denne fortolkning er det værd at bemærke at der her er tale om den gennemsnitlige effekt på tværs af partier. Når vi ingen homogen *treatmenteffekt* ser er det interessant at undersøge om denne effekt faktisk fordeler sig heterogent; her kommer hypotese H2 ind i billedet. For at komme i dybden med forskelle mellem partier vil jeg nu gennemgå interaktionsmodeller, hvor der interageres over både borgmesterens parti og borgmesterens bloktilknytning. Dem kan vi se i @tbl-borgmester-interaktion i det kommende afsnit.
+
+
+## Borgmesterens parti- og bloktilhørsforhold
+
+Som nævnt vil jeg nu undersøge sammenhængen mellem borgmesterens parti og blok og, hvordan vælgerne belønner eller straffer borgmesterens for opsætningen af en vindmølle. Først vil jeg gennemgå resultaterne fra mine regressioner, hvor jeg vil se på både borgmesterens blok- og partitilhørsforhold, hvorefter jeg vil dykke ned i de substantielle effekter for blok og parti, hver for sig. Her vil jeg også visualisere forskellene mellem partier og blokke og relatere resultaterne til virkeligheden og hvad mine resultater kan have af betydelse for lokalpolitik. Jeg lægger ud med at undersøge ændringerne i effekterne, når der kontrolleres for borgmesterens partitilhørsforhold og forholder dette til hypotese H1. Dernæst undersøger jeg hypotese H2 samt underhypoteser.
+
+::: {#tbl-borgmester-interaktion}
+
+```{r}
+#| output: true
+tbl_borgmester_interaktion
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+Note: Klyngerobuste standardfejl på valgstedniveau. Fixed effects for valg og valgsted. $\beta_0$ er udeladt for modeller uden fixed effects. $\beta_i$ er udeladt for modeller med fixed effects. Referencekategorien i parti-modellerne er Socialdemokratiet. I Model 2 og Model 3 er borgmestre fra lokallister udeladt for at muliggøre traditionel blokinddeling. *Treatmenttidspunkt x Valgsted ID* indikerer interaktion anbefalet af @sun2021 som gennemgået i metodeafsnittet. \newline
++ p < 0.1, * p < 0,05, ** p < 0,01, *** p < 0,001
+
+Interaktionsmodeller mellem opsætning af vindmølle og borgmesterpartiets stemmeandel
+:::
+
+
+### Borgmesterens parti
+
+Af @tbl-borgmester-interaktion ses det i Model 1, at når der justeres for borgmesterens partitilhørsforhold vil en borgmester i gennemsnit opleve en nedgang på `r nm_fm(fe_m10$coeftable$Estimate[1])` procenpoint stemmer, når der er opsat en vindmølle mellem valg. Det betyder altså, at når vi renser den variation der kan skyldes borgmesterens partitilhørsforhold, ser vi ingen effekt. Denne effekt er statistisk insignifikant, da standardfejlen er over dobbelt størrelse af koefficienten og derudover har en p-værdi på `r nm_fm(fe_m10$coeftable$"Pr(>|t|)"[1])`. Effekten er heller ikke substantielt bemærkelsesværdig, da den er helt nede på `r nm_fm(fe_m10$coeftable$Estimate[1])` procenpoint. Jeg finder altså heller ikke støtte hypotese H1 når der kontrolleres for borgmesterens partitilhørsforhold.
+
+Som vi kan se af Model 4 i @tbl-borgmester-interaktion vil en socialdemokratisk borgmester (referencekategorien), der får opsat en vindmølle mellem valg, opleve en fremgang i stemmerne ved næste valg på `r nm_fm(fe_m6$coeftable$Estimate[1])` procentpoint. For en Venstre-borgmester gælder det modsatte dog, hvor man vil få `r nm_fm(fe_m6$coeftable$Estimate[9])` procentpoint færre stemmer end en socialdemokratisk borgmester der får opsat en vindmølle. Af det kan vi udlede at en Venstre-borgmester, der har fået opsat en vindmølle vil opleve en tilbagegang på `r nm_fm(fe_m6$coeftable$Estimate[1] + fe_m6$coeftable$Estimate[9])` procentpoint. Koefficienterne for referencekategorien, Socialdemokratiet, og Venstre er signifikant forskellig, hvilket giver støtte til hypotese H1. Det betyder substantielt at en borgmester fra Socialdemokratiet kan opsætte vindmøller og blive belønnet for det, mens en borgmester fra Venstre vil blive tilsvarende straffet for det.
+
+Også når vi ser på Model 5 i @tbl-borgmester-interaktion kan vi se, at tilføjelsen af interaktioner mellem treatmenttidspunkt og indikatoren for valgstedet ikke ændrer substantielt på estimatet. Det er positivt og øger tilliden til Model 4 mens den grundlæggende tillid til Model 5 er høj. Det gælder stadig, at en borgmester fra Socialdemokratiet vil opleve en ændring i stemmeandel på `r nm_fm(test_fe_m8$coeftable$Estimate[1])` procentpoint ved konstruktionen af en vindmølle, hvor en borgmester fra Venstre vil opleve en nedgang på `r nm_fm(test_fe_m8$coeftable$Estimate[1] + test_fe_m8$coeftable$Estimate[9])` procentpoint.
+
+::: {#appendiks-regres}
+
+I @tbl-appendix-a-borgmester-regres i Appendiks A findes den fulde regressionstabel med alle koefficienter for parti-modellerne. Udover effekter for Venstre og Socialdemokratiet, der vises i @tbl-borgmester-interaktion og er gennemgået her, er der kun signifikante effekter for Det Konservative Folkeparti og Socialistisk Folkeparti på niveau $p<0,05$ mens de resterende partier ikke er signifikante. Derudover tillægger jeg estimaterne for Det Konservative Folkeparti og Socialistik Folkeparti meget lille vægt, da der, som vi så i @tbl-vindmølle-parti kun er opsat `r kons_vind` vindmøller i ved valgsteder i konservative kommuner og `r sf_vind` vindmøller i valgsteder i kommuner med en borgmester fra Socialistisk Folkeparti. Estimatet for Socialistisk Folkeparti må anses som et biprodukt af specifikationen, da der er et enkelt valgsted, der har fået opsat en vindmølle under et andet borgmesterparti, hvor Socialistisk Folkeparti i perioden derefter har fået en *treatmentværdi* på 2. Altså, at måletidspunktet er 2 perioder efter opsætningen af vindmøllen og der ekstrapoleres mellem valgsteder uden vindmøller og det enkelte valgsted, der har fået en vindmølle under et andet borgmesterparti. Denne type artefakter vil jeg yderligere kommentere på i diskussionen.
+
+::: {#fig-slope-plot-parti}
+
+```{r}
+#| fig-width: 9
+#| output: true
+slope_plot_parti
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+Note: Koefficienterne er udregnet for hvert parti med @marginaleffects på baggrund af Model 4 i @tbl-borgmester-interaktion.
+
+Koefficienter for borgmesterpartier ved valgsted der får vindmølle
+:::
+
+I @fig-slope-plot-parti kan vi se koefficienterne for de registrerede borgmesterpartier baseret på Model 4 i @tbl-borgmester-interaktion. Her ses det, at en borgmester fra Socialdemokratiet vil opleve en fremgang ved opsætning af en vindmølle, hvor Venstre vil opleve en tilbagegang. Det giver altså støtte til hypotse H2a og H2b. Derudover kan vi også se at borgmestre fra lokallister generelt oplever fremgang i stil med Socialdemokratiet. Denne koefficient er kun marginalt signifikant. Det er svært at placere alle lokalliste-borgmestrene på en højre-venstreskala i samlet forstand, da de hver især er udenfor de nationale partier, hvorfor den hverken giver støtte til eller fra for hypoteserne H2a og H2b. Dog giver den støtte til min hypotese H2, hvor der er forskel på ændringen mellem partier. Derudover kan vi se, at koefficienterne for Det Konservative Folkeparti og Radikale Venstre er insignifikante da konfidensintervallerne overlapper med $0$. Dette skyldes højst sandsynligt det sparsomme datagrundlag for især Radikale Venstre. Dog vurderer jeg, at dette mindsker støtten til min hypotese H2 en smule, da jeg finder disse insignifikante resultater.
+
+::: {#fig-marginsplot-2}
+
+```{r}
+#| fig-height: 4
+#| fig-width: 8
+#| output: true
+marginsplot_2
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+Note: De forudsagte værdier er udregnet for hvert parti med @marginaleffects.
+
+Forudsagte værdier - Vindmølleopsætnings aftryk på borgmesterpartiets stemmeprocent
+:::
+
+I @fig-marginsplot-2 kan vi se de forudsagte værdier for hver valgperiode, relativt til vindmøllens opsætning, for de forskellige borgmesterpartier. Her kan vi se samme mønster som jeg udledte af @tbl-borgmester-interaktion ovenfor. Det er værd at bemærke, at selvom Venstre og Socialdemokratiet får forskellige elektorale reaktioner, ser det ikke ud til at gøre en substantiel forskel på stemmeandelen som vist i @fig-marginsplot-2. Vi ser nemlig i @fig-marginsplot-2, at når et valgsted i en Venstre-kommune får opsat en vindmølle vil borgmesterpartiet opleve en nedgang i stemmeandelen ved det valgsted. Tilsvarende finder en modsat stigning sted når et valgsted i en socialdemokratisk kommune får opsat en vindmølle. Det er her værd at bemærke, at det generelle niveau for borgmesterpartiernes stemmeandel er nogenlunde ens før og efter vindmøllens tilslutning. Venstre-borgmestre starter i gennemsnit med et højere grundniveau, hvorefter de oplever en nedgang. Borgmestre fra Socialdemokratiet starter i gennemsnit med et lidt lavere grundniveau, hvorefter de oplever en stigning. Når Venstre oplever en stigning og Socialdemokratiet oplever nedgang ender vi i en situation, hvor deres linjer bytter plads, men stadig med overlap i konfidensintervallerne. Det betyder altså substantielt, at der sker en ændring, som beskrevet, men at den blot rykker partierne tættere på hinanden.
+
+#### Opsamling
+
+Ovenstående giver overvældende støtte til hypotese H2 samt H2a og H2b. Vi ser både at der er forskel mellem højre- og venstreorienterede borgmesterpartier og vi ser også, at denne forskel har den forventede retning, hvor højreorienterede borgemsterpartier oplever negativ elektoral respons, mens venstreorienterede borgmesterpartier oplever positiv elektoral respons.
+
+
+### Borgmesterens blok
+
+Hvis vi fokuserer på Model 2 og Model 3 i @tbl-borgmester-interaktion kan vi se, at den heterogene fordelingen af effekten af vindmølletilslutning også finder sted mellem rød og blå blok. Af Model 2 kan vi se, at en borgmester der tilhører rød blok vil opleve en fremgang i stemmeandel på `r nm_fm(fe_m7$coeftable$Estimate[1])` procentpoint. Derudover er interaktionsleddet for blå blok på `r nm_fm(fe_m7$coeftable$Estimate[3])` og signifikant. Det betyder, at en borgmester der tilhører blå blok opleve en tilbagegang på `r nm_fm(fe_m7$coeftable$Estimate[1] + fe_m7$coeftable$Estimate[3])` procentpoint ved opsætning af en vindmølle. Effekten for referencekategorien (rød blok) er statistisk signifikant på niveau $p<0,05$, mens forskellen i effekt mellem rød blok og blå blok er statistisk signifikant på niveau $p<0,001$. Det betyder substantielt, at hvis en borgmester tilhører rød blok, vil vedkommende blive elektoralt belønnet, når der opsættes en vindmølle, mens en borgmester der tilhører blå blok vil opleve negativ elektoral respons. Af det finder jeg yderligere støtte til hypotese H2 og underhypoteser.
+
+I Model 3 i @tbl-borgmester-interaktion ses resultaterne af en regression, hvor der interageres mellem *Treatmenttdspunkt* og *Valgsted*, hvor vi ifølge @sun2021 opnår et mere reliabelt estimat. I denne model er koefficienten for rød blok (referencekategorien) insignifikant, hvor interaktionsleddet dog stadig er signifikant. Det betyder for fortolkningen, at jeg ikke er overbevist om, at der findes en effekt af opsætningen af vindmøller for rød blok, når vi benytter denne reliable model. Dog kan vi sige, at der for blå blok er en signifikant forskel på `r nm_fm(test_fe_m7$coeftable[8])` point i effekten. Denne forskel er dog fra en effekt, der er statistisk insignifikant, hvorfor det er problematisk at fortolke på den reelle effekt. Af det finder jeg ikke støtte til hypotese H2b, men kun H2a, der går på højreorienterede borgmestre. Alt i alt giver det nogen støtte til H2, men ikke overvældende.
+
+::: {#fig-slope-plot-blok}
+
+```{r}
+#| fig-width: 9
+#| output: true
+slope_plot_blok
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+Note: Koefficienterne er udregnet for hver blok med @marginaleffects på baggrund af Model 2 i @tbl-borgmester-interaktion.
+
+Koefficienter for borgmesterens bloktilknytning ved valgsted der får vindmølle
+:::
+
+I @fig-slope-plot-blok har jeg fremstillet koefficienterne for rød og blå blok, hvor vi ligesom i @tbl-borgmester-interaktion kan se, at der er en positiv effekt for borgmestre der tilhører rød blok, når der opsættes en vindmølle ved en af kommunens valgsteder. Tilsvarende kan vi se, at der er negative effekter for borgmestre, der tilhører blå blok, når der opsættes en vindmølle ved en af disse kommuners valgsteder. Begge koefficienter er signifikante, hvilket giver yderligere støtte til hypotese H2.
+
+::: {#fig-marginsplot-3}
+
+```{r}
+#| fig-height: 4
+#| fig-width: 8
+#| output: true
+marginsplot_3
+```
+
+\raggedright
+\footnotesize
+\setstretch{1}
+Note: De forudsagte værdier er udregnet for hver blok med @marginaleffects.
+
+Forudsagte værdier - Blokforskelle i vindmølleopsætnings aftryk på borgmesterpartiets stemmeprocent
+:::
+
+I @fig-marginsplot-3 kan vi se et mønster der ligner @fig-marginsplot-2, hvor der også her er generelt større stemmeandel for blå blok, hvor der er negativ elektoral respons på opsætningen af en vindmølle. På samme måde ser vi også en positiv elektoral reaktion for rød blok, hvor niveauet her stiger. Ligesom i @fig-marginsplot-2 kan mødes de to niveauer når der er opsat en vindmølle og konfidensintervallerne overlapper. Hældningen på linjerne giver umiddelbart støtte til hypotese H2 og underhypoteser, men vi kan ikke se et signifikant forskelligt endeligt niveau for borgmesterpartierne. Det betyder substantielt at borgmesterpartierne kommer tættere på hinanden i generelt niveau, når der opsættes vindmøller.
+
+#### Opsamling
+
+Det samme mønster gør sig altså gældende for borgmesterens parti og blok, hvilket intuitivt giver rigtig god mening. Ikke desto mindre finder jeg i denne del af analysen yderligere støtte til min hypotese H2 og dertilhørende underhypoteser. Dog finder jeg delvise problemer i Model 3, hvor vi ingen signifikant effekt finder for referencekategorien. Det giver som nævnt mindre støtte til hypotse H2b om at venstreorienterede oplever positiv elektoral respons.
+
+## Samlede fund
+
+I min analyse har jeg ikke fundet støtte til hypotese H1 der gik på, at *En borgmester der får opsat en vindmølle vil opleve mindre støtte ved valget derefter*. I arbejdet med denne sammenhæng fandt jeg insignifikante resultater, hvorfor jeg konkluderer ingen støtte til hypotesen. I diskussionen nedenfor (side \pageref{forkselle-forventning-result}) vil jeg komme ind på et par pointer der kan være med til at forklare, hvorfor denne hypotese ikke holdt vand, og hvorfor mine fund afviger fra litteraturen i sin helhed.
+
+Efter den manglende støtte til hypotese H1, undersøgte jeg hypotese H2 og dertilhørende underhypoteser. Hypotese H2 gik på, at *Ændringen i støtte til borgmesteren efter opsætningen af en vindmølle betinges af borgmesterens parti*. I forlængelse havde jeg opstillet H2a for højreorienterede partier, hvor jeg forventede en negativ elektoral reaktion og H2b for venstreorienterede partier, hvor jeg forventede en positiv elektoral reaktion. Jeg fandt i analysen primært støtte til hypotese H2, hvor der var overvældende støtte til H2a og en smule mindre til H2b. Det skyldes insignifikante resultater for rød blok i Model 3 i @tbl-borgmester-interaktion. På trods af dette vurderer jeg, at der er hold i hypotese H2.
