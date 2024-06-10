@@ -13,8 +13,6 @@ format:
 #| echo: false
 library(tidyverse)
 library(ggthemes)
-library(wesanderson)
-library(Manu)
 library(sf)
 library(cowplot)
 library(modelsummary)
