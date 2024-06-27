@@ -1,17 +1,15 @@
-For at forstå, hvordan man politisk kan gennemføre en overgang til vedvarende energi er det interessant at undersøge hvordan politikerne straffes eller belønnes for at skubbe på for dette.
+Klimaforandringer er et globalt problem, der påvirker alle. En af de udfordringer vi som samfund står overfor er forbruget af fossile energiressourcer. En oplagt og populært alternativ til det, er vedvarende energiløsninger. For at forstå, hvordan man politisk kan facilitere en overgang til vedvarende energi er det interessant at undersøge hvordan politikerne straffes eller belønnes for at skubbe på for dette.
 
-For at forsøge at løse (eller imødekomme) klimaforandringerne er det essentielt at de folkevalgte kan implementere klimatiltag med negativ påvirkning på borgerne uden at blive straffet (mere end nødvendigt) på valgdagen. Særligt interesant er det for mig, hvordan og i hvor stort omfang det er muligt for lokalpolitikere at tillade klimatiltag med omkostninger der koncenterer sig om få borgere, mens tiltaget vil have store, men diffuse, fordele for samfundet i sin helhed.
+For at forsøge at imødekomme klimaforandringerne er det essentielt at de folkevalgte kan implementere klimatiltag, der er støtte til, uden at blive straffet unødigt på valgdagen. Særligt interessant er det for mig, hvordan og i hvor stort omfang det er muligt for lokalpolitikere at tillade klimatiltag med omkostninger der koncentrerer sig om få borgere, mens tiltaget vil have store, men diffuse, fordele for samfundet i sin helhed.
 
 Det leder mig til at undersøge følgende spørgsmål:
 
-> Hvordan er vælgernes elektorale reaktion på opførslen af vindmøller i lokalområdet?
+> **Hvordan er vælgernes elektorale reaktion på opførslen af vindmøller i lokalområdet?**
 
-Her vil jeg fokusere på, hvordan opførslen
- til de siddende beslutningstagere og hvordan denne sammenhæng er (eller ikke er) forskellige på tværs af de politiske partier.
+Her vil jeg fokusere på, hvordan opførslen af en vindmølle tæt på borgerne påvirker støtten til den siddende borgmesters parti. For at vi kan imødekomme klimaudfordringer er det essentielt at de siddende beslutningstagere ikke bliver unødvendigt straffet for at implementere klimapolicy; også på lokalt niveau hvor der udformes lokalplaner og gives tilladelser til vindmøllekonstruktion.
 
-Den primære inspiration til at undersøge hvordan vælgere reagerer på opsætning af vindmøller i lokalområdet kommer fra Leah C. @stokes2016, der gennem et naturligt eksperiment undersøger, hvordan borgere, der bor tæt på vindmølleprojekter, retrospektivt straffer beslutningstagerne for denne klimapolitik [@stokes2016]. Derudover er jeg interesseret i at undersøge denne sammenhæng i en dansk kontekst, hvor det eneste bidrag hidtil er et arbejdspapir [@larsen2021], der ikke undersøger forskelle i effekten mellem partier.
+Den primære inspiration til at undersøge hvordan vælgere reagerer på opsætning af vindmøller i lokalområdet kommer fra Leah C. @stokes2016, der gennem et naturligt eksperiment undersøger, hvordan borgere, der bor tæt på vindmølleprojekter, retrospektivt straffer beslutningstagerne for denne klimapolitik [@stokes2016]. Derudover er jeg interesseret i at undersøge denne sammenhæng i en dansk kontekst, hvor det eneste bidrag hidtil er [@larsen2021]. Jeg er derudover interesseret i, hvordan forskellige partier bliver belønnet eller straffet for klimapolicy, inspireret af @isaksson2024a.
 
-###### NOTER
-- Har svært ved at få det overordnede spørgsmål til at lyde godt.
-- Jeg vil undersøge, hvordan vælgerne reagerer (belønner eller straffer) når der kommer en vindmølle tæt på dem.
-  - Synes det er vigtigt, at det er klimatiltag der har omkostninger for nogen og hvordan de omkostninger afvejes mod de benefits der er (for verden).
+Når man giver en politiker sit mandat til at forvalte et område (kommune), skal man som vælger også være sikker på, at mandatet bliver efterlevet efter vælgerskarens ønsker. Et generelt fokus, der er i befolkningen er at modarbejde klimaforandringerne [@andersen2021], og et af de oplagte tiltag er en overgang fra fossil energiproduktion til bæredygtig, vedvarende energi. For at denne overgang kan lade sig gøre er det vigtigt også i lokalpolitik at borgmesteren kan gennemføre klimapolitiske tiltag, uden at blive straffet unødigt, hvis det altså er borgernes generelle ønske.
+
+I denne opgave vil jeg først gennemgå de teoretiske perspektiver der ligger til grund for den forventede sammenhæng, hvorefter jeg vil beskrive min valgte metode og det datasæt der er sammensat til formålet. Til sidst vil jeg analysere og diskutere mine resultater og slutteligt konkludere og vurdere mine fund i relation til politik i sin helhed.

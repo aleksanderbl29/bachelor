@@ -1,5 +1,5 @@
 
-I @fig-appendiks-prl-trends kan vi se, at der sker et generelt løft i borgmesterpartiets generelle stemmeandel mellem 2013 og 2017, hvor både de valgsteder der får en vindmølle mellem 2017 og 2021 og de valgsteder der aldrig bliver treatet oplever en stor stigning.
+<!-- I @fig-appendiks-prl-trends kan vi se, at der sker et generelt løft i borgmesterpartiets generelle stemmeandel mellem 2013 og 2017, hvor både de valgsteder der får en vindmølle mellem 2017 og 2021 og de valgsteder der aldrig bliver treatet oplever en stor stigning. -->
 
 ::: {#fig-appendiks-prl-trends}
 
@@ -16,7 +16,6 @@ app_prl_trends
 \footnotesize
 \setstretch{1}
 
-Note: Der er ingen linje for valget i 2009 og 2021, da der linjen går fra første målepunkt til sidste tidspunkt inden vindmølleopsætning. Der er ingen måling på dem der modtager vindmølle i 2009, før de modtager den. Derudover er der heller ingen måling for valgsteder der i perioden efter valget i 2021 vil modtage en vindmølle. Linjerne er skåret af ved sidste observation inden treatment indtræffer. \newline
 Kilde: Datasæt af egen tilvirkning på baggrund af valgstatistik fra @danmarksstatistik2024 og vindmølledata fra @energistyrelsen2024.
 
 Loess trends pr treatmentgruppe

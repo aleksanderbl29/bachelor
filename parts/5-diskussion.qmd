@@ -1,4 +1,4 @@
-I denne del af opgaven vil jeg gennemgå implikationer af mine fund både for politik og den videre litteratur. Derudover vil jeg revurdere mit forskningsdesign og komme ind på, hvad der kunne være gjort anderledes og hvilke mangler og udfrodringer de valg eventuelt vil have.
+I denne del af opgaven vil jeg gennemgå implikationer af mine fund både for politik og den videre litteratur. Derudover vil jeg revurdere mit forskningsdesign og komme ind på, hvad der kunne være gjort anderledes og hvilke mangler og udfordringer de valg eventuelt vil have.
 
 ## Opgavens bidrag og implikationer
 
@@ -14,6 +14,8 @@ Udover det datasæt jeg har konstrueret til denne opgave kunne det være interes
 
 ## Oplæg til videre undersøgelse
 
-Udover de sammenhænge jeg har har fundet, hvor der er sammenhæng mellem borgmesterpartiets højre-/venstreorientereing, kan det også være interessant at undersøge i hvor stort omfang forskellen i den elektorale respons afhænger af de generelle holdninger til fordelingspolitiske spørgsmål. Det kan gøres for videre at udforske mit argument, der bygger på @aklin2020, om klimapolitik som omfordeling. Dette vil kræve et reliabelt mål for holdningen til fordelingspolitik på tværs af valgsteder og valg, der kan sammenholdes med et datasæt der ligner det jeg har produceret til dette projekt. Et sådant mål kan være svært at indsamle, da det kræver store mængder respondenter for at kunne sikre reliabiliteten på så lavt inddelingsniveau som jeg forventer effekten finder sted på.
+Udover de sammenhænge jeg har fundet, hvor der er sammenhæng mellem borgmesterpartiets højre-/venstreorientereing, kan det også være interessant at undersøge i hvor stort omfang forskellen i den elektorale respons afhænger af de generelle holdninger til fordelingspolitiske spørgsmål. Det kan gøres for videre at udforske mit argument, der bygger på @aklin2020, om klimapolitik som omfordeling. Dette vil kræve et reliabelt mål for holdningen til fordelingspolitik på tværs af valgsteder og valg, der kan sammenholdes med et datasæt der ligner det jeg har produceret til dette projekt. Et sådant mål kan være svært at indsamle, da det kræver store mængder respondenter for at kunne sikre reliabiliteten på så lavt inddelingsniveau som jeg forventer effekten finder sted på.
+
+Jeg forventer derudover at desto mere højre- eller venstreorienteret et borgmesterparti er, desto større vil den elektorale reaktion være på vindmøllekonstruktionen. Dog vil denne forstærkning have et øvre loft, da der naturligvis også indgår andre faktorer i vælgernes politiske beslutningsproces.
 
 Endvidere kunne det være interessant at undersøge de ovennævnte situationer, hvor der er konflikt omkring konstruktionen af en vindmølle eller hvor der registreres om vindmøllen er opsat i et vindmøllelaug eller ej.

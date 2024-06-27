@@ -61,3 +61,34 @@ if (analyse_separate_filer == FALSE) {
 
 ## Indlæser test fil
 # source("data/88-leg-med-regres.r")
+
+# ## Rydder miljøet efter kørsel
+# rm(list = ls())
+
+# Find unikke kombinationer
+unique_combinations <- analyse_data %>%
+  distinct(kommunenr, Parti, .keep_all = TRUE) %>% 
+  group_by(kommunenr) %>% 
+  filter(n() > 1) %>% 
+  ungroup() %>% 
+  # filter(!is.na(tilslutning_treat)) %>% 
+  filter(tilslutning_treat == 1 | tilslutning_treat == 2) %>% 
+  select(valgsted_id, valg, kommunenavn, Parti, blue_blok, borgmester_stemmer_pct) %>% 
+  arrange(kommunenavn) %>% 
+  group_by(kommunenavn) %>% 
+  filter(n() > 1) %>% 
+  ungroup()
+
+# Print resultatet
+print(unique_combinations)
+
+
+
+
+
+
+
+
+
+
+

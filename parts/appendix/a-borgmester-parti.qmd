@@ -1,5 +1,6 @@
 \small
-I @tbl-appendix-a-borgmester-regres ses den fulde regression, hvor alle partiers koefficienter er præsenteret. Som nævnt på side \pageref{appendiks-regres} er der kun signifikante resultater for SF og Konservative. Begge mål er negative, hvilket kan skyldes lav mængde observationer og generelt lavere sstemmeandelsniveau for borgmestre fra de partier.
+
+<!-- I @tbl-appendix-a-borgmester-regres ses den fulde regression, hvor alle partiers koefficienter er præsenteret. Som nævnt på side \pageref{appendiks-regres} er der kun signifikante resultater for SF og Konservative. Begge mål er negative, hvilket kan skyldes lav mængde observationer og generelt lavere sstemmeandelsniveau for borgmestre fra de partier. -->
 
 ```{r}
 #| label: tbl-appendix-a-borgmester-regres
