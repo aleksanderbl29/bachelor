@@ -61,8 +61,6 @@ marginsplot_2_tegn <- nchar("Valg før vindmølle") + nchar("Vindmølle opsat") 
 
 slope_plot_parti_tegn <- sum(nchar(unique(as.character(analyse_data_plt$Parti)))) + nchar("Ændring i stemmeandel")
 
-marginsplot_3_tegn <- nchar("Valg før vindmølle") + nchar("Vindmølle opsat") + nchar("Blok") + nchar("Rød") + nchar("Blå") + nchar("Andel stemmer til borgmesterparti")
-
 slope_plot_blok_tegn <- nchar("Rød blok") + nchar("Blå blok") + nchar("Ændring i stemmeandel")
 
 faktisk_mønster_tegn <- nchar("Vindmølle sættes op") + nchar("Borgmester er fra") + nchar("Blå blok") + nchar("Venstre") + nchar("Rød blok") + nchar("Socialdemokratiet") + nchar("Færre stemmer til borgmesterparti") + nchar("Flere stemmer til borgmesterparti")
@@ -77,13 +75,14 @@ figurer_antal_tegn <- sum(vindmølle_geo_tegn,
                           marginsplot_1_tegn,
                           marginsplot_2_tegn,
                           slope_plot_parti_tegn,
-                          marginsplot_3_tegn,
                           slope_plot_blok_tegn,
                           faktisk_mønster_tegn,
                           h1_sammenhæng,
                           h2_sammenhæng,
                           prl_trends_tegn)
 
+brød <- 66754
+appendiks <- 1566
 ```
 
 
@@ -91,9 +90,13 @@ figurer_antal_tegn <- sum(vindmølle_geo_tegn,
 
 \vfill
 
-Tegn i brødtekst: `r nm_fm(65000)` \newline
+Tegn i brødtekst og tabeller: `r nm_fm(brød)` \newline
 Tegn i figurer og kausalmodeller: `r nm_fm(figurer_antal_tegn)` \newline
-Tegn i appendiks: `r nm_fm(234890)` \newline
+Tegn i appendiks: `r nm_fm(appendiks)`
+
+\vspace{1cm}
+
+Tegn i alt `r nm_fm(brød + figurer_antal_tegn + appendiks)`
 
 \vfill
 
@@ -101,14 +104,6 @@ Tegn i appendiks: `r nm_fm(234890)` \newline
 
 \listoffigures
 \listoftables
-
-\vfill
-
-Tegn i brødtekst: `r nm_fm(65000)` \newline
-Tegn i figurer og kausalmodeller: `r nm_fm(figurer_antal_tegn)` \newline
-Tegn i appendiks: `r nm_fm(234890)` \newline
-
-\vfill
 
 {{< pagebreak >}}
 
@@ -140,7 +135,7 @@ Tegn i appendiks: `r nm_fm(234890)` \newline
 
 {{< include parts/5-diskussion.qmd >}}
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
 # Konklusion
 
@@ -159,10 +154,12 @@ Tegn i appendiks: `r nm_fm(234890)` \newline
 
 {{< include parts/appendix/a-borgmester-parti.qmd >}}
 
+{{< pagebreak >}}
+
 # Appendiks B: Generel udvikling i borgmesterpartiets stemmeandel {.appendix .unnumbered}
 
 {{< include parts/appendix/b-loess-prl-trends.qmd >}}
 
-# Appendiks C: API-kald til vindmølle-valgsted match {.appendix .unnumbered}
+<!-- # Appendiks C: API-kald til vindmølle-valgsted match {.appendix .unnumbered}
 
-{{< include parts/appendix/c-dawa-api.qmd >}}
+{{< include parts/appendix/c-dawa-api.qmd >}} -->
