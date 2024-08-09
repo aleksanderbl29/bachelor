@@ -1,2 +1,0 @@
-- Kort med fordelingen af borgmestre i landet
-	- Facet_wrap over alle valg
