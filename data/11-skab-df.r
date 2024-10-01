@@ -29,7 +29,7 @@ vind <- read_xlsx("data/downloads/vind.xlsx") %>%
   select(everything()) %>%
   rename(x_koord = "X (øst) koordinat \r\nUTM 32 Euref89",
          y_koord = "Y (nord) koordinat \r\nUTM 32 Euref89",
-         tilslutningsdato = "Dato for oprindelig nettilslutning")
+         tilslutningsdato = "Dato for oprindelig nettilslutning")-----------------------
 
 colnames(vind)
 

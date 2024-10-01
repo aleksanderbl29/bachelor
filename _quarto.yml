@@ -17,7 +17,7 @@ date-format: D. MMMM YYYY
 # mathfont: "{{< var font >}}"
 
 fontsize: "{{< var fontsize >}}"
-bibliography: ../../../Andet/Zotero/zotero.bib
+bibliography: references.bib
 csl: csl/politica-w-ibid.csl
 
 execute:
@@ -25,6 +25,7 @@ execute:
   warning: false
   error: false
   output: false
+  freeze: auto
 
 engine: knitr
 
