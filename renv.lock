@@ -397,6 +397,16 @@
       ],
       "Hash": "543776ae6848fde2f48ff3816d0628bc"
     },
+    "base64url": {
+      "Package": "base64url",
+      "Version": "1.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "backports"
+      ],
+      "Hash": "0c54cf3a08cc0e550fbd64ad33166143"
+    },
     "bayestestR": {
       "Package": "bayestestR",
       "Version": "0.13.2",
@@ -686,6 +696,16 @@
         "utils"
       ],
       "Hash": "0aaa05204035dc43ea0004b9c76611dd"
+    },
+    "codetools": {
+      "Package": "codetools",
+      "Version": "0.2-20",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "61e097f35917d342622f21cdc79c256e"
     },
     "collapse": {
       "Package": "collapse",
@@ -2713,6 +2733,16 @@
       ],
       "Hash": "c19df082ba346b0ffa6f833e92de34d1"
     },
+    "secretbase": {
+      "Package": "secretbase",
+      "Version": "0.5.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "c476c18b22b21849c9f4d29b3cd720a5"
+    },
     "selectr": {
       "Package": "selectr",
       "Version": "0.4-2",
@@ -2880,6 +2910,34 @@
         "utils"
       ],
       "Hash": "5540393ad9fed813e150fc4c7dfa08b8"
+    },
+    "targets": {
+      "Package": "targets",
+      "Version": "1.7.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "base64url",
+        "callr",
+        "cli",
+        "codetools",
+        "data.table",
+        "igraph",
+        "knitr",
+        "ps",
+        "rlang",
+        "secretbase",
+        "stats",
+        "tibble",
+        "tidyselect",
+        "tools",
+        "utils",
+        "vctrs",
+        "yaml"
+      ],
+      "Hash": "27ee47827a89430be0d38b78c0cb8fb7"
     },
     "testthat": {
       "Package": "testthat",
